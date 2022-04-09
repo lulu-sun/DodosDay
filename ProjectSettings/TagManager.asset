@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags: []
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - LongGrass
+  - SolidObjects
+  - Plant
+  - Interactable
+  - TopLayer
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 416341641
+    locked: 0
+  - name: Foreground
+    uniqueID: 1470920389
+    locked: 0
+  - name: Plant
+    uniqueID: 1863894473
+    locked: 0
+  - name: Player
+    uniqueID: 645168531
+    locked: 0
+  - name: TopLayer
+    uniqueID: 4217417777
+    locked: 0
