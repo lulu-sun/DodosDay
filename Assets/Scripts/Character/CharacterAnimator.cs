@@ -54,7 +54,7 @@ public class CharacterAnimator : MonoBehaviour
         idleLeftAnim = new SpriteAnimator(idleLeftSprites, spriteRenderer);
 
 
-        currentAnim = walkDownAnim;
+        currentAnim = idleDownAnim;
     }
 
     private void Update()
