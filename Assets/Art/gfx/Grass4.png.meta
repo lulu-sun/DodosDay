@@ -1,22 +1,16 @@
 fileFormatVersion: 2
-guid: ef5ec34ad1b2de2449234678342d0cd2
+guid: beead82940ea1444bbf2de00f4fd2e8c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8802527188065008946
-    second: grass 2_0
+      213: -2682283679853605084
+    second: Grass4_0
   - first:
-      213: 1486759871055784354
-    second: grass 2_1
+      213: 6389297364383657829
+    second: Grass4_1
   - first:
-      213: 5974301457795652821
-    second: grass 2_2
-  - first:
-      213: 7318366787439840541
-    second: grass 2_3
-  - first:
-      213: -1311520355070727463
-    second: grass 2_4
+      213: 5241344542117050786
+    second: Grass4_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -118,11 +112,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: grass 2_0
+      name: Grass4_0
       rect:
         serializedVersion: 2
         x: 16
-        y: 141
+        y: 30
         width: 16
         height: 16
       alignment: 0
@@ -132,60 +126,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 23d355af6dbd82a70800000000000000
-      internalID: 8802527188065008946
+      spriteID: 42f8f7b543d96cad0800000000000000
+      internalID: -2682283679853605084
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grass 2_1
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 141
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2a9e59cb93802a410800000000000000
-      internalID: 1486759871055784354
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: grass 2_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 125
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5dc120dc58bf8e250800000000000000
-      internalID: 5974301457795652821
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: grass 2_3
+      name: Grass4_1
       rect:
         serializedVersion: 2
         x: 16
-        y: 125
+        y: 14
         width: 16
         height: 16
       alignment: 0
@@ -195,18 +147,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d1d4e5d91df009560800000000000000
-      internalID: 7318366787439840541
+      spriteID: 56f6d68d9185ba850800000000000000
+      internalID: 6389297364383657829
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grass 2_4
+      name: Grass4_2
       rect:
         serializedVersion: 2
         x: 32
-        y: 125
+        y: 14
         width: 16
         height: 16
       alignment: 0
@@ -216,8 +168,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9daa0509f2b8ccde0800000000000000
-      internalID: -1311520355070727463
+      spriteID: 2a9b15a571ffcb840800000000000000
+      internalID: 5241344542117050786
       vertices: []
       indices: 
       edges: []
