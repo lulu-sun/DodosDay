@@ -339,6 +339,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3
+  offsetX: 0
+  offsetY: 0
+  circleOffset: 0.1
 --- !u!114 &264123835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -372,7 +375,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0018835068, y: -0.004081726}
+  m_Offset: {x: 0.0018835068, y: -0.25}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -465,7 +468,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 264123832}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.5, y: -0.5, z: 0}
+  m_LocalPosition: {x: -7.495, y: -0.549, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -22971,7 +22974,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 935294264}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.43, y: 1.17, z: 10}
+  m_LocalPosition: {x: -10.67, y: 1.42, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 519420032}
@@ -23027,6 +23030,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  offsetX: 0
+  offsetY: -0.3
+  circleOffset: 0.1
 --- !u!1 &975788291
 GameObject:
   m_ObjectHideFlags: 0
@@ -28070,6 +28076,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3
+  offsetX: 0
+  offsetY: 0
+  circleOffset: 0.1
 --- !u!1 &1799161258
 GameObject:
   m_ObjectHideFlags: 0
