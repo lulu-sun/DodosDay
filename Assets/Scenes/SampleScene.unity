@@ -23031,7 +23031,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   offsetX: 0
-  offsetY: -0.3
+  offsetY: -0.5
   circleOffset: 0.1
 --- !u!1 &975788291
 GameObject:
