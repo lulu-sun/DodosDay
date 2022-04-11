@@ -59,8 +59,8 @@ public class CharacterAnimator : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(MoveX);
-        Debug.Log(MoveY);
+        // Debug.Log(MoveX);
+        // Debug.Log(MoveY);
 
         var prevAnim = currentAnim;
 
