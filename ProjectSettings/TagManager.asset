@@ -12,11 +12,11 @@ TagManager:
   - Water
   - UI
   - 
-  - LongGrass
-  - SolidObjects
-  - Plant
-  - Interactable
-  - TopLayer
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -46,13 +46,4 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 1470920389
-    locked: 0
-  - name: Plant
-    uniqueID: 1863894473
-    locked: 0
-  - name: Player
-    uniqueID: 645168531
-    locked: 0
-  - name: TopLayer
-    uniqueID: 4217417777
     locked: 0

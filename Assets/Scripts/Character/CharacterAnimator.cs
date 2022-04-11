@@ -33,6 +33,7 @@ public class CharacterAnimator : MonoBehaviour
     SpriteAnimator idleLeftAnim;
 
     SpriteAnimator currentAnim;
+    SpriteAnimator currentIdleAnim;
     bool wasPreviouslyMoving;
 
     //References
@@ -47,22 +48,51 @@ public class CharacterAnimator : MonoBehaviour
         walkRightAnim = new SpriteAnimator(walkRightSprites, spriteRenderer);
         walkLeftAnim = new SpriteAnimator(walkLeftSprites, spriteRenderer);
 
-
         idleDownAnim = new SpriteAnimator(idleDownSprites, spriteRenderer);
         idleUpAnim = new SpriteAnimator(idleUpSprites, spriteRenderer);
         idleRightAnim = new SpriteAnimator(idleRightSprites, spriteRenderer);
         idleLeftAnim = new SpriteAnimator(idleLeftSprites, spriteRenderer);
 
-
-        currentAnim = idleDownAnim;
+        currentAnim = walkDownAnim;
+        currentIdleAnim = idleDownAnim;
     }
 
     private void Update()
     {
-        // Debug.Log(MoveX);
-        // Debug.Log(MoveY);
-
         var prevAnim = currentAnim;
+
+        if (IsMoving)
+        {
+            if (MoveX > 0)
+                currentAnim = walkRightAnim;
+            else if (MoveX < 0)
+                currentAnim = walkLeftAnim;
+            else if (MoveY > 0)
+                currentAnim = walkUpAnim;
+            else if (MoveY < 0)
+                currentAnim = walkDownAnim;
+
+            if (MoveX > 0)
+                currentIdleAnim = idleRightAnim;
+            else if (MoveX < 0)
+                currentIdleAnim = idleLeftAnim;
+            else if (MoveY > 0)
+                currentIdleAnim = idleUpAnim;
+            else if (MoveY < 0)
+                currentIdleAnim = idleDownAnim;
+        }
+
+        if (currentAnim != prevAnim || IsMoving != wasPreviouslyMoving)
+        {
+            if (IsMoving)
+            {
+                currentAnim.Start();
+            }
+            else
+            {
+                currentIdleAnim.Start();
+            }
+        }
 
         if (IsMoving)
         {
@@ -70,47 +100,9 @@ public class CharacterAnimator : MonoBehaviour
         }
         else
         {
-            if (MoveX > 0)
-            {
-                currentAnim = idleRightAnim;
-            }
-            
-            else if (MoveX < 0)
-            {
-                currentAnim = idleLeftAnim;
-            }
-
-            else if (MoveY > 0)
-            {
-                currentAnim = idleUpAnim;
-            }
-
-            else if (MoveY < 0)
-            {
-                currentAnim = idleDownAnim;
-            }
-
-            currentAnim.HandleUpdate();
-
+            currentIdleAnim.HandleUpdate();
         }
-
-        if (MoveX > 0)
-            currentAnim = walkRightAnim;
-        else if (MoveX < 0)
-            currentAnim = walkLeftAnim;
-        else if (MoveY > 0)
-            currentAnim = walkUpAnim;
-        else if (MoveY < 0)
-            currentAnim = walkDownAnim;
-
-        if (currentAnim != prevAnim || IsMoving != wasPreviouslyMoving)
-            currentAnim.Start();
-
-            // spriteRenderer.sprite = currentAnim.Frames[0];
 
         wasPreviouslyMoving = IsMoving;
     }
-
-
-
 }

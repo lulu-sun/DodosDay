@@ -6,7 +6,6 @@ using System;
 public class PlayerController : MonoBehaviour
 {
     // Start is called before the first frame update
-    
     public float moveSpeed;
 
     // public event Action OnEncountered;
