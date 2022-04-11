@@ -339,10 +339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3
-  offsetXOutward: -0.1
-  offsetX: 0
-  offsetY: 0
-  circleOffset: 0.1
+  collider: {fileID: 0}
 --- !u!114 &264123835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -379,7 +376,7 @@ BoxCollider2D:
   m_Offset: {x: 0.0018835068, y: -0.25}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0.25}
     oldSize: {x: 1, y: 1.25}
     newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
@@ -22975,7 +22972,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 935294264}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.67, y: 1.42, z: 0}
+  m_LocalPosition: {x: -10, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 519420032}
@@ -23031,10 +23028,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  offsetXOutward: -0.1
-  offsetX: 0.1
-  offsetY: -0.4
-  circleOffset: 0.1
+  collider: {fileID: 0}
 --- !u!1 &975788291
 GameObject:
   m_ObjectHideFlags: 0
@@ -28078,10 +28072,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3
-  offsetXOutward: -0.1
-  offsetX: 0
-  offsetY: 0
-  circleOffset: 0.1
+  collider: {fileID: 0}
 --- !u!1 &1799161258
 GameObject:
   m_ObjectHideFlags: 0
@@ -32086,7 +32077,7 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 1
+  m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
