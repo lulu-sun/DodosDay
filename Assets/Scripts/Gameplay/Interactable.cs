@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface Interactable
 {
-    void Interact();
+    void Interact(Vector2 facingDirection);
 }

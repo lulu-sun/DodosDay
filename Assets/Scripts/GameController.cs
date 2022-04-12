@@ -22,18 +22,21 @@ public class GameController : MonoBehaviour
         DialogueManager.Instance.OnCloseDialogue += () =>
         {
             if (state == GameState.Dialogue)
+            {
                 state = GameState.FreeRoam;
+            }
         };
     }
 
     // void StartBattle()
     // {
     //     state = GameState.Battle;
-
     // }
 
     private void Update()
     {
+        Debug.Log(state);
+
         if (state == GameState.FreeRoam)
         {
             playerController.HandleUpdate();
@@ -48,5 +51,4 @@ public class GameController : MonoBehaviour
         //     battleSystem.HandleUpdate();
         // }
     }
-
 }

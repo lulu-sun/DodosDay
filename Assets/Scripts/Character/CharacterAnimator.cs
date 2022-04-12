@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,28 +16,26 @@ public class CharacterAnimator : MonoBehaviour
     [SerializeField] List<Sprite> idleRightSprites;
     [SerializeField] List<Sprite> idleLeftSprites;
 
-    //Parameters
-    public float MoveX { get; set; }
-    public float MoveY { get; set; }
+    // Parameters
+    public Vector2 Direction { get; set; }
     public bool IsMoving { get; set; }
     
-    //States
+    // States
     SpriteAnimator walkDownAnim;
     SpriteAnimator walkUpAnim;
     SpriteAnimator walkRightAnim;
     SpriteAnimator walkLeftAnim;
-
 
     SpriteAnimator idleDownAnim;
     SpriteAnimator idleUpAnim;
     SpriteAnimator idleRightAnim;
     SpriteAnimator idleLeftAnim;
 
-    SpriteAnimator currentAnim;
+    SpriteAnimator currentWalkAnim;
     SpriteAnimator currentIdleAnim;
     bool wasPreviouslyMoving;
 
-    //References
+    // References
     SpriteRenderer spriteRenderer;
 
     private void Start()
@@ -53,40 +52,25 @@ public class CharacterAnimator : MonoBehaviour
         idleRightAnim = new SpriteAnimator(idleRightSprites, spriteRenderer);
         idleLeftAnim = new SpriteAnimator(idleLeftSprites, spriteRenderer);
 
-        currentAnim = walkDownAnim;
+        currentWalkAnim = walkDownAnim;
         currentIdleAnim = idleDownAnim;
+        Direction = Vector2.down;
     }
 
     private void Update()
     {
-        var prevAnim = currentAnim;
+        var prevAnim = currentWalkAnim;
 
         if (IsMoving)
         {
-            if (MoveX > 0)
-                currentAnim = walkRightAnim;
-            else if (MoveX < 0)
-                currentAnim = walkLeftAnim;
-            else if (MoveY > 0)
-                currentAnim = walkUpAnim;
-            else if (MoveY < 0)
-                currentAnim = walkDownAnim;
-
-            if (MoveX > 0)
-                currentIdleAnim = idleRightAnim;
-            else if (MoveX < 0)
-                currentIdleAnim = idleLeftAnim;
-            else if (MoveY > 0)
-                currentIdleAnim = idleUpAnim;
-            else if (MoveY < 0)
-                currentIdleAnim = idleDownAnim;
+            FaceDirection(Direction);
         }
 
-        if (currentAnim != prevAnim || IsMoving != wasPreviouslyMoving)
+        if (currentWalkAnim != prevAnim || IsMoving != wasPreviouslyMoving)
         {
             if (IsMoving)
             {
-                currentAnim.Start();
+                currentWalkAnim.Start();
             }
             else
             {
@@ -96,7 +80,7 @@ public class CharacterAnimator : MonoBehaviour
 
         if (IsMoving)
         {
-            currentAnim.HandleUpdate();
+            currentWalkAnim.HandleUpdate();
         }
         else
         {
@@ -104,5 +88,35 @@ public class CharacterAnimator : MonoBehaviour
         }
 
         wasPreviouslyMoving = IsMoving;
+    }
+
+    public void FaceDirection(Vector2 direction)
+    {
+        // Direction cannot be diagonal.
+        if (direction.x != 0 && direction.y != 0)
+        {
+            throw new ArgumentException($"facing direction {direction} cannot be diagonal.");
+        }
+
+        if (direction.x > 0)
+        {
+            currentWalkAnim = walkRightAnim;
+            currentIdleAnim = idleRightAnim;
+        }
+        else if (direction.x < 0)
+        {
+            currentWalkAnim = walkLeftAnim;
+            currentIdleAnim = idleLeftAnim;
+        }
+        else if (direction.y > 0)
+        {
+            currentWalkAnim = walkUpAnim;
+            currentIdleAnim = idleUpAnim;
+        }
+        else if (direction.y < 0)
+        {
+            currentWalkAnim = walkDownAnim;
+            currentIdleAnim = idleDownAnim;
+        }
     }
 }

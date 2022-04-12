@@ -8,6 +8,7 @@ public class DialogueManager : MonoBehaviour
 {
     [SerializeField] GameObject dialogueBox;
     [SerializeField] Text dialogueText;
+    [SerializeField] Text dialogueName;
     [SerializeField] int lettersPerSecond;
 
     public event Action OnShowDialogue;
@@ -31,6 +32,9 @@ public class DialogueManager : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
 
+        Debug.Log(dialogue.Name);
+        dialogueName.text = dialogue.Name;
+
         OnShowDialogue?.Invoke();
 
         IsShowing = true;
@@ -43,7 +47,7 @@ public class DialogueManager : MonoBehaviour
 
     public void HandleUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.Z) && !isTyping)
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)) && !isTyping)
         {
             ++currentLine;
             if (currentLine < dialogue.Lines.Count)
