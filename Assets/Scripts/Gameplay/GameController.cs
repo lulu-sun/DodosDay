@@ -6,10 +6,16 @@ public enum GameState { FreeRoam, Battle, Dialogue }
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField] PlayerController playerController;
-    // [SerializeField] BattleSystem battleSystem;
+    public PlayerController playerController;
 
     GameState state;
+
+    public static GameController Instance { get; private set; }
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
