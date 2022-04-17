@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 129c44be613611c4297a44861e0fb3c0, type: 3}
+  m_Name: Ollie
+  m_EditorClassIdentifier: 
+  name: 
+  description: 
+  frontSprite: {fileID: -370564048169120025, guid: 229715eb871701246a482f982cb77984, type: 3}
+  backSprite: {fileID: 5481888991699395864, guid: 229715eb871701246a482f982cb77984, type: 3}
+  type1: 1
+  type2: 0
+  maxHp: 30
+  attack: 10
+  defense: 10
+  spAttack: 10
+  spDefense: 10
+  speed: 10
+  learnableMoves:
+  - moveBase: {fileID: 11400000, guid: f4ee7b6f93ffb464abcaea02ca0e58eb, type: 2}
+    level: 1
+  - moveBase: {fileID: 11400000, guid: 8cfa12e187265c145acac6e08d71219d, type: 2}
+    level: 1
+  - moveBase: {fileID: 11400000, guid: c1093c54bf003ec4dae52fbdb7cfb444, type: 2}
+    level: 1
+  - moveBase: {fileID: 11400000, guid: ae8c423872017c448a185b7eff8d46e0, type: 2}
+    level: 1
