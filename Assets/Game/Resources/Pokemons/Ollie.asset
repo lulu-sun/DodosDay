@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 129c44be613611c4297a44861e0fb3c0, type: 3}
   m_Name: Ollie
   m_EditorClassIdentifier: 
-  name: 
+  name: Ollie
   description: 
   frontSprite: {fileID: -370564048169120025, guid: 229715eb871701246a482f982cb77984, type: 3}
   backSprite: {fileID: 5481888991699395864, guid: 229715eb871701246a482f982cb77984, type: 3}
   type1: 1
   type2: 0
-  maxHp: 30
+  maxHp: 5
   attack: 10
   defense: 10
   spAttack: 10
