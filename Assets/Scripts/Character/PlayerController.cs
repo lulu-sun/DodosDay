@@ -42,11 +42,9 @@ public class PlayerController : MonoBehaviour
         {
             Interact();
         }
-    }
 
-    void FixedUpdate()
-    {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        animator.HandleUpdate();
     }
 
     void Interact()

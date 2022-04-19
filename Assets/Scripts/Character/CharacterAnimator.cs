@@ -57,7 +57,7 @@ public class CharacterAnimator : MonoBehaviour
         Direction = Vector2.down;
     }
 
-    private void Update()
+    public void HandleUpdate()
     {
         var prevAnim = currentWalkAnim;
 
