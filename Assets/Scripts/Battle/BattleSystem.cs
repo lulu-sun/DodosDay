@@ -60,6 +60,14 @@ public class BattleSystem : MonoBehaviour
         dialogBox.EnableMoveSelector(true);
     }
 
+    IEnumerator PerformPlayerMove()
+    {
+        var move = playerUnit.Pokemon.Moves[currentMove];
+        yield return dialogBox.TypeDialog($"{playerUnit.Pokemon.Base.Name} used {move.Base.Name}");
+        
+        yield return new WaitForSeconds(1f);
+    }
+
     private void Update()
     {
         if (state == BattleState.PlayerAction)
@@ -67,7 +75,7 @@ public class BattleSystem : MonoBehaviour
             HandleActionSelection();
         }
 
-        if (state == BattleState.PlayerMove)
+        else if (state == BattleState.PlayerMove)
         {
             HandleMoveSelection();
         }
@@ -95,6 +103,7 @@ public class BattleSystem : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            Debug.Log("Space1");
             if (currentAction == 0)
             {
                 //Fight
@@ -143,6 +152,13 @@ public class BattleSystem : MonoBehaviour
 
         dialogBox.UpdateMoveSelection(currentMove, playerUnit.Pokemon.Moves[currentMove]);
 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("Space2");
+            dialogBox.EnableMoveSelector(false);
+            dialogBox.EnableDialogText(true);
+            StartCoroutine(PerformPlayerMove());
+        }
 
     }
 
