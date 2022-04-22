@@ -15,6 +15,6 @@ MonoBehaviour:
   name: Sit
   description: 
   type: 1
-  power: 10
+  power: 0
   accuracy: 5
   pp: 5

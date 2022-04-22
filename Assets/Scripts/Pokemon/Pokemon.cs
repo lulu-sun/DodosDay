@@ -75,4 +75,39 @@ public class Pokemon
             return Mathf.FloorToInt((Base.Speed * Level) / 100f) + 5;}
     }
 
+    public DamageDetails TakeDamage(Move move, Pokemon attacker)
+    {
+        var damageDetails = new DamageDetails()
+        {
+            // Type = type,
+            // Critical = critical,
+            Fainted = false
+        };
+
+        int damage = move.Base.Power; //This is not official damage, come back to it as needed. (vid #9)
+        HP -= damage;
+
+        if (HP <= 0)
+        {
+            HP = 0;
+            damageDetails.Fainted = true;
+        }
+
+        return damageDetails;
+
+    }
+
+    public Move GetRandomMove()
+    {
+        int r = Random.Range(0, Moves.Count);
+        return Moves[r];
+    }
+
+}
+
+public class DamageDetails
+{
+    public bool Fainted { get; set; }
+    // public float Critical { get; set; }
+    // public float Type { get; set; }
 }

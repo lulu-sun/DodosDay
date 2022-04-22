@@ -38,7 +38,7 @@ public class BattleSystem : MonoBehaviour
         dialogBox.SetMoveNames(playerUnit.Pokemon.Moves);
 
         yield return dialogBox.TypeDialog($"A wild {enemyUnit.Pokemon.Base.Name} appeared.");
-        yield return new WaitForSeconds(1f);
+        // yield return new WaitForSeconds(1f);
 
         PlayerAction();
 
@@ -62,10 +62,60 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator PerformPlayerMove()
     {
+        state = BattleState.Busy;
+
         var move = playerUnit.Pokemon.Moves[currentMove];
         yield return dialogBox.TypeDialog($"{playerUnit.Pokemon.Base.Name} used {move.Base.Name}");
         
-        yield return new WaitForSeconds(1f);
+        // yield return new WaitForSeconds(1f);
+
+        var damageDetails = enemyUnit.Pokemon.TakeDamage(move, playerUnit.Pokemon);
+
+        yield return enemyHud.UpdateHP();
+        yield return ShowDamageDetails(damageDetails);
+
+
+        if (damageDetails.Fainted)
+        {
+            yield return dialogBox.TypeDialog($"{enemyUnit.Pokemon.Base.Name} Fainted");
+        }
+
+        else
+        {
+            StartCoroutine(EnemyMove());
+        }
+    }
+
+    IEnumerator EnemyMove()
+    {
+        state = BattleState.EnemyMove;
+
+        var move = enemyUnit.Pokemon.GetRandomMove();
+
+        yield return dialogBox.TypeDialog($"{enemyUnit.Pokemon.Base.Name} used {move.Base.Name}");
+        
+        // yield return new WaitForSeconds(1f);
+
+        var damageDetails = playerUnit.Pokemon.TakeDamage(move, playerUnit.Pokemon);
+        yield return playerHud.UpdateHP();
+        yield return ShowDamageDetails(damageDetails);
+
+        if (damageDetails.Fainted)
+        {
+            yield return dialogBox.TypeDialog($"{playerUnit.Pokemon.Base.Name} Fainted");
+
+        }
+
+        else
+        {
+            PlayerAction();
+        }
+
+    }
+
+    IEnumerator ShowDamageDetails(DamageDetails damageDetails)
+    {
+        yield return null;
     }
 
     private void Update()
