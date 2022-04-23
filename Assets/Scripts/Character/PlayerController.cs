@@ -19,11 +19,6 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<CharacterAnimator>();
         rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
-
-        // find spawn point if there is one
-        var spawnPoint = GameObject.FindObjectsOfType<SpawnPoint>().Single(sp => sp.portalId == PortalId.A);
-
-        transform.position = spawnPoint.transform.position;
     }
 
     // Update is called once per frame
