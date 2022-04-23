@@ -41,4 +41,4 @@ public class Portal : MonoBehaviour
     }
 }
 
-public enum PortalId { A, B, C, D, E };
+public enum PortalId { A, B, C, D, E};
