@@ -13,8 +13,11 @@ public class Portal : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log($"Player entered the portal with sceneToLoad={sceneToLoad}");
-        StartCoroutine(SwitchScene());
+        if (collision.GetComponent<PlayerController>() != null)
+        {
+            Debug.Log($"Player entered the portal with sceneToLoad={sceneToLoad}");
+            StartCoroutine(SwitchScene());
+        }
     }
 
     private void Start()

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class NPCController : MonoBehaviour, Interactable
 {
@@ -11,18 +12,23 @@ public class NPCController : MonoBehaviour, Interactable
     NPCState state;
     float idleTimer = 0f;
     // int currentPattern = 0;
-    CharacterAnimator animator;
+
+    Character character;
 
     public void Interact(Vector2 facingDirection)
     {
+        // Talk(facingDirection);
+        Walk();
+    }
+
+    private void Talk(Vector2 facingDirection)
+    {
         if (state == NPCState.Idle)
         {
-            var originalDirection = animator.Direction;
-
-            Debug.Log($"{originalDirection}, {facingDirection}, {-facingDirection}");
+            var originalDirection = character.Direction;
 
             // Turn to face the player. 
-            animator.FaceDirection(-facingDirection);
+            character.FaceDirection(-facingDirection);
 
             state = NPCState.Dialogue;
             StartCoroutine(DialogueManager.Instance.ShowDialogue(dialogue, () => {
@@ -30,44 +36,41 @@ public class NPCController : MonoBehaviour, Interactable
                 state = NPCState.Idle;
                 
                 // Turn back to original orientation after talking.
-                animator.FaceDirection(originalDirection);
+                character.FaceDirection(originalDirection);
             }));
         }
+    }
+
+    private void Walk()
+    {
+        state = NPCState.Walking;
+        StartCoroutine(character.Move(new Vector2(0, -4), () => {
+            StartCoroutine(character.Move(new Vector2(4, 0), () => {
+                StartCoroutine(character.Move(new Vector2(0, 4), () => {
+                    StartCoroutine(character.Move(new Vector2(-4, 0), () => {
+                        character.FaceDirection(Vector2.down);
+                        state = NPCState.Idle;
+                    }));    
+                }));
+            }));
+        }));
+    }
+
+    private void Update()
+    {
+        if (DialogueManager.Instance.IsShowing)
+        {
+            return;
+        }
+
+        character.HandleUpdate();
     }
     
     private void Awake()
     {
-        animator = GetComponent<CharacterAnimator>();
+        character = GetComponent<Character>();
         dialogue.Name = Name;
     }
-
-    // private void Update()
-    // {
-    //     if (state == NPCState.Idle)
-    //     {
-    //         idleTimer += Time.deltaTime;
-
-    //         if (idleTimer > timeBetweenPattern)
-    //         {
-    //             idleTimer = 0f;
-    //             if (movementPattern.Count > 0)
-    //             {
-    //                 StartCoroutine(Walk());
-    //             }
-    //         }
-    //     }
-    //     character.HandleUpdate();
-    // }
-
-    // IEnumerator Walk()
-    // {
-    //     state = NPCState.Walking;
-        
-    //     yield return character.Move(movementPattern[currentPattern]);
-    //     currentPattern = (currentPattern + 1) % movementPattern.Count;
-
-    //     state = NPCState.Idle;
-    // }  
 }
 
 public enum NPCState { Idle, Walking, Dialogue }

@@ -61,10 +61,7 @@ public class CharacterAnimator : MonoBehaviour
     {
         var prevAnim = currentWalkAnim;
 
-        if (IsMoving)
-        {
-            FaceDirection(Direction);
-        }
+        FaceDirection(Direction);
 
         if (currentWalkAnim != prevAnim || IsMoving != wasPreviouslyMoving)
         {
@@ -84,13 +81,13 @@ public class CharacterAnimator : MonoBehaviour
         }
         else
         {
-            currentIdleAnim.HandleUpdate();
+        currentIdleAnim.HandleUpdate();
         }
 
         wasPreviouslyMoving = IsMoving;
     }
 
-    public void FaceDirection(Vector2 direction)
+    private void FaceDirection(Vector2 direction)
     {
         // Direction cannot be diagonal.
         if (direction.x != 0 && direction.y != 0)
