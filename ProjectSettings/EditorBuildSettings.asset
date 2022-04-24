@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/Scenes/HouseIsland.unity
     guid: 1514afefa5c4b6c4b8deab4f88a98769
   - enabled: 1
-    path: Assets/Scenes/Island 1.unity
+    path: Assets/Scenes/1_Island_J.unity
     guid: 2285b58e52543404b804fd461fa10fd0
   - enabled: 1
     path: Assets/Scenes/Island 2.unity
