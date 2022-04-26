@@ -18,7 +18,11 @@ public class CutsceneManager : MonoBehaviour
     {
         currentScene = SceneManager.GetActiveScene();
         player = GameController.Instance.playerController;
-        IntroCutscene();
+        
+        if (currentScene.name == "Intro")
+        {
+            IntroCutscene();
+        }
     }
 
     // Update is called once per frame
