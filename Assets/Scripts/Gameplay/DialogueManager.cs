@@ -32,7 +32,6 @@ public class DialogueManager : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
 
-        Debug.Log(dialogue.Name);
         dialogueName.text = dialogue.Name;
 
         OnShowDialogue?.Invoke();

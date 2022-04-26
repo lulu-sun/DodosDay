@@ -38,7 +38,7 @@ public class CharacterAnimator : MonoBehaviour
     // References
     SpriteRenderer spriteRenderer;
 
-    private void Start()
+    private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
 
@@ -81,7 +81,7 @@ public class CharacterAnimator : MonoBehaviour
         }
         else
         {
-        currentIdleAnim.HandleUpdate();
+            currentIdleAnim.HandleUpdate();
         }
 
         wasPreviouslyMoving = IsMoving;

@@ -37,6 +37,7 @@ public class Character : MonoBehaviour
     public void FaceDirection(Vector2 direction)
     {
         Direction = direction;
+        animator.HandleUpdate();
     }
 
     public IEnumerator Move(Vector2 moveVec, Action onMoveOver=null)
@@ -81,7 +82,7 @@ public class Character : MonoBehaviour
 
     public void HandleUpdate()
     {
-        animator.HandleUpdate();
+        animator.HandleUpdate();        
     }
 
     public void MoveOneFrame(Vector2 direction)

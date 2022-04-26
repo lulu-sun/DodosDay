@@ -9,4 +9,10 @@ public class Dialogue
 
     public List<string> Lines { get => lines; }
     public string Name { get; set; }
+
+    public Dialogue(string name, List<string> lines)
+    {
+        this.lines = lines;
+        this.Name = name;
+    }
 }

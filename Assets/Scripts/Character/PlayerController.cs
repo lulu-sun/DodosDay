@@ -12,8 +12,9 @@ public class PlayerController : MonoBehaviour
 
     Character character;
 
-    // Start is called before the first frame update
-    void Start()
+    public Character Character { get => character; }
+
+    void Awake()
     {
         character = GetComponent<Character>();
         boxCollider = GetComponent<BoxCollider2D>();

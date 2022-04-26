@@ -7,21 +7,27 @@ public class NPCController : MonoBehaviour, Interactable
 {
     public string Name;
     [SerializeField] Dialogue dialogue;
-    // [SerializeField] List<Vector2> movementPattern;
-    // [SerializeField] float timeBetweenPattern;
+    
     NPCState state;
-    float idleTimer = 0f;
     // int currentPattern = 0;
+
+    float idleTimer = 0f;
 
     Character character;
 
     public void Interact(Vector2 facingDirection)
     {
-        // Talk(facingDirection);
-        Walk();
+        Talk(facingDirection, () => Walk(new Vector2(3, 0)));
+        // StartCoroutine(Walk(new List<Vector2>() 
+        // { 
+        //     new Vector2(4, 0),
+        //     new Vector2(0, -4),
+        //     new Vector2(-4, 0),
+        //     new Vector2(0, 4)
+        // }));
     }
 
-    private void Talk(Vector2 facingDirection)
+    private void Talk(Vector2 facingDirection, Action onFinished = null)
     {
         if (state == NPCState.Idle)
         {
@@ -37,23 +43,48 @@ public class NPCController : MonoBehaviour, Interactable
                 
                 // Turn back to original orientation after talking.
                 character.FaceDirection(originalDirection);
+
+                onFinished?.Invoke();
             }));
         }
     }
 
-    private void Walk()
+    private void Walk(Vector2 movement, Action onFinished = null)
     {
-        state = NPCState.Walking;
-        StartCoroutine(character.Move(new Vector2(0, -4), () => {
-            StartCoroutine(character.Move(new Vector2(4, 0), () => {
-                StartCoroutine(character.Move(new Vector2(0, 4), () => {
-                    StartCoroutine(character.Move(new Vector2(-4, 0), () => {
-                        character.FaceDirection(Vector2.down);
+        StartCoroutine(character.Move(movement, onFinished));
+    }
+
+    // Repeatedly walk in a well defined pattern. 
+    // Not sure if we will use this. 
+    private IEnumerator Walk(List<Vector2> movementPattern, float timeBetweenPattern = 0f)
+    {
+        Debug.Log("walk");
+
+        if (movementPattern.Count == 0)
+        {
+            throw new ArgumentException($"movementPattern={movementPattern} cannot be empty.");
+        }
+
+        int currentPatternIndex = 0;
+
+        if (state == NPCState.Idle)
+        {
+            while (currentPatternIndex < movementPattern.Count)
+            {
+                idleTimer += Time.deltaTime;
+                if (idleTimer > timeBetweenPattern)
+                {
+                    idleTimer = 0f;
+                    state = NPCState.Walking;
+                    yield return character.Move(movementPattern[currentPatternIndex], () => {
                         state = NPCState.Idle;
-                    }));    
-                }));
-            }));
-        }));
+                    });
+                    currentPatternIndex++;
+                }
+
+                yield return null;
+            }
+        }
     }
 
     private void Update()
