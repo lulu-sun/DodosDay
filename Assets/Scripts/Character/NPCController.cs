@@ -43,17 +43,17 @@ public class NPCController : MonoBehaviour, Interactable
 
     private void Walk()
     {
-        state = NPCState.Walking;
-        StartCoroutine(character.Move(new Vector2(0, -4), () => {
-            StartCoroutine(character.Move(new Vector2(4, 0), () => {
-                StartCoroutine(character.Move(new Vector2(0, 4), () => {
-                    StartCoroutine(character.Move(new Vector2(-4, 0), () => {
-                        character.FaceDirection(Vector2.down);
-                        state = NPCState.Idle;
-                    }));    
-                }));
-            }));
-        }));
+        // state = NPCState.Walking;
+        // StartCoroutine(character.Move(new Vector2(0, -4), () => {
+        //     StartCoroutine(character.Move(new Vector2(4, 0), () => {
+        //         StartCoroutine(character.Move(new Vector2(0, 4), () => {
+        //             StartCoroutine(character.Move(new Vector2(-4, 0), () => {
+        //                 character.FaceDirection(Vector2.down);
+        //                 state = NPCState.Idle;
+        //             }));    
+        //         }));
+        //     }));
+        // }));
     }
 
     private void Update()
