@@ -556,7 +556,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ef822050996efe45bcd42f59a766900, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 6485065461445137963}
+  npcPrefab: {fileID: 301433940564939934, guid: 4a94d44d82d8d564c9db8f77023dead0, type: 3}
 --- !u!1 &6485065461718890909
 GameObject:
   m_ObjectHideFlags: 0

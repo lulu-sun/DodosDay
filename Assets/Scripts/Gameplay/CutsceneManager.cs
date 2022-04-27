@@ -13,6 +13,8 @@ public class CutsceneManager : MonoBehaviour
 
     PlayerController player;
 
+    [SerializeField] GameObject npcPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +35,9 @@ public class CutsceneManager : MonoBehaviour
 
     private void IntroCutscene()
     {
-        IsRunning = true;
+        GameObject npc = (GameObject)Instantiate(npcPrefab, new Vector3(2, 0, 0), Quaternion.identity);
+        npc.SetActive(false);
+        Character npcChar = npc.GetComponent<Character>();
 
         RunMultipleActions(new ICutsceneAction[] {
             new DialogueAction("Joce", new string[]
@@ -58,7 +62,9 @@ public class CutsceneManager : MonoBehaviour
             {
                 "Oh! How silly, I should introduce myself!"
             }),
-            // lulu appears
+            new SetActiveAction(npc, true),
+            new FaceDirectionAction(npcChar, Vector2.left),
+            new FaceDirectionAction(player.Character, Vector2.right),
             new DialogueAction("Lulu", new string[]
             {
                 "I'm Lulu, one of your childhood friends! And I'm here to guide you on your journey."
@@ -67,12 +73,22 @@ public class CutsceneManager : MonoBehaviour
             {
                 "Wait… If you're my childhood friend, how come I don't remember you?"
             }),
-            new MoveAction(player.Character, new Vector2(5, 0)) // movement animation currently not working
+            new DialogueAction("Lulu", new string[]
+            {
+                "A magic spell stole your memories, and now you have to go on a journey to retrieve them.",
+                "At the end, you will receive your heart's desire. But many trials will stand in your way, including familiar faces.",
+                "Defeat them, and you will receive your memories again!"
+            }),
+            new SetActiveAction(npc, false),
+            new WaitAction(1),
+            new FaceDirectionAction(player.Character, Vector2.down)
         });
     }
 
     private void RunMultipleActions(IEnumerable<ICutsceneAction> cutsceneActions)
     {
+        IsRunning = true;
+
         if (cutsceneActions.Count() == 0)
         {
             IsRunning = false;
@@ -159,5 +175,45 @@ public class MoveAction : ICutsceneAction
     public IEnumerator PerformAction(Action onFinished = null)
     {
         yield return character.Move(movement, onFinished);
+    }
+}
+
+public class InstantiateAction : ICutsceneAction
+{
+    private GameObject prefab;
+
+    private Vector2 location;
+
+    public InstantiateAction(GameObject prefab, Vector2 location)
+    {
+        this.prefab = prefab;
+        this.location = location;
+    }
+
+    public IEnumerator PerformAction(Action onFinished = null)
+    {
+        yield return CutsceneManager.Instantiate(prefab, new Vector3(location.x, location.y, 0), Quaternion.identity);
+
+        onFinished?.Invoke();
+    }
+}
+
+public class SetActiveAction : ICutsceneAction
+{
+    private GameObject gameObject;
+
+    private bool active;
+
+    public SetActiveAction(GameObject gameObject, bool active)
+    {
+        this.gameObject = gameObject;
+        this.active = active;
+    }
+
+    public IEnumerator PerformAction(Action onFinished = null)
+    {
+        gameObject.SetActive(active);
+        yield return null;
+        onFinished?.Invoke();
     }
 }

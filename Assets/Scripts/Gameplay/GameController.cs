@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GameState { FreeRoam, Battle, Dialogue, Paused }
+public enum GameState { FreeRoam, Battle, Dialogue, Cutscene, Paused }
 
 public class GameController : MonoBehaviour
 {

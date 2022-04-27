@@ -13,7 +13,7 @@ public class NPCController : MonoBehaviour, Interactable
 
     float idleTimer = 0f;
 
-    Character character;
+    public Character character { get; private set; }
 
     public void Interact(Vector2 facingDirection)
     {

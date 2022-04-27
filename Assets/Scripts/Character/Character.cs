@@ -30,6 +30,7 @@ public class Character : MonoBehaviour
             animator.Direction = new Vector2(Mathf.Clamp(movement.x, -1f, 1f), Mathf.Clamp(movement.y, -1f, 1f));
         }
         animator.IsMoving = movement != Vector2.zero;
+        animator.HandleUpdate();
     }
 
     public Vector2 Direction { get => animator.Direction; private set => animator.Direction = value; }
@@ -67,7 +68,7 @@ public class Character : MonoBehaviour
                 break;
             }
 
-            Debug.Log($"{transform.position}, {targetPosition}, {Vector2.Distance(targetPosition, new Vector2(transform.position.x, transform.position.y))}");
+            // Debug.Log($"{transform.position}, {targetPosition}, {Vector2.Distance(targetPosition, new Vector2(transform.position.x, transform.position.y))}");
 
             MoveOneFrame(moveDir);
             Animate(moveDir);
@@ -82,12 +83,11 @@ public class Character : MonoBehaviour
 
     public void HandleUpdate()
     {
-        animator.HandleUpdate();        
+        // animator.HandleUpdate();
     }
 
     public void MoveOneFrame(Vector2 direction)
     {
-        Animate(direction);
         rb.MovePosition(rb.position + direction * moveSpeed * Time.fixedDeltaTime);
     }
 }
