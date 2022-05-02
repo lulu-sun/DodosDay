@@ -18,7 +18,7 @@ public class Character : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void Animate(Vector2 movement)
+    public void Animate(Vector2 movement)
     {
         if (movement.x != 0 && movement.y != 0)
         {

@@ -23,7 +23,6 @@ public class BattleSystem : MonoBehaviour
     private void Start()
     {
         StartCoroutine(SetupBattle());
-
     }
 
     public IEnumerator SetupBattle()

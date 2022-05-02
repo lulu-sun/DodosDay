@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
 
         character.MoveOneFrame(movement);
         character.HandleUpdate();
+        character.Animate(movement);
     }
 
     void Interact()

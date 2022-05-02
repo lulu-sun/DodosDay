@@ -53,7 +53,6 @@ public class DialogueManager : MonoBehaviour
             {
                 StartCoroutine(TypeDialogue(dialogue.Lines[currentLine]));
             }
-
             else
             {
                 currentLine = 0;
