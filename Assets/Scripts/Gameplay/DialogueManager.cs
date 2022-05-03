@@ -58,8 +58,8 @@ public class DialogueManager : MonoBehaviour
                 currentLine = 0;
                 IsShowing = false;
                 dialogueBox.SetActive(false);
-                onDialogueFinished?.Invoke();
                 OnCloseDialogue?.Invoke();
+                onDialogueFinished?.Invoke();
             }
         }
     }

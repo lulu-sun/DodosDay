@@ -17,7 +17,9 @@ public class NPCController : MonoBehaviour, Interactable
 
     public void Interact(Vector2 facingDirection)
     {
-        Talk(facingDirection, () => Walk(new Vector2(3, 0)));
+        Talk(facingDirection, () => BattleSystem.Instance.StartBattle());
+        // Talk(facingDirection);
+        // Talk(facingDirection, () => Walk(new Vector2(0, -3)));
         // StartCoroutine(Walk(new List<Vector2>() 
         // { 
         //     new Vector2(4, 0),

@@ -7,6 +7,7 @@ public enum GameState { Play, Battle, Dialogue, Cutscene, Paused }
 public class GameController : MonoBehaviour
 {
     public PlayerController playerController;
+    
 
     Stack<GameState> gameStateStack;
 
@@ -34,6 +35,7 @@ public class GameController : MonoBehaviour
         UnswitchState();
     }
 
+    
     private void Start()
     {
         if (CutsceneManager.Instance.currentScene.name == "Intro")
@@ -41,7 +43,7 @@ public class GameController : MonoBehaviour
             gameStateStack.Push(GameState.Cutscene);
         }
 
-        // playerController.OnEncountered += StartBattle;
+
         DialogueManager.Instance.OnShowDialogue += () =>
         {
             if (currentGameState != GameState.Dialogue)
@@ -73,6 +75,26 @@ public class GameController : MonoBehaviour
                 UnswitchState();
             }
         };
+
+        Debug.Log(BattleSystem.Instance);
+        BattleSystem.Instance.OnStartBattle += () =>
+        {
+            if (currentGameState != GameState.Battle)
+            {
+                SwitchState(GameState.Battle);
+            }
+        };
+
+
+        BattleSystem.Instance.OnEndBattle += () =>
+        {
+            if (currentGameState == GameState.Battle)
+            {
+                UnswitchState();
+            }
+        };
+
+
     }
 
     private void SwitchState(GameState newState)
@@ -84,11 +106,6 @@ public class GameController : MonoBehaviour
     {
         gameStateStack.Pop();
     }
-
-    // void StartBattle()
-    // {
-    //     state = GameState.Battle;
-    // }
 
     private void Update()
     {
@@ -106,9 +123,9 @@ public class GameController : MonoBehaviour
         {
             CutsceneManager.Instance.HandleUpdate();
         }
-        // else if (state == GameState.Battle)
-        // {
-        //     battleSystem.HandleUpdate();
-        // }
+        else if (currentGameState == GameState.Battle)
+        {
+            BattleSystem.Instance.HandleUpdate();
+        }
     }
 }

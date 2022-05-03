@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public enum BattleState {
     Start, PlayerAction, PlayerMove, EnemyMove, Busy
@@ -14,15 +15,36 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] BattleUnit enemyUnit;
     [SerializeField] BattleHud enemyHud;
     [SerializeField] BattleDialogBox dialogBox;
+    [SerializeField] Camera worldCamera;
+    [SerializeField] Camera battleSystemCamera;
+
+
+    public static BattleSystem Instance { get; private set; }
 
     BattleState state;
     int currentAction;
     int currentMove;
 
+    public event Action OnStartBattle;
+    public event Action OnEndBattle;
 
-    private void Start()
+    private void Awake()
     {
+        Instance = this;
+    }
+    public void StartBattle()
+    { 
+        OnStartBattle?.Invoke();
         StartCoroutine(SetupBattle());
+        battleSystemCamera.gameObject.SetActive(true);
+        worldCamera.gameObject.SetActive(false); 
+    }
+
+    public void EndBattle()
+    { 
+        OnEndBattle?.Invoke();
+        battleSystemCamera.gameObject.SetActive(false);
+        worldCamera.gameObject.SetActive(true); 
     }
 
     public IEnumerator SetupBattle()
@@ -82,6 +104,8 @@ public class BattleSystem : MonoBehaviour
         {
             yield return dialogBox.TypeDialog($"{enemyUnit.Pokemon.Base.Name} Fainted");
             enemyUnit.PlayFaintAnimation();
+            yield return new WaitForSeconds(1f);
+            EndBattle();
         }
 
         else
@@ -112,7 +136,8 @@ public class BattleSystem : MonoBehaviour
         {
             yield return dialogBox.TypeDialog($"{playerUnit.Pokemon.Base.Name} Fainted");
             playerUnit.PlayFaintAnimation();
-
+            yield return new WaitForSeconds(1f);
+            EndBattle();
         }
 
         else
@@ -127,7 +152,7 @@ public class BattleSystem : MonoBehaviour
         yield return null;
     }
 
-    private void Update()
+    public void HandleUpdate()
     {
         if (state == BattleState.PlayerAction)
         {
@@ -171,8 +196,24 @@ public class BattleSystem : MonoBehaviour
             else if (currentAction == 1)
             {
                 //Run
+                StartCoroutine(TypeRunAway());
+                
             }
         }
+    }
+
+    IEnumerator TypeRunAway()
+    {
+        state = BattleState.Busy;
+
+        dialogBox.EnableActionSelector(false);
+        dialogBox.EnableDialogText(true);
+        dialogBox.EnableMoveSelector(false);
+
+        
+        yield return dialogBox.TypeDialog("You ran away ...");
+        yield return new WaitForSeconds(0.5f);
+        EndBattle();
     }
 
     void HandleMoveSelection()
