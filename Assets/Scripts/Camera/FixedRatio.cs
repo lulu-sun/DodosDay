@@ -36,5 +36,6 @@ public class FixedRatio : MonoBehaviour
 
             camera.rect = rect;
         }
+        // Screen.SetResolution(1920, 1080, false);
     }
 }

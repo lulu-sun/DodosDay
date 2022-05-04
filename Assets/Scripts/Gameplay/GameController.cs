@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GameState { Play, Battle, Dialogue, Cutscene, Paused }
+public enum GameState { Play, Battle, Dialogue, Cutscene, Paused, CatchingGame }
 
 public class GameController : MonoBehaviour
 {
     public PlayerController playerController;
-    
 
     Stack<GameState> gameStateStack;
 
@@ -23,6 +22,7 @@ public class GameController : MonoBehaviour
         Instance = this;
         gameStateStack = new Stack<GameState>();
         gameStateStack.Push(GameState.Play);
+        // gameStateStack.Push(GameState.CatchingGame);
     }
 
     public void Pause()
@@ -76,7 +76,6 @@ public class GameController : MonoBehaviour
             }
         };
 
-        Debug.Log(BattleSystem.Instance);
         BattleSystem.Instance.OnStartBattle += () =>
         {
             if (currentGameState != GameState.Battle)
@@ -94,7 +93,21 @@ public class GameController : MonoBehaviour
             }
         };
 
+        CatchingGameSystem.Instance.OnStartGame += () =>
+        {
+            if (currentGameState != GameState.CatchingGame)
+            {
+                SwitchState(GameState.CatchingGame);
+            }
+        };
 
+        CatchingGameSystem.Instance.OnEndGame += () =>
+        {
+            if (currentGameState == GameState.CatchingGame)
+            {
+                UnswitchState();
+            }
+        };
     }
 
     private void SwitchState(GameState newState)
@@ -126,6 +139,10 @@ public class GameController : MonoBehaviour
         else if (currentGameState == GameState.Battle)
         {
             BattleSystem.Instance.HandleUpdate();
+        }
+        else if (currentGameState == GameState.CatchingGame)
+        {
+            CatchingGameSystem.Instance.HandleUpdate();
         }
     }
 }
