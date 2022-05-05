@@ -55,7 +55,7 @@ public class AlbumManager : MonoBehaviour
                 GoToPage(pageIndex);
                 currentSelection = 0;
                 indexSelected = 1;
-                pageIndex += 1;
+                pageIndex += 1;  
             }
 
         }
