@@ -10,10 +10,21 @@ public class AlbumManager : MonoBehaviour
     [SerializeField] List<GameObject> selectors;
     [SerializeField] GameObject photoPage;
     [SerializeField] GameObject albumEntry;
+    [SerializeField] Text leftPageNum;
+    [SerializeField] Text rightPageNum;
 
     public List<GameObject> Photos;
+    private int pageIndex = 0;
     private int indexSelected = 0;
     private int currentSelection;
+
+    private void GoToPage(int index)
+    {
+        leftPageNum.text = (pageIndex + 1).ToString();
+        rightPageNum.text = (pageIndex + 2).ToString();
+        pages[pageIndex].SetActive(false);
+        pages[pageIndex + 1].SetActive(true);
+    }
     
     private void UpdateMoveSelection(int selectedPhotoIndex)
     {
@@ -29,12 +40,24 @@ public class AlbumManager : MonoBehaviour
 
     private void ArrowKeyMovement()
     {
+        // Debug.Log(currentSelection);
+
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            if (currentSelection < Photos.Count - 1)
+
+            if (currentSelection < Photos.Count)
             {
                 ++ currentSelection;
             }
+
+            if (currentSelection == Photos.Count)
+            {
+                GoToPage(pageIndex);
+                currentSelection = 0;
+                indexSelected = 1;
+                pageIndex += 1;
+            }
+
         }
 
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
@@ -84,9 +107,8 @@ public class AlbumManager : MonoBehaviour
     
     private void GetChildren()
     {
-        foreach (Transform child in pages[0].transform)
+        foreach (Transform child in pages[pageIndex].transform)
             {
-                Debug.Log(child);
                 Photos.Add(child.gameObject);
             }
     }
@@ -94,6 +116,8 @@ public class AlbumManager : MonoBehaviour
     void Start()
     {
         GetChildren();        
+        Debug.Log(pages.Count);
+        Debug.Log(Photos.Count);
     }
 
     // Update is called once per frame
