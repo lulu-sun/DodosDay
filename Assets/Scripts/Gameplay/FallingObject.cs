@@ -6,6 +6,11 @@ public class FallingObject : MonoBehaviour
 {
     private float minY = -100f;
 
+    [SerializeField] Sprite goodChimkinSprite;
+    [SerializeField] Sprite badChimkinSprite;
+
+    public bool goodChimkin { get; set; }
+
     // Update is called once per frame
     void Update()
     {

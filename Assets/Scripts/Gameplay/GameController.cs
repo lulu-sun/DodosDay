@@ -8,6 +8,8 @@ public class GameController : MonoBehaviour
 {
     public PlayerController playerController;
 
+    [SerializeField] Camera worldCamera;
+
     Stack<GameState> gameStateStack;
 
     GameState currentGameState { get => gameStateStack.Peek(); }
@@ -35,6 +37,10 @@ public class GameController : MonoBehaviour
         UnswitchState();
     }
 
+    private void ToggleMainCamera(bool on)
+    {
+        worldCamera.gameObject.SetActive(on);
+    }
     
     private void Start()
     {
@@ -81,6 +87,7 @@ public class GameController : MonoBehaviour
             if (currentGameState != GameState.Battle)
             {
                 SwitchState(GameState.Battle);
+                ToggleMainCamera(false);
             }
         };
 
@@ -90,6 +97,7 @@ public class GameController : MonoBehaviour
             if (currentGameState == GameState.Battle)
             {
                 UnswitchState();
+                ToggleMainCamera(true);
             }
         };
 
@@ -98,6 +106,7 @@ public class GameController : MonoBehaviour
             if (currentGameState != GameState.CatchingGame)
             {
                 SwitchState(GameState.CatchingGame);
+                ToggleMainCamera(false);
             }
         };
 
@@ -106,6 +115,7 @@ public class GameController : MonoBehaviour
             if (currentGameState == GameState.CatchingGame)
             {
                 UnswitchState();
+                ToggleMainCamera(true);
             }
         };
     }

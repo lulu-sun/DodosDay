@@ -187,7 +187,6 @@ public class BattleSystem : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("Space1");
             if (currentAction == 0)
             {
                 //Fight

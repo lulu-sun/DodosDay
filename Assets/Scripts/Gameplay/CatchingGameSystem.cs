@@ -16,7 +16,11 @@ public class CatchingGameSystem : MonoBehaviour
 
     [SerializeField] Text scoreText;
 
+    [SerializeField] Camera catchingGameCamera;
+
     private int score = 0;
+
+    public int winningScore = 20;
 
     // Distance from center of canvas to one end (with some included buffer space)
     private float xLength = 250f;
@@ -39,15 +43,27 @@ public class CatchingGameSystem : MonoBehaviour
         OnStartGame += () => 
         {
             isRunning = true;
+            catchingGameCamera.gameObject.SetActive(true);
             StartCoroutine(SpawnFallingObjects());
         };
 
         OnEndGame += () =>
         {
             isRunning = false;
+            catchingGameCamera.gameObject.SetActive(false);
         };
 
         // OnStartGame?.Invoke();
+    }
+
+    public void StartGame()
+    {
+        OnStartGame?.Invoke();
+    }
+
+    public void EndGame()
+    {
+        OnEndGame?.Invoke();
     }
 
     private void SpawnFallingObject(float xLoc, float gravityScale = 1f)

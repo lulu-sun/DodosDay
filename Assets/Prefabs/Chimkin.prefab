@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2400519947097627317}
   - component: {fileID: 1796008672315294439}
   m_Layer: 0
-  m_Name: Apple
+  m_Name: Chimkin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

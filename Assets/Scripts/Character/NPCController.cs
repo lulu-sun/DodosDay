@@ -3,9 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+public enum NPCType { Default, Lulu, Jane, Naomi, JuanJuan, Rachel, Noelle, Ollie }
+
 public class NPCController : MonoBehaviour, Interactable
 {
-    public string Name;
+    public string Name { get => npcType.ToString(); }
+
+    public NPCType npcType;
+
     [SerializeField] Dialogue dialogue;
     
     NPCState state;
@@ -17,7 +22,36 @@ public class NPCController : MonoBehaviour, Interactable
 
     public void Interact(Vector2 facingDirection)
     {
-        Talk(facingDirection, () => BattleSystem.Instance.StartBattle());
+        switch (npcType)
+        {
+            case NPCType.Lulu:
+                Talk(facingDirection);
+                break;
+            case NPCType.Jane:
+                Talk(facingDirection);
+                break;
+            case NPCType.Naomi:
+                Talk(facingDirection);
+                break;
+            case NPCType.JuanJuan:
+                Talk(facingDirection, () => CatchingGameSystem.Instance.StartGame());
+                break;
+            case NPCType.Rachel:
+                Talk(facingDirection);
+                break;
+            case NPCType.Noelle:
+                Talk(facingDirection);
+                break;
+            case NPCType.Ollie:
+                Talk(facingDirection, () => BattleSystem.Instance.StartBattle());
+                break;
+            case NPCType.Default:
+            default:
+                Talk(facingDirection);
+                break;
+        }
+        
+        // Talk(facingDirection, () => BattleSystem.Instance.StartBattle());
         // Talk(facingDirection);
         // Talk(facingDirection, () => Walk(new Vector2(0, -3)));
         // StartCoroutine(Walk(new List<Vector2>() 

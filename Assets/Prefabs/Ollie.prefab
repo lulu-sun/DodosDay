@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c60eee17b03bdc40bd4cfb3285703e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Ollie
+  npcType: 7
   dialogue:
     lines:
     - Bork
