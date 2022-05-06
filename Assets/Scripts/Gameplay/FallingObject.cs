@@ -1,18 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FallingObject : MonoBehaviour
 {
     private float minY = -100f;
 
-    [SerializeField] Sprite goodChimkinSprite;
-    [SerializeField] Sprite badChimkinSprite;
+    [SerializeField] Sprite goodChimkenSprite;
+    [SerializeField] Sprite badChimkenSprite;
 
-    public bool goodChimkin { get; set; }
+    [SerializeField] Image spriteImage;
 
-    // Update is called once per frame
-    void Update()
+    public bool isGood { get; set; }
+
+    private void Start()
+    {
+        if (isGood)
+        {
+            spriteImage.sprite = goodChimkenSprite;
+        }
+        else
+        {
+            spriteImage.sprite = badChimkenSprite;
+        }
+    }
+
+    private void Update()
     {
         if (transform.position.y <= minY)
         {
@@ -20,11 +34,18 @@ public class FallingObject : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D col)
+    private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.name.Contains("Player"))
         {
-            CatchingGameSystem.Instance.IncrementScore();
+            if (isGood)
+            {
+                CatchingGameSystem.Instance.IncrementScore();
+            }
+            else
+            {
+                CatchingGameSystem.Instance.DecreaseLife();
+            }
             Destroy(gameObject);
         }
     }

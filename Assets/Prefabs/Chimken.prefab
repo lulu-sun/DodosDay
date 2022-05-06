@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2400519947097627317}
   - component: {fileID: 1796008672315294439}
   m_Layer: 0
-  m_Name: Chimkin
+  m_Name: Chimken
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -137,3 +137,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b68842da5432a4499cd8c1a80494da3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goodChimkenSprite: {fileID: -4359670525650396533, guid: 71a6359a218004cd1b0b5aed692d36bc, type: 3}
+  badChimkenSprite: {fileID: -1483735262454302376, guid: 71a6359a218004cd1b0b5aed692d36bc, type: 3}
+  spriteImage: {fileID: 1064394025565932459}

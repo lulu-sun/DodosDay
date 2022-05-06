@@ -16,9 +16,13 @@ public class CatchingGameSystem : MonoBehaviour
 
     [SerializeField] Text scoreText;
 
+    [SerializeField] Text livesText;
+
     [SerializeField] Camera catchingGameCamera;
 
     private int score = 0;
+
+    public int lives = 3;
 
     public int winningScore = 20;
 
@@ -66,9 +70,10 @@ public class CatchingGameSystem : MonoBehaviour
         OnEndGame?.Invoke();
     }
 
-    private void SpawnFallingObject(float xLoc, float gravityScale = 1f)
+    private void SpawnFallingObject(float xLoc, bool isGood, float gravityScale = 1f)
     {
-        var obj = Instantiate(fallingObjectPrefab, transform.position + new Vector3(xLoc, 400, 0), Quaternion.identity);
+        GameObject obj = Instantiate(fallingObjectPrefab, transform.position + new Vector3(xLoc, 400, 0), Quaternion.identity);
+        obj.GetComponent<FallingObject>().isGood = isGood;
         obj.transform.SetParent(canvas.transform, false);
         obj.GetComponent<Rigidbody2D>().gravityScale = gravityScale;
     }
@@ -79,17 +84,36 @@ public class CatchingGameSystem : MonoBehaviour
         scoreText.text = score.ToString();
     }
 
+    public void DecreaseLife()
+    {
+        lives--;
+        livesText.text = lives.ToString();
+    }
+
     private IEnumerator SpawnFallingObjects()
     {
         while (isRunning)
         {
-            yield return new WaitForSeconds(1f);
-            SpawnFallingObject(Random.Range(-xLength, xLength), Random.Range(1f, Mathf.Pow(1.1f, score)) - 0.5f);
+            yield return new WaitForSeconds(Random.Range(0.25f, 0.5f));
+            SpawnFallingObject(Random.Range(-xLength, xLength), true, GetRandomGravityScale());
+            yield return new WaitForSeconds(Random.Range(0.25f, 0.5f));
+            SpawnFallingObject(Random.Range(-xLength, xLength), false, GetRandomGravityScale());
         }
     }
 
     public void HandleUpdate()
     {
         player.HandleUpdate();
+
+        if (lives <= 0)
+        {
+            // TODO: make more smooth
+            this.EndGame();
+        }
+    }
+
+    private float GetRandomGravityScale()
+    {
+        return Random.Range(1f, Mathf.Pow(1.1f, score)) - 0.5f;
     }
 }

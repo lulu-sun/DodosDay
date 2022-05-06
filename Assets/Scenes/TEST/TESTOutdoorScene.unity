@@ -13000,7 +13000,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 301433940564939933, guid: 4a94d44d82d8d564c9db8f77023dead0, type: 3}
       propertyPath: npcType
-      value: 1
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 301433940564939933, guid: 4a94d44d82d8d564c9db8f77023dead0, type: 3}
+      propertyPath: dialogue.lines.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 301433940564939933, guid: 4a94d44d82d8d564c9db8f77023dead0, type: 3}
+      propertyPath: dialogue.lines.Array.data[0]
+      value: Hey, can you help me collect some chimkens?
+      objectReference: {fileID: 0}
+    - target: {fileID: 301433940564939933, guid: 4a94d44d82d8d564c9db8f77023dead0, type: 3}
+      propertyPath: dialogue.lines.Array.data[1]
+      value: Be careful to avoid the bad ones, though!
+      objectReference: {fileID: 0}
+    - target: {fileID: 301433940564939933, guid: 4a94d44d82d8d564c9db8f77023dead0, type: 3}
+      propertyPath: dialogue.lines.Array.data[2]
+      value: Good luck!
       objectReference: {fileID: 0}
     - target: {fileID: 301433940564939934, guid: 4a94d44d82d8d564c9db8f77023dead0, type: 3}
       propertyPath: m_Name
