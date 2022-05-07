@@ -20,9 +20,11 @@ public class CatchingGameSystem : MonoBehaviour
 
     [SerializeField] Camera catchingGameCamera;
 
-    private int score = 0;
+    private int score;
 
-    public int lives = 3;
+    public const int startingLivesCount = 3;
+
+    private int lives;
 
     public int winningScore = 20;
 
@@ -33,7 +35,7 @@ public class CatchingGameSystem : MonoBehaviour
     
     public event Action OnEndGame;
 
-    private bool isRunning;
+    public bool isRunning { get; private set; }
 
     public static CatchingGameSystem Instance { get; private set; }
 
@@ -46,6 +48,10 @@ public class CatchingGameSystem : MonoBehaviour
     {
         OnStartGame += () => 
         {
+            score = 0;
+            lives = startingLivesCount;
+            SetScoreText();
+            SetLivesText();
             isRunning = true;
             catchingGameCamera.gameObject.SetActive(true);
             StartCoroutine(SpawnFallingObjects());
@@ -56,8 +62,6 @@ public class CatchingGameSystem : MonoBehaviour
             isRunning = false;
             catchingGameCamera.gameObject.SetActive(false);
         };
-
-        // OnStartGame?.Invoke();
     }
 
     public void StartGame()
@@ -81,12 +85,22 @@ public class CatchingGameSystem : MonoBehaviour
     public void IncrementScore()
     {
         score++;
+        SetScoreText();
+    }
+
+    private void SetScoreText()
+    {
         scoreText.text = score.ToString();
     }
 
     public void DecreaseLife()
     {
         lives--;
+        SetLivesText();
+    }
+
+    private void SetLivesText()
+    {
         livesText.text = lives.ToString();
     }
 

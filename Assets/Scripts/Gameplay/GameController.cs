@@ -44,6 +44,8 @@ public class GameController : MonoBehaviour
     
     private void Start()
     {
+        Screen.SetResolution(960, 540, false);
+
         if (CutsceneManager.Instance.currentScene.name == "Intro")
         {
             gameStateStack.Push(GameState.Cutscene);

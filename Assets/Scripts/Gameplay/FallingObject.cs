@@ -28,6 +28,11 @@ public class FallingObject : MonoBehaviour
 
     private void Update()
     {
+        if (!CatchingGameSystem.Instance.isRunning)
+        {
+            Destroy(gameObject);
+        }
+
         if (transform.position.y <= minY)
         {
             Destroy(gameObject);

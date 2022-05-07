@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/TEST/TESTOldMapScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/TEST/TESTOutdoorScene.unity
     guid: a99aef63ee1196d4bbac5ea16ac9bcf5
   - enabled: 0
@@ -29,7 +29,7 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/PhotoAlbum.unity
     guid: fa8194c3681e6d846be8e9211d47c3e6
   m_configObjects: {}
