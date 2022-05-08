@@ -59,7 +59,7 @@ public class Character : MonoBehaviour
         while ((dist = Vector2.Distance(targetPosition, new Vector2(transform.position.x, transform.position.y))) > Mathf.Epsilon)
         {
             // If we ever start getting further away then just stop.
-            if (dist <= closest)
+            if (dist <= closest + Mathf.Epsilon)
             {
                 closest = dist;
             }

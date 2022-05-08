@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GameState { Play, Battle, Dialogue, Cutscene, Paused, CatchingGame }
+public enum GameState { Play, Battle, Dialogue, Cutscene, Paused, CatchingGame, ChasingGame }
 
 public class GameController : MonoBehaviour
 {
@@ -17,14 +17,16 @@ public class GameController : MonoBehaviour
     // dummy var for visibility of gamestate in unity inspector
     [SerializeField] GameState currentGameStateForUnityInspector;
 
+    // Change to trigger different starting game state for debugging purposes
+    // [SerializeField] GameState startingGameState = GameState.Play;
+
     public static GameController Instance { get; private set; }
 
     private void Awake()
     {
+        Screen.SetResolution(960, 540, false);
         Instance = this;
         gameStateStack = new Stack<GameState>();
-        gameStateStack.Push(GameState.Play);
-        // gameStateStack.Push(GameState.CatchingGame);
     }
 
     public void Pause()
@@ -44,7 +46,7 @@ public class GameController : MonoBehaviour
     
     private void Start()
     {
-        Screen.SetResolution(960, 540, false);
+        gameStateStack.Push(GameState.Play);
 
         if (CutsceneManager.Instance.currentScene.name == "Intro")
         {
@@ -120,6 +122,24 @@ public class GameController : MonoBehaviour
                 ToggleMainCamera(true);
             }
         };
+
+        ChasingGameSystem.Instance.OnStartGame += () =>
+        {
+            if (currentGameState != GameState.ChasingGame)
+            {
+                SwitchState(GameState.ChasingGame);
+                ToggleMainCamera(false);
+            }
+        };
+
+        ChasingGameSystem.Instance.OnEndGame += () =>
+        {
+            if (currentGameState == GameState.ChasingGame)
+            {
+                UnswitchState();
+                ToggleMainCamera(true);
+            }
+        };
     }
 
     private void SwitchState(GameState newState)
@@ -155,6 +175,10 @@ public class GameController : MonoBehaviour
         else if (currentGameState == GameState.CatchingGame)
         {
             CatchingGameSystem.Instance.HandleUpdate();
+        }
+        else if (currentGameState == GameState.ChasingGame)
+        {
+            ChasingGameSystem.Instance.HandleUpdate();
         }
     }
 }

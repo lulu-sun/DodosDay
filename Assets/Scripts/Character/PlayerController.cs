@@ -12,6 +12,10 @@ public class PlayerController : MonoBehaviour
 
     Character character; 
 
+    [SerializeField] bool allowDiagonalMovement = false;
+
+    [SerializeField] bool animate = true;
+
     public Character Character { get => character; }
 
     void Awake()
@@ -26,11 +30,16 @@ public class PlayerController : MonoBehaviour
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
-        // Prevent diagonal movement by prioritizing
-        // horizontal movement.
-        if (movement.x != 0) {
-            movement.y = 0;
+        if (!allowDiagonalMovement)
+        {
+            // Prevent diagonal movement by prioritizing
+            // horizontal movement.
+            if (movement.x != 0) {
+                movement.y = 0;
+            }
         }
+
+        movement.Normalize();
 
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
         {
@@ -39,7 +48,10 @@ public class PlayerController : MonoBehaviour
 
         character.MoveOneFrame(movement);
         character.HandleUpdate();
-        character.Animate(movement);
+        if (animate)
+        {
+            character.Animate(movement);
+        }
     }
 
     void Interact()

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public enum NPCType { Default, Lulu, Jane, Naomi, JuanJuan, Rachel, Noelle, Ollie }
+public enum NPCType { Default, Lulu, Jane, Naomi, JuanJuan, Rachel, Noelle, Ollie, ChasingGameChaser }
 
 public class NPCController : MonoBehaviour, Interactable
 {
@@ -31,7 +31,7 @@ public class NPCController : MonoBehaviour, Interactable
                 Talk(facingDirection);
                 break;
             case NPCType.Naomi:
-                Talk(facingDirection);
+                Talk(facingDirection, () => ChasingGameSystem.Instance.StartGame());
                 break;
             case NPCType.JuanJuan:
                 Talk(facingDirection, () => CatchingGameSystem.Instance.StartGame());
@@ -85,17 +85,21 @@ public class NPCController : MonoBehaviour, Interactable
         }
     }
 
-    private void Walk(Vector2 movement, Action onFinished = null)
+    public void Walk(Vector2 movement, Action onFinished = null)
     {
         StartCoroutine(character.Move(movement, onFinished));
     }
+
+    public IEnumerator WalkEnumerator(Vector2 movement, Action onFinished = null)
+    {
+        yield return character.Move(movement, onFinished);
+    }
+
 
     // Repeatedly walk in a well defined pattern. 
     // Not sure if we will use this. 
     private IEnumerator Walk(List<Vector2> movementPattern, float timeBetweenPattern = 0f)
     {
-        Debug.Log("walk");
-
         if (movementPattern.Count == 0)
         {
             throw new ArgumentException($"movementPattern={movementPattern} cannot be empty.");

@@ -7542,16 +7542,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: -10, y: -1, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 0
-      m_TileSpriteIndex: 0
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   - first: {x: -9, y: -1, z: 0}
     second:
       serializedVersion: 2
@@ -12544,17 +12534,17 @@ Tilemap:
       m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 1000
+  - m_RefCount: 999
     m_Data: {fileID: 11400000, guid: d60880c97eb2e6e48b7859c69ea44337, type: 2}
   - m_RefCount: 0
     m_Data: {fileID: 0}
   m_TileSpriteArray:
-  - m_RefCount: 1000
+  - m_RefCount: 999
     m_Data: {fileID: 6049605792901559095, guid: 64480288f39df4846ae40600aae66983, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
   m_TileMatrixArray:
-  - m_RefCount: 1000
+  - m_RefCount: 999
     m_Data:
       e00: 1
       e01: 0
@@ -12573,7 +12563,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 1000
+  - m_RefCount: 999
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -12670,7 +12660,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1470920389
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -12691,8 +12681,8 @@ Tilemap:
   - first: {x: -11, y: -1, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 3
-      m_TileSpriteIndex: 2
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -12701,8 +12691,8 @@ Tilemap:
   - first: {x: -10, y: -1, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 1
-      m_TileSpriteIndex: 1
+      m_TileIndex: 3
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -12843,11 +12833,11 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 20e9740ffcf1b2641833b98f56893b3a, type: 2}
   - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: 500a573987851764fb9d9421f3d82c6b, type: 2}
+    m_Data: {fileID: 11400000, guid: 523311ddb4c422c43af1e98daf5faba2, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 5cb566bd9ccde424b9a40d96709417b9, type: 2}
   - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: 523311ddb4c422c43af1e98daf5faba2, type: 2}
+    m_Data: {fileID: 11400000, guid: 500a573987851764fb9d9421f3d82c6b, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: cbc2d1b2eb0f7e44999342010aa0a35d, type: 2}
   - m_RefCount: 1
@@ -12874,9 +12864,9 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: 2321921910139075761, guid: 445c43ee1558da941aee464d92927efb, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: -1678800274917669010, guid: c01f95eee755dd0499c4e0d9df2c1f29, type: 3}
-  - m_RefCount: 1
     m_Data: {fileID: -3225624534407843338, guid: c01f95eee755dd0499c4e0d9df2c1f29, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: -1678800274917669010, guid: c01f95eee755dd0499c4e0d9df2c1f29, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 3469478761171710692, guid: 445c43ee1558da941aee464d92927efb, type: 3}
   - m_RefCount: 1
@@ -13000,19 +12990,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 301433940564939933, guid: 4a94d44d82d8d564c9db8f77023dead0, type: 3}
       propertyPath: npcType
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 301433940564939933, guid: 4a94d44d82d8d564c9db8f77023dead0, type: 3}
-      propertyPath: dialogue.lines.Array.size
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 301433940564939933, guid: 4a94d44d82d8d564c9db8f77023dead0, type: 3}
+      propertyPath: dialogue.lines.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 301433940564939933, guid: 4a94d44d82d8d564c9db8f77023dead0, type: 3}
       propertyPath: dialogue.lines.Array.data[0]
-      value: Hey, can you help me collect some chimkens?
+      value: Good luck!
       objectReference: {fileID: 0}
     - target: {fileID: 301433940564939933, guid: 4a94d44d82d8d564c9db8f77023dead0, type: 3}
       propertyPath: dialogue.lines.Array.data[1]
-      value: Be careful to avoid the bad ones, though!
+      value: Good luck!
       objectReference: {fileID: 0}
     - target: {fileID: 301433940564939933, guid: 4a94d44d82d8d564c9db8f77023dead0, type: 3}
       propertyPath: dialogue.lines.Array.data[2]

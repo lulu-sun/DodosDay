@@ -119,7 +119,7 @@ public class CatchingGameSystem : MonoBehaviour
     {
         player.HandleUpdate();
 
-        if (lives <= 0)
+        if (lives <= 0 || score >= winningScore)
         {
             // TODO: make more smooth
             this.EndGame();
