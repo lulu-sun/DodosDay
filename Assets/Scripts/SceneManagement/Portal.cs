@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
@@ -34,8 +33,8 @@ public class Portal : MonoBehaviour
 
         yield return SceneManager.LoadSceneAsync(sceneToLoad);
 
-        var destinationPortal = GameObject.FindObjectsOfType<SpawnPoint>().Single(sp => sp.portalId == portalId);
-        GameController.Instance.playerController.transform.position = destinationPortal.transform.position;
+        var destinationSpawnPoint = GameObject.FindObjectsOfType<SpawnPoint>().Single(sp => sp.portalId == portalId);
+        GameController.Instance.playerController.transform.position = destinationSpawnPoint.transform.position;
 
         yield return fader.FadeOut(fadeTimeInSeconds);
         GameController.Instance.Unpause();

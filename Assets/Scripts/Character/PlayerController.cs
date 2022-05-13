@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
 
         movement.Normalize();
 
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
+        if (Controls.GetSelectKeyDown())
         {
             Interact();
         }

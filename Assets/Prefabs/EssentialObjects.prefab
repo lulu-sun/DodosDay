@@ -1409,8 +1409,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 99.52, y: -23.46}
-  m_SizeDelta: {x: 163.12, y: 36.04}
+  m_AnchoredPosition: {x: 93.92, y: -23.46}
+  m_SizeDelta: {x: 151.91, y: 36.04}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6867884044911346705
 CanvasRenderer:
@@ -1864,8 +1864,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 94.51, y: -24.97}
-  m_SizeDelta: {x: 153.1, y: 39.06}
+  m_AnchoredPosition: {x: 92.15, y: -24.97}
+  m_SizeDelta: {x: 148.38, y: 39.06}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2998906545183225402
 CanvasRenderer:
@@ -2022,8 +2022,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 217.8301, y: -23.465}
-  m_SizeDelta: {x: 56.92, y: 36.03}
+  m_AnchoredPosition: {x: 209.56, y: -23.465}
+  m_SizeDelta: {x: 73.47, y: 36.03}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8583050214795761187
 CanvasRenderer:
@@ -2066,7 +2066,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Lvl
+  m_Text: 'Lvl
+
+'
 --- !u!1 &3636387129597627841
 GameObject:
   m_ObjectHideFlags: 0
@@ -3164,8 +3166,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 209.7, y: -23.954996}
-  m_SizeDelta: {x: 62.99, y: 41.09}
+  m_AnchoredPosition: {x: 204.74, y: -23.954996}
+  m_SizeDelta: {x: 72.91, y: 41.09}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2041358165696937534
 CanvasRenderer:
@@ -3937,6 +3939,7 @@ GameObject:
   - component: {fileID: 6485065461699155873}
   - component: {fileID: 6485065461699155878}
   - component: {fileID: 985152831534608400}
+  - component: {fileID: 1183542205737500581}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -4122,6 +4125,18 @@ MonoBehaviour:
     m_Handle: 0
   IsRunning: 0
   npcPrefab: {fileID: 301433940564939934, guid: 4a94d44d82d8d564c9db8f77023dead0, type: 3}
+--- !u!114 &1183542205737500581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6485065461699155901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66e99213d31f59e49a8eae4b2560b160, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6485065461718890909
 GameObject:
   m_ObjectHideFlags: 0

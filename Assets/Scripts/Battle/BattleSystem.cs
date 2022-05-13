@@ -185,7 +185,7 @@ public class BattleSystem : MonoBehaviour
 
         dialogBox.UpdateActionSelection(currentAction);
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Controls.GetSelectKeyDown())
         {
             if (currentAction == 0)
             {
@@ -217,7 +217,7 @@ public class BattleSystem : MonoBehaviour
 
     void HandleMoveSelection()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Controls.GetRightKeyDown())
         {
             if (currentMove < playerUnit.Pokemon.Moves.Count - 1)
             {
@@ -225,7 +225,7 @@ public class BattleSystem : MonoBehaviour
             }
         }
 
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        else if (Controls.GetLeftKeyDown())
         {
             if (currentMove > 0)
             {
@@ -233,7 +233,7 @@ public class BattleSystem : MonoBehaviour
             }
         }
 
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        else if (Controls.GetDownKeyDown())
         {
             if (currentMove < playerUnit.Pokemon.Moves.Count - 2)
             {
@@ -241,7 +241,7 @@ public class BattleSystem : MonoBehaviour
             }
         }
 
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
+        else if (Controls.GetUpKeyDown())
         {
             if (currentMove > 1)
             {
@@ -251,9 +251,8 @@ public class BattleSystem : MonoBehaviour
 
         dialogBox.UpdateMoveSelection(currentMove, playerUnit.Pokemon.Moves[currentMove]);
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Controls.GetSelectKeyDown())
         {
-            Debug.Log("Space2");
             dialogBox.EnableMoveSelector(false);
             dialogBox.EnableDialogText(true);
             StartCoroutine(PerformPlayerMove());
