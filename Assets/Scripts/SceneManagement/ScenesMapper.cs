@@ -24,8 +24,9 @@ public class ScenesMapper : MonoBehaviour
         for (int sceneIndex = 0; sceneIndex < SceneManager.sceneCountInBuildSettings; sceneIndex++)
         {
             scenesByIndex[sceneIndex] = SceneManager.GetSceneByBuildIndex(sceneIndex);
-            if (scenesByIndex[sceneIndex] != null)
+            if (scenesByIndex[sceneIndex] != null && scenesByIndex[sceneIndex].name != null)
             {
+                Debug.Log(scenesByIndex[sceneIndex].name);
                 sceneIndicesByName[scenesByIndex[sceneIndex].name] = sceneIndex;
             }
         }
