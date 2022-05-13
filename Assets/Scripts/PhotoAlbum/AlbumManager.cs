@@ -67,10 +67,10 @@ public class AlbumManager : MonoBehaviour
 
         int previousIndex = selectedPictureIndex;
 
-        if (!photoPage.active)
+        if (!photoPage.activeSelf)
         {
 
-            if (Input.GetKeyDown(KeyCode.RightArrow))
+            if (Controls.GetRightKeyDown())
             {
                 if (!(pageIndex == pages.Count - 1 && selectedPictureIndex == 11))
                 {
@@ -79,7 +79,7 @@ public class AlbumManager : MonoBehaviour
                 }
             }
 
-            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            else if (Controls.GetLeftKeyDown())
             {
                 if (!(pageIndex == 0 && selectedPictureIndex == 0))
                 {
@@ -89,7 +89,7 @@ public class AlbumManager : MonoBehaviour
 
             }
 
-            else if (Input.GetKeyDown(KeyCode.DownArrow))
+            else if (Controls.GetDownKeyDown())
             {
 
                 if (selectedPictureIndex < Photos.Count - 2)
@@ -98,7 +98,7 @@ public class AlbumManager : MonoBehaviour
                 }
             }
 
-            else if (Input.GetKeyDown(KeyCode.UpArrow))
+            else if (Controls.GetUpKeyDown())
             {
                 if (selectedPictureIndex > 1)
                 {
@@ -111,14 +111,14 @@ public class AlbumManager : MonoBehaviour
                 UpdateMoveSelection(previousIndex, selectedPictureIndex);
             }
 
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Controls.GetSelectKeyDown())
             {
                 SetPageImage(selectedPictureIndex);
                 EnablePhotoPage(true);
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Controls.GetDeselectKeyDown())
         {
             EnablePhotoPage(false);
         }

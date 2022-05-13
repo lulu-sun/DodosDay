@@ -11,7 +11,7 @@ public static class Controls
 
     public static bool GetDeselectKeyDown()
     {
-        return Input.GetKeyDown(KeyCode.Escape);
+        return Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Backspace) || Input.GetKeyDown(KeyCode.Delete);
     }
 
     public static bool GetRightKeyDown()
