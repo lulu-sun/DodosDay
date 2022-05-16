@@ -79,8 +79,6 @@ public class PlayerController : MonoBehaviour
 
         movement.Normalize();
 
-        Debug.Log($"Sliding: {IceRinkGameHelper.Instance.IsSliding(transform.position)}");
-
         if (!IceRinkGameHelper.Instance.IsSliding(transform.position))
         {
             IceRinkGameHelper.Instance.SlideDirection = movement;

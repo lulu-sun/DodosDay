@@ -8,6 +8,8 @@ public class IceRinkNonIceGround : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
+        // reset slide direction
+        IceRinkGameHelper.Instance.SlideDirection = Vector2.zero;
         IceRinkGameHelper.Instance.IsSlippery = false;
     }
 
