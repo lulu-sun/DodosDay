@@ -10,10 +10,13 @@ public class AlbumManager : MonoBehaviour
     [SerializeField] List<GameObject> selectors;
     [SerializeField] GameObject photoPage;
     [SerializeField] GameObject albumEntry;
+    [SerializeField] Text albumDescription;
     [SerializeField] Text leftPageNum;
     [SerializeField] Text rightPageNum;
 
     public List<GameObject> Photos;
+    public List<GameObject> Descriptions;
+
     private int pageIndex = 0;
     private int selectedPictureIndex;
 
@@ -37,6 +40,7 @@ public class AlbumManager : MonoBehaviour
     private void SetPageImage(int selectedPhotoIndex)
     {
         albumEntry.GetComponent<RawImage>().texture = Photos[selectedPhotoIndex].GetComponent<RawImage>().texture;
+        albumDescription.text = Descriptions[selectedPhotoIndex].GetComponent<Text>().text.ToString();
     }
 
     private void TurnPage()
@@ -137,6 +141,17 @@ public class AlbumManager : MonoBehaviour
             {
                 Photos.Add(child.gameObject);
             }
+
+        foreach (var photo in Photos)
+        {
+            foreach (Transform child in photo.transform)
+            {
+                Descriptions.Add(child.gameObject);
+            }
+        }
+
+        Debug.Log(Descriptions);
+
     }
 
     void Start()
