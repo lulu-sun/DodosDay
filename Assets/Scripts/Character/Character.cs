@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System;
 
@@ -83,7 +82,7 @@ public class Character : MonoBehaviour
 
     public void HandleUpdate()
     {
-        // animator.HandleUpdate();
+
     }
 
     public void MoveOneFrame(Vector2 direction)

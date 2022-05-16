@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System;
-using System.Linq;
 using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
@@ -28,9 +24,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     public void HandleUpdate()
     {
-        if (SceneManager.GetActiveScene().name.Equals("IceRink"))
+        if (SceneManager.GetActiveScene().name.Equals("IceRink") &&
+            IceRinkGameHelper.Instance.IsSlippery)
         {
-            
+            IceRinkHandleUpdate();
         }
         else
         {
@@ -66,6 +63,34 @@ public class PlayerController : MonoBehaviour
         {
             character.Animate(movement);
         }
+    }
+
+    private void IceRinkHandleUpdate()
+    {
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.y = Input.GetAxisRaw("Vertical");
+
+        // Prevent diagonal movement by prioritizing
+        // horizontal movement.
+        if (movement.x != 0)
+        {
+            movement.y = 0;
+        }
+
+        movement.Normalize();
+
+        Debug.Log($"Sliding: {IceRinkGameHelper.Instance.IsSliding(transform.position)}");
+
+        if (!IceRinkGameHelper.Instance.IsSliding(transform.position))
+        {
+            IceRinkGameHelper.Instance.SlideDirection = movement;
+            character.Animate(movement);
+        }
+
+        character.MoveOneFrame(IceRinkGameHelper.Instance.SlideDirection);
+        character.HandleUpdate();
+
+        IceRinkGameHelper.Instance.PreviousFramePosition = transform.position;
     }
 
     private void Interact()
