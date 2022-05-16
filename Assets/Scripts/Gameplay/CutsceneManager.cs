@@ -70,6 +70,7 @@ public class CutsceneManager : MonoBehaviour
         Character npcChar = npc.GetComponent<Character>();
 
         RunMultipleActions(new ICutsceneAction[] {
+            new FadeOutAction(fader, 0.5f),
             new DialogueAction("Joce", new string[]
             {
                 "...",
@@ -113,7 +114,7 @@ public class CutsceneManager : MonoBehaviour
             new WaitAction(1),
             new FaceDirectionAction(player.Character, Vector2.down),
             new FadeInAction(fader, 0.5f),
-            new ChangeSceneAction(1),
+            new ChangeSceneAction(SceneMapper.Instance.GetBuildIndexBySceneName("House")),
             new FadeOutAction(fader, 0.5f)
         });
     }

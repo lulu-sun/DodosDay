@@ -5,31 +5,31 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/TEST/TESTOldMapScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/TEST/TESTOutdoorScene.unity
-    guid: a99aef63ee1196d4bbac5ea16ac9bcf5
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
+    path: Assets/Scenes/TitleScreen.unity
+    guid: 7b906682311dec04881dae639d278dc8
+  - enabled: 1
     path: Assets/Scenes/Intro.unity
     guid: b4666eadcd67d3c44aa084d48cf8e6f0
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/House.unity
     guid: 1d0175175fbc00b4f98fdc95dad5f970
-  - enabled: 0
-    path: Assets/Scenes/HouseIsland.unity
-    guid: 1514afefa5c4b6c4b8deab4f88a98769
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/1_Island_J.unity
     guid: 2285b58e52543404b804fd461fa10fd0
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
+  - enabled: 1
+    path: Assets/Scenes/2_Island_N.unity
+    guid: 810e20440b99bd941bde421a005f8de5
+  - enabled: 1
+    path: Assets/Scenes/3_Island_n.unity
+    guid: 7919a3120e2fc9a4aa284bcc41b89795
+  - enabled: 1
+    path: Assets/Scenes/Allison_Dorm.unity
+    guid: b3e1459c7df42604c9e0a8d7438b9524
+  - enabled: 1
+    path: Assets/Scenes/IceRink.unity
+    guid: d5e75725ef4f245bab976e1bbb9fc37c
+  - enabled: 1
     path: Assets/Scenes/PhotoAlbum.unity
     guid: fa8194c3681e6d846be8e9211d47c3e6
   m_configObjects: {}

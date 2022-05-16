@@ -157,8 +157,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000025749, y: 0.54446}
-  m_SizeDelta: {x: 1094.5925, y: 773.9111}
+  m_AnchoredPosition: {x: 3.9516, y: 0.00089824}
+  m_SizeDelta: {x: 1529.4985, y: 1081.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &21740997
 MonoBehaviour:
@@ -234,7 +234,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -340.48355, y: -319.95963}
+  m_AnchoredPosition: {x: -476, y: -440}
   m_SizeDelta: {x: 236.0713, y: 79.4326}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &309827046
@@ -280,7 +280,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 309827047}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1831988248}
+        m_TargetAssemblyTypeName: ButtonBehaviour, Assembly-CSharp
+        m_MethodName: OnMemoriesButtonPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &309827047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,7 +356,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 433590544}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &433590546
 Camera:
   m_ObjectHideFlags: 0
@@ -549,7 +561,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -339.55228, y: -223.39398}
+  m_AnchoredPosition: {x: -476.93, y: -330}
   m_SizeDelta: {x: 237.9398, y: 80.0624}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1362005274
@@ -595,7 +607,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1362005275}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1831988248}
+        m_TargetAssemblyTypeName: ButtonBehaviour, Assembly-CSharp
+        m_MethodName: OnStartButtonPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1362005275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -724,6 +748,8 @@ GameObject:
   - component: {fileID: 1831988247}
   - component: {fileID: 1831988246}
   - component: {fileID: 1831988245}
+  - component: {fileID: 1831988248}
+  - component: {fileID: 1831988249}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -779,6 +805,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1831988248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1831988244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ec09d19a847d5741a1ba994b67e11f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1831988249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1831988244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66e99213d31f59e49a8eae4b2560b160, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1959574751
 GameObject:
   m_ObjectHideFlags: 0

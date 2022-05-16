@@ -6,7 +6,7 @@ using System.Linq;
 public class Portal : MonoBehaviour
 {
     [SerializeField] float fadeTimeInSeconds = 0.5f;
-    [SerializeField] int sceneToLoad = -1;
+    [SerializeField] string sceneToLoad = "";
     [SerializeField] PortalId portalId = PortalId.A;
     Fader fader;
 
@@ -31,7 +31,7 @@ public class Portal : MonoBehaviour
         GameController.Instance.Pause();
         yield return fader.FadeIn(fadeTimeInSeconds);
 
-        yield return SceneManager.LoadSceneAsync(sceneToLoad);
+        yield return SceneManager.LoadSceneAsync(SceneMapper.Instance.GetBuildIndexBySceneName(sceneToLoad));
 
         var destinationSpawnPoint = GameObject.FindObjectsOfType<SpawnPoint>().Single(sp => sp.portalId == portalId);
         GameController.Instance.playerController.transform.position = destinationSpawnPoint.transform.position;
