@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GameState { Play, Battle, Dialogue, Cutscene, Paused, CatchingGame, ChasingGame }
+public enum GameState { Play, Battle, Dialogue, Cutscene, Paused, CatchingGame, ChasingGame, TitleScreen }
 
 public class GameController : MonoBehaviour
 {
@@ -46,12 +46,7 @@ public class GameController : MonoBehaviour
     
     private void Start()
     {
-        gameStateStack.Push(GameState.Play);
-
-        if (CutsceneManager.Instance.currentScene.name == "Intro")
-        {
-            gameStateStack.Push(GameState.Cutscene);
-        }
+        
 
 
         DialogueManager.Instance.OnShowDialogue += () =>
@@ -140,6 +135,33 @@ public class GameController : MonoBehaviour
                 ToggleMainCamera(true);
             }
         };
+
+        TitleScreen.Instance.OnShowTitle += () =>
+        {
+            if (currentGameState != GameState.TitleScreen)
+            {
+                SwitchState(GameState.TitleScreen);
+                ToggleMainCamera(false);
+            }
+        };
+
+        TitleScreen.Instance.OnLeaveTitle += () =>
+        {
+            if (currentGameState == GameState.TitleScreen)
+            {
+                UnswitchState();
+                ToggleMainCamera(true);
+            }
+        };
+
+        gameStateStack.Push(GameState.Play);
+
+        if (CutsceneManager.Instance.currentScene.name == "Intro")
+        {
+            gameStateStack.Push(GameState.Cutscene);
+            TitleScreen.Instance.ShowTitle();
+        }
+
     }
 
     private void SwitchState(GameState newState)
