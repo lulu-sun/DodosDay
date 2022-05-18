@@ -6,8 +6,11 @@ using System;
 
 public class TitleScreen : MonoBehaviour
 {
-    [SerializeField] AudioClip backgroundMusic;
     [SerializeField] Camera titleScreenCamera;
+    [SerializeField] GameObject Canvas;
+
+    [SerializeField] Button startButton;
+    [SerializeField] Button memoriesButton;
     
 
     public event Action OnShowTitle;
@@ -26,15 +29,34 @@ public class TitleScreen : MonoBehaviour
 
     public void ShowTitle()
     {
+        startButton.interactable = true;
+        memoriesButton.interactable = true;
+
+        Canvas.SetActive(true);
         OnShowTitle?.Invoke();
         titleScreenCamera.gameObject.SetActive(true);
+        AudioManager.Instance.PlayTitleMusic();
+        Debug.Log("gotem");
+    }
+
+
+    private IEnumerator Delay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        OnLeaveTitle?.Invoke();
+        Canvas.SetActive(false);
+        titleScreenCamera.gameObject.SetActive(false);
 
     }
 
     public void LeaveTitle()
     {
-        OnLeaveTitle?.Invoke();
-        titleScreenCamera.gameObject.SetActive(false);
+        startButton.interactable = false;
+        memoriesButton.interactable = false;
+
+        AudioManager.Instance.FadeMusic(3f, 0f);
+        StartCoroutine(Delay(3f));
+       
     }
 
 

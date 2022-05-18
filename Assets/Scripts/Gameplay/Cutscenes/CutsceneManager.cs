@@ -65,6 +65,8 @@ public class CutsceneManager : MonoBehaviour
 
     private void IntroCutscene()
     {
+        AudioManager.Instance.PlayMainMusic();
+
         GameObject npc = (GameObject)Instantiate(npcPrefab, new Vector3(2, 0, 0), Quaternion.identity);
         npc.SetActive(false);
         Character npcChar = npc.GetComponent<Character>();

@@ -8,10 +8,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource sfxPlayer;
 
     [SerializeField] AudioClip titleMusic;
-    [SerializeField] AudioClip gameMusic;
-    [SerializeField] AudioClip buttonHover;
-
-
+    [SerializeField] AudioClip mainMusic;
 
     public static AudioManager Instance
     {
@@ -24,23 +21,44 @@ public class AudioManager : MonoBehaviour
         Instance = this;
     }
 
-    public void PlayMusic(AudioClip clip, bool loop = true)
+    public void PlayTitleMusic()
+    {
+        PlayMusic(titleMusic, 3f, 0f, 1f);
+    }
+
+    public void PlayMainMusic()
+    {
+        PlayMusic(mainMusic, 2f, 0f, 1f);
+    }
+
+    public void PlayMusic(AudioClip clip, float duration, float startVolume, float targetVolume, bool loop = true)
     {
         if (clip == null)
         {
+            Debug.Log("null");
             return;
         }
 
+        Debug.Log(clip);
+
+        //musicPlayer.pitch = 1.102f; somehow this isnt an issue anymore???
+         
         musicPlayer.clip = clip;
         musicPlayer.loop = loop;
+
+        StartCoroutine(StartFade(musicPlayer, duration, startVolume, targetVolume));
         musicPlayer.Play();
     }
 
+    public void FadeMusic(float duration, float targetVolume)
+    {
+        StartCoroutine(StartFade(musicPlayer, duration, musicPlayer.volume, targetVolume));
+    }
 
-    public static IEnumerator StartFade(AudioSource audioSource, float duration, float targetVolume)
+    private static IEnumerator StartFade(AudioSource audioSource, float duration, float startVolume, float targetVolume)
     {
         float currentTime = 0;
-        float start = audioSource.volume;
+        float start = startVolume;
         while (currentTime < duration)
         {
             currentTime += Time.deltaTime;

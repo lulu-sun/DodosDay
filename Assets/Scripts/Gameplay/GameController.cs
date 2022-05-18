@@ -12,7 +12,7 @@ public class GameController : MonoBehaviour
 
     Stack<GameState> gameStateStack;
 
-    GameState currentGameState { get => gameStateStack.Peek(); }
+    public GameState currentGameState { get => gameStateStack.Peek(); }
 
     // dummy var for visibility of gamestate in unity inspector
     [SerializeField] GameState currentGameStateForUnityInspector;
@@ -202,5 +202,5 @@ public class GameController : MonoBehaviour
         {
             ChasingGameSystem.Instance.HandleUpdate();
         }
-    }
+    }    
 }

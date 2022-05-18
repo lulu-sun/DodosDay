@@ -15,13 +15,13 @@ public class ButtonBehaviour : MonoBehaviour
         Debug.Log("Start Button pressed.");
         //StartCoroutine(FadeAudioSource.StartFade(BackgroundMusic, 0.1f, 0f));
         //SceneManager.LoadSceneAsync(SceneMapper.Instance.GetBuildIndexBySceneName("Intro"));
-        Debug.Log(TitleScreen.Instance);
         TitleScreen.Instance.LeaveTitle();
     }
 
     public void OnMemoriesButtonPress()
     {
         Debug.Log("Memories Button pressed.");
+
     }
 }
 
