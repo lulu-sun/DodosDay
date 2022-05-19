@@ -52,6 +52,7 @@ MonoBehaviour:
   - {fileID: 2870854878302317461}
   - {fileID: 3162487045267844452}
   - {fileID: 8683968963875644527}
+  overlay: {fileID: 8181340090886835689}
 --- !u!1 &220219171216345462
 GameObject:
   m_ObjectHideFlags: 0
@@ -4001,7 +4002,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6854021311713378701
 RectTransform:
   m_ObjectHideFlags: 0

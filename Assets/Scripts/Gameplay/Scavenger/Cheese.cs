@@ -8,6 +8,11 @@ public class Cheese : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
+        if (!ScavengerGameSystem.Instance.IsActive)
+        {
+            return;
+        }
+
         if (col.name.Contains("Player"))
         {
             ScavengerGameSystem.Instance.ShowCheeseFound(cheeseId);
