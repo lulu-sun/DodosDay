@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aebd3cfe3e4bc341b2a54be7fbe1a29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  filledCheese: {fileID: -3901404268673340053, guid: 01fdd3b366494443a887c1076518a27d, type: 3}
-  unfilledCheese: {fileID: -1849052268454717168, guid: 01fdd3b366494443a887c1076518a27d, type: 3}
+  filledCheese: {fileID: -6438692592543256654, guid: fe458dd08201149f5962d0ffa236f42d, type: 3}
+  unfilledCheese: {fileID: -5111290185468963224, guid: fe458dd08201149f5962d0ffa236f42d, type: 3}
   cheeses:
   - {fileID: 3173182082038555788}
   - {fileID: 8951739502489683755}
@@ -433,8 +433,8 @@ MonoBehaviour:
   sfxPlayer: {fileID: 8015872939064223613}
   titleMusic: {fileID: 8300000, guid: ffe6e2054b21841c4b2a8592ffb01f91, type: 3}
   mainMusic: {fileID: 8300000, guid: eff6a69a49769344db7c52a060337d6d, type: 3}
-  popSfx: {fileID: 8300000, guid: ef7e3dac7cc78471393a4e8999f64beb, type: 3}
-  typingSfx: {fileID: 8300000, guid: ed4f3afb3ed6a4d7e95fc89ff547d7bd, type: 3}
+  popSfx: {fileID: 8300000, guid: 37086136561018e4b94110fce7116761, type: 3}
+  typingSfx: {fileID: 8300000, guid: aa76e120f72dbcc4d9775c066932b177, type: 3}
 --- !u!1 &902684607209782780
 GameObject:
   m_ObjectHideFlags: 0
@@ -2000,7 +2000,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1849052268454717168, guid: 01fdd3b366494443a887c1076518a27d, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4679,7 +4679,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1849052268454717168, guid: 01fdd3b366494443a887c1076518a27d, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4754,7 +4754,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1849052268454717168, guid: 01fdd3b366494443a887c1076518a27d, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5009,6 +5009,7 @@ MonoBehaviour:
     lines:
     - Hello, I am an NPC.
     - Run along now.
+    names: []
 --- !u!114 &3818392957814733117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5391,7 +5392,7 @@ MonoBehaviour:
   dialogueBox: {fileID: 6485065461718890909}
   dialogueText: {fileID: 6485065461661654807}
   dialogueName: {fileID: 6485065462242015409}
-  lettersPerSecond: 50
+  lettersPerSecond: 40
 --- !u!114 &6485065461699155873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6213,7 +6214,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1849052268454717168, guid: 01fdd3b366494443a887c1076518a27d, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6512,7 +6513,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1849052268454717168, guid: 01fdd3b366494443a887c1076518a27d, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

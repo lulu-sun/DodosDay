@@ -50,11 +50,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySfx(AudioClip clip, float volume, bool loop = false)
     {
-        if (clip == null)
-        {
-            return;
-        }
-
+       
         sfxPlayer.clip = clip;
         sfxPlayer.loop = loop;
         sfxPlayer.volume = volume;

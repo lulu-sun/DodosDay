@@ -73,12 +73,20 @@ public class CutsceneManager : MonoBehaviour
 
         RunMultipleActions(new ICutsceneAction[] {
             new FadeOutAction(fader, 0.5f),
-            new DialogueAction("Joce", new string[]
+            new DialogueAction(new string[]
+            {
+            "Joce"
+            },
+            new string[]
             {
                 "...",
                 "..."
             }),
-            new DialogueAction("???", new string[]
+            new DialogueAction(new string[]
+            {
+            "???"
+            },
+            new string[]
             {
                 "You're awake!"
             }),
@@ -87,26 +95,46 @@ public class CutsceneManager : MonoBehaviour
             new FaceDirectionAction(player.Character, Vector2.right),
             new WaitAction(1),
             new FaceDirectionAction(player.Character, Vector2.down),
-            new DialogueAction("Joce", new string[]
+            new DialogueAction(new string[]
+            {
+            "Joce"
+            },
+            new string[]
             {
                 "... Where am I? Who are you?"
             }),
-            new DialogueAction("???", new string[]
+            new DialogueAction(new string[]
+            {
+            "???"
+            },
+            new string[]
             {
                 "Oh! How silly, I should introduce myself!"
             }),
             new SetActiveAction(npc, true),
             new FaceDirectionAction(npcChar, Vector2.left),
             new FaceDirectionAction(player.Character, Vector2.right),
-            new DialogueAction("Lulu", new string[]
+            new DialogueAction(new string[]
+            {
+            "Lulu"
+            },
+            new string[]
             {
                 "I'm Lulu, one of your childhood friends! And I'm here to guide you on your journey."
             }),
-            new DialogueAction("Joce", new string[]
+            new DialogueAction(new string[]
+            {
+            "Joce"
+            },
+            new string[]
             {
                 "Wait… If you're my childhood friend, how come I don't remember you?"
             }),
-            new DialogueAction("Lulu", new string[]
+            new DialogueAction(new string[]
+            {
+            "Lulu"
+            },
+            new string[]
             {
                 "A magic spell stole your memories, and now you have to go on a journey to retrieve them.",
                 "At the end, you will receive your heart's desire. But many trials will stand in your way, including familiar faces.",
@@ -121,11 +149,6 @@ public class CutsceneManager : MonoBehaviour
         });
     }
 
-    private void OllieInteraction()
-    {
-        GameObject ollie = GameObject.Find("Ollie");
-        Debug.Log(ollie);
-    }
 
     private void RunMultipleActions(IEnumerable<ICutsceneAction> cutsceneActions, Action onFinished = null)
     {

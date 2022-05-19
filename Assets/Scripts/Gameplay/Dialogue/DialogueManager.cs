@@ -32,8 +32,6 @@ public class DialogueManager : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
 
-        dialogueName.text = dialogue.Name;
-
         OnShowDialogue?.Invoke();
 
         IsShowing = true;
@@ -41,7 +39,7 @@ public class DialogueManager : MonoBehaviour
         onDialogueFinished = onFinished;
 
         dialogueBox.SetActive(true);
-        StartCoroutine(TypeDialogue(dialogue.Lines[0]));
+        StartCoroutine(TypeDialogue(dialogue.Names[0], dialogue.Lines[0]));
     }
 
     public void HandleUpdate()
@@ -51,7 +49,7 @@ public class DialogueManager : MonoBehaviour
             ++currentLine;
             if (currentLine < dialogue.Lines.Count)
             {
-                StartCoroutine(TypeDialogue(dialogue.Lines[currentLine]));
+                StartCoroutine(TypeDialogue(dialogue.Names[currentLine], dialogue.Lines[currentLine]));
             }
             else
             {
@@ -64,9 +62,10 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public IEnumerator TypeDialogue(string line)
+    public IEnumerator TypeDialogue(string name, string line)
     {
         isTyping = true;
+        dialogueName.text = name;
         AudioManager.Instance.PlayTypingSfx();
 
         dialogueText.text = "";
