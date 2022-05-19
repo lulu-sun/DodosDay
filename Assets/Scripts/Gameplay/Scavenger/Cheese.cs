@@ -16,7 +16,9 @@ public class Cheese : MonoBehaviour
         if (col.name.Contains("Player"))
         {
             ScavengerGameSystem.Instance.ShowCheeseFound(cheeseId);
+            AudioManager.Instance.PlayPopSfx();
             gameObject.SetActive(false);
+
         }
     }
 }

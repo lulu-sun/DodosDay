@@ -35,7 +35,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayPopSfx()
     {
-        PlaySfx(popSfx, 0.5f);
+        PlaySfx(popSfx, 0.3f);
     }
 
     public void PlayTypingSfx()

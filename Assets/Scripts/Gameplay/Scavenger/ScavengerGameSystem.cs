@@ -34,6 +34,9 @@ public class ScavengerGameSystem : MonoBehaviour
         {
             cheese.sprite = unfilledCheese;
         }
+
+        // For Testing
+        StartGame();
     }
 
     public void ShowCheeseFound(int cheeseId)
