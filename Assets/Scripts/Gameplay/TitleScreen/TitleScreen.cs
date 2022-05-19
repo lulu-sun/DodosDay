@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using UnityEngine.SceneManagement;
 
 public class TitleScreen : MonoBehaviour
 {
@@ -40,23 +41,28 @@ public class TitleScreen : MonoBehaviour
     }
 
 
-    private IEnumerator Delay(float delay)
+    private IEnumerator Delay(float delay, Action onFinished = null)
     {
         yield return new WaitForSeconds(delay);
         OnLeaveTitle?.Invoke();
         Canvas.SetActive(false);
         titleScreenCamera.gameObject.SetActive(false);
-
+        onFinished?.Invoke();
     }
 
-    public void LeaveTitle()
+    public void LeaveTitle(string nextScene = null)
     {
         startButton.interactable = false;
         memoriesButton.interactable = false;
 
         AudioManager.Instance.FadeMusic(1.5f, 0f);
-        StartCoroutine(Delay(1.5f));
-       
+        StartCoroutine(Delay(1.5f, () =>
+        {
+            if (nextScene != null)
+            {
+                SceneManager.LoadSceneAsync(SceneMapper.Instance.GetBuildIndexBySceneName(nextScene));
+            }
+        }));
     }
 
 

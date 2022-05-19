@@ -36,7 +36,7 @@ public class ScavengerGameSystem : MonoBehaviour
         }
 
         // For Testing
-        StartGame();
+        //StartGame();
     }
 
     public void ShowCheeseFound(int cheeseId)

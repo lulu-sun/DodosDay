@@ -13,14 +13,14 @@ public class ButtonBehaviour : MonoBehaviour
         
 
         Debug.Log("Start Button pressed.");
-        //SceneManager.LoadSceneAsync(SceneMapper.Instance.GetBuildIndexBySceneName("Intro"));
         TitleScreen.Instance.LeaveTitle();
     }
 
     public void OnMemoriesButtonPress()
     {
         Debug.Log("Memories Button pressed.");
-
+        
+        TitleScreen.Instance.LeaveTitle("PhotoAlbum");
     }
 
     public void OnButtonHover()
