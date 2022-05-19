@@ -13,8 +13,6 @@ public class ButtonBehaviour : MonoBehaviour
         
 
         Debug.Log("Start Button pressed.");
-
-        //StartCoroutine(FadeAudioSource.StartFade(BackgroundMusic, 0.1f, 0f));
         //SceneManager.LoadSceneAsync(SceneMapper.Instance.GetBuildIndexBySceneName("Intro"));
         TitleScreen.Instance.LeaveTitle();
     }
@@ -23,6 +21,11 @@ public class ButtonBehaviour : MonoBehaviour
     {
         Debug.Log("Memories Button pressed.");
 
+    }
+
+    public void OnButtonHover()
+    {
+        AudioManager.Instance.PlayPopSfx();
     }
 }
 

@@ -13,7 +13,7 @@ public class CutsceneManager : MonoBehaviour
 
     PlayerController player;
 
-    [SerializeField] GameObject npcPrefab;
+    [SerializeField] GameObject luluPrefab;
 
     public event Action OnStartCutscene;
     public event Action OnEndCutscene;
@@ -67,7 +67,7 @@ public class CutsceneManager : MonoBehaviour
     {
         AudioManager.Instance.PlayMainMusic();
 
-        GameObject npc = (GameObject)Instantiate(npcPrefab, new Vector3(2, 0, 0), Quaternion.identity);
+        GameObject npc = (GameObject)Instantiate(luluPrefab, new Vector3(2, 0, 0), Quaternion.identity);
         npc.SetActive(false);
         Character npcChar = npc.GetComponent<Character>();
 
@@ -119,6 +119,12 @@ public class CutsceneManager : MonoBehaviour
             new ChangeSceneAction(SceneMapper.Instance.GetBuildIndexBySceneName("House")),
             new FadeOutAction(fader, 0.5f)
         });
+    }
+
+    private void OllieInteraction()
+    {
+        GameObject ollie = GameObject.Find("Ollie");
+        Debug.Log(ollie);
     }
 
     private void RunMultipleActions(IEnumerable<ICutsceneAction> cutsceneActions, Action onFinished = null)

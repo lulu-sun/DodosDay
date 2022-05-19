@@ -9,6 +9,8 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] AudioClip titleMusic;
     [SerializeField] AudioClip mainMusic;
+    [SerializeField] AudioClip popSfx;
+    [SerializeField] AudioClip typingSfx;
 
     public static AudioManager Instance
     {
@@ -23,7 +25,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayTitleMusic()
     {
-        PlayMusic(titleMusic, 3f, 0f, 1f);
+        PlayMusic(titleMusic, 1f, 0f, 1f);
     }
 
     public void PlayMainMusic()
@@ -31,15 +33,50 @@ public class AudioManager : MonoBehaviour
         PlayMusic(mainMusic, 2f, 0f, 1f);
     }
 
+    public void PlayPopSfx()
+    {
+        PlaySfx(popSfx, 0.5f);
+    }
+
+    public void PlayTypingSfx()
+    {
+        PlaySfx(typingSfx, 0.3f, true);
+    }
+
+    public void StopTypingSfx()
+    {
+        StopSfx(sfxPlayer);
+    }
+
+    public void PlaySfx(AudioClip clip, float volume, bool loop = false)
+    {
+        if (clip == null)
+        {
+            return;
+        }
+
+        sfxPlayer.clip = clip;
+        sfxPlayer.loop = loop;
+        sfxPlayer.volume = volume;
+        sfxPlayer.Play();
+    }
+
+    public void StopSfx(AudioSource source)
+    {
+        if (source == null)
+        {
+            return;
+        }
+
+        source.Stop();
+    }
+
     public void PlayMusic(AudioClip clip, float duration, float startVolume, float targetVolume, bool loop = true)
     {
         if (clip == null)
         {
-            Debug.Log("null");
             return;
         }
-
-        Debug.Log(clip);
 
         //musicPlayer.pitch = 1.102f; somehow this isnt an issue anymore???
          

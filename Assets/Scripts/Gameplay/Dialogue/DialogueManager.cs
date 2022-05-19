@@ -67,6 +67,8 @@ public class DialogueManager : MonoBehaviour
     public IEnumerator TypeDialogue(string line)
     {
         isTyping = true;
+        AudioManager.Instance.PlayTypingSfx();
+
         dialogueText.text = "";
         foreach (var letter in line.ToCharArray())
         {
@@ -74,7 +76,7 @@ public class DialogueManager : MonoBehaviour
             yield return new WaitForSeconds(1f / lettersPerSecond);
 
         }
-
+        AudioManager.Instance.StopTypingSfx();
         isTyping = false;
     }
 }

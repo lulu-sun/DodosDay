@@ -54,8 +54,8 @@ public class TitleScreen : MonoBehaviour
         startButton.interactable = false;
         memoriesButton.interactable = false;
 
-        AudioManager.Instance.FadeMusic(3f, 0f);
-        StartCoroutine(Delay(3f));
+        AudioManager.Instance.FadeMusic(1.5f, 0f);
+        StartCoroutine(Delay(1.5f));
        
     }
 
