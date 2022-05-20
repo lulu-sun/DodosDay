@@ -9,6 +9,7 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] AudioClip titleMusic;
     [SerializeField] AudioClip mainMusic;
+    [SerializeField] AudioClip albumMusic;
     [SerializeField] AudioClip popSfx;
     [SerializeField] AudioClip typingSfx;
 
@@ -31,6 +32,11 @@ public class AudioManager : MonoBehaviour
     public void PlayMainMusic()
     {
         PlayMusic(mainMusic, 2f, 0f, 1f);
+    }
+
+    public void PlayAlbumMusic()
+    {
+        PlayMusic(albumMusic, 3f, 0f, 0.3f);
     }
 
     public void PlayPopSfx()

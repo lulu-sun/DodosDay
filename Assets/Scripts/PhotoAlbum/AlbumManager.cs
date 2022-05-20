@@ -156,7 +156,9 @@ public class AlbumManager : MonoBehaviour
 
     void Start()
     {
-        GetChildren();        
+        GetChildren();
+        AudioManager.Instance.PlayAlbumMusic();
+
 
     }
 

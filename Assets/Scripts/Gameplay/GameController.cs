@@ -158,8 +158,8 @@ public class GameController : MonoBehaviour
 
         if (CutsceneManager.Instance.currentScene.name == "Intro")
         {
-            gameStateStack.Push(GameState.Cutscene);
             TitleScreen.Instance.ShowTitle();
+            Debug.Log("Start Title");
         }
 
     }

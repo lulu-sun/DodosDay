@@ -7,20 +7,20 @@ using UnityEngine.UI;
 public class ButtonBehaviour : MonoBehaviour
 {
 
-
     public void OnStartButtonPress()
     {
         
 
         Debug.Log("Start Button pressed.");
+        CutsceneManager.Instance.StartCutscene();
+        
         TitleScreen.Instance.LeaveTitle();
     }
 
     public void OnMemoriesButtonPress()
     {
         Debug.Log("Memories Button pressed.");
-        
-        TitleScreen.Instance.LeaveTitle("PhotoAlbum");
+        TitleScreen.Instance.LeaveTitleForAlbum();
     }
 
     public void OnButtonHover()

@@ -73,21 +73,15 @@ public class CutsceneManager : MonoBehaviour
 
         RunMultipleActions(new ICutsceneAction[] {
             new FadeOutAction(fader, 0.5f),
+            //new DialogueAction(names[index], lines[index]),
             new DialogueAction(new string[]
             {
-            "Joce"
+            "Joce", "Joce", "???"
             },
             new string[]
             {
                 "...",
-                "..."
-            }),
-            new DialogueAction(new string[]
-            {
-            "???"
-            },
-            new string[]
-            {
+                "...",
                 "You're awake!"
             }),
             new FaceDirectionAction(player.Character, Vector2.left),
@@ -132,7 +126,7 @@ public class CutsceneManager : MonoBehaviour
             }),
             new DialogueAction(new string[]
             {
-            "Lulu"
+            "Lulu", "Lulu", "Lulu"
             },
             new string[]
             {

@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class TitleScreen : MonoBehaviour
 {
     [SerializeField] Camera titleScreenCamera;
-    [SerializeField] GameObject Canvas;
+    [SerializeField] GameObject canvas;
 
     [SerializeField] Button startButton;
     [SerializeField] Button memoriesButton;
@@ -33,7 +33,7 @@ public class TitleScreen : MonoBehaviour
         startButton.interactable = true;
         memoriesButton.interactable = true;
 
-        Canvas.SetActive(true);
+        canvas.SetActive(true);
         OnShowTitle?.Invoke();
         titleScreenCamera.gameObject.SetActive(true);
         AudioManager.Instance.PlayTitleMusic();
@@ -41,27 +41,37 @@ public class TitleScreen : MonoBehaviour
     }
 
 
-    private IEnumerator Delay(float delay, Action onFinished = null)
+    private IEnumerator DelayedLeaveTitle(float delay, Action onFinished = null)
     {
         yield return new WaitForSeconds(delay);
         OnLeaveTitle?.Invoke();
-        Canvas.SetActive(false);
-        titleScreenCamera.gameObject.SetActive(false);
+        canvas.SetActive(false);
         onFinished?.Invoke();
     }
 
-    public void LeaveTitle(string nextScene = null)
+    public void LeaveTitleForAlbum()
+    {
+        LeaveTitle("PhotoAlbum", () =>
+        {
+            titleScreenCamera.gameObject.SetActive(false);
+        });
+    }
+
+
+    public void LeaveTitle(string nextScene = null, Action onFinished = null)
     {
         startButton.interactable = false;
         memoriesButton.interactable = false;
 
         AudioManager.Instance.FadeMusic(1.5f, 0f);
-        StartCoroutine(Delay(1.5f, () =>
+        StartCoroutine(DelayedLeaveTitle(1.5f, () =>
         {
             if (nextScene != null)
             {
                 SceneManager.LoadSceneAsync(SceneMapper.Instance.GetBuildIndexBySceneName(nextScene));
             }
+
+            onFinished?.Invoke();
         }));
     }
 
