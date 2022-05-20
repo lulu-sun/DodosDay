@@ -9,12 +9,8 @@ public class ButtonBehaviour : MonoBehaviour
 
     public void OnStartButtonPress()
     {
-        
-
-        Debug.Log("Start Button pressed.");
-        CutsceneManager.Instance.StartCutscene();
-        
-        TitleScreen.Instance.LeaveTitle();
+        Debug.Log("Start Button pressed.");        
+        TitleScreen.Instance.LeaveTitle(onFinished: () => CutsceneManager.Instance.StartCutscene());
     }
 
     public void OnMemoriesButtonPress()

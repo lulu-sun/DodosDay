@@ -54,19 +54,17 @@ public class CutsceneManager : MonoBehaviour
 
     public void StartCutscene()
     {
-        IsRunning = true;
         OnStartCutscene?.Invoke();
     }
 
     public void EndCutscene()
     {
-        IsRunning = false;
         OnEndCutscene?.Invoke();
     }
 
     public void RunCutscene(Action cutscene)
     {
-        StartCutscene();
+        IsRunning = true;
 
         cutscene.Invoke();
     }
@@ -170,6 +168,7 @@ public class CutsceneManager : MonoBehaviour
     {
         if (cutsceneActions.Count() == 0)
         {
+            IsRunning = false;
             onFinished?.Invoke();
             EndCutscene();
             return;
