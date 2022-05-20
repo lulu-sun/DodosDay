@@ -47,8 +47,6 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         
-
-
         DialogueManager.Instance.OnShowDialogue += () =>
         {
             if (currentGameState != GameState.Dialogue)
@@ -162,6 +160,10 @@ public class GameController : MonoBehaviour
             Debug.Log("Start Title");
         }
 
+        if (CutsceneManager.Instance.currentScene.name == "3_Island_n")
+        {
+            gameStateStack.Push(GameState.Cutscene);
+        }
     }
 
     private void SwitchState(GameState newState)

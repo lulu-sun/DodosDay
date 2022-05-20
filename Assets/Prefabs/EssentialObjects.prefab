@@ -5723,6 +5723,7 @@ MonoBehaviour:
     m_Handle: 0
   IsRunning: 0
   luluPrefab: {fileID: 301433940564939934, guid: 4a94d44d82d8d564c9db8f77023dead0, type: 3}
+  naomiPrefab: {fileID: 5850386924913033319, guid: ce9226ad53434462686af6abd8afef0c, type: 3}
 --- !u!114 &1183542205737500581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5830,7 +5831,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6485065462137576338
 Transform:
   m_ObjectHideFlags: 0
