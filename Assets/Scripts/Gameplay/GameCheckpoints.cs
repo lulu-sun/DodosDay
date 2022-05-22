@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,7 +16,10 @@ public class GameCheckpoints : MonoBehaviour
     private void Start()
     {
         gameCheckpointsState = new Dictionary<Checkpoint, CheckpointState>();
-        for ()
+        foreach (Checkpoint checkpoint in Enum.GetValues(typeof(Checkpoint)))
+        {
+            gameCheckpointsState[checkpoint] = CheckpointState.NotStarted;
+        }
     }
 
     public CheckpointState GetCheckpointState(Checkpoint checkpoint)
@@ -27,13 +31,30 @@ public class GameCheckpoints : MonoBehaviour
     {
         this.gameCheckpointsState[checktpoint] = checkpointState;
     }
+
+    public void LogCurrentStates()
+    {
+        string statesString = "GameCheckpoints:\n";
+        foreach (var pair in gameCheckpointsState)
+        {
+            Checkpoint checkpoint = pair.Key;
+            CheckpointState checkpointState = pair.Value;
+
+            statesString += $"{checkpoint}: {checkpointState}\n";
+        }
+
+        Debug.Log(statesString);
+    }
 }
 
-// to enable tracking a new game checkpoint, add it to this enum:
+// to enable tracking a new game checkpoint, just add it to this enum:
 public enum Checkpoint
 {
+    // Cutscenes
     IntroCutscene,
     NaomiCutscene,
+
+    // Minigames
     ChasingGame,
     CatchingGame,
     PokemonBattle,
