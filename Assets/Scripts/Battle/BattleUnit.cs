@@ -31,7 +31,7 @@ public class BattleUnit : MonoBehaviour
         Pokemon = new Pokemon(_base, level);
         if (isPlayerUnit)
         {
-            image.sprite = Pokemon.Base.BackSprite;
+            image.sprite = Pokemon.Base.FrontSprite;
 
         }
         else 
@@ -60,18 +60,30 @@ public class BattleUnit : MonoBehaviour
         image.transform.DOLocalMoveX(originalPos.x, 1.2f);
     }
 
-    public void PlayAttackAnimation()
+    public IEnumerator PlayAttackAnimation(float delay)
     {
-        var sequence = DOTween.Sequence();
-        if (isPlayerUnit)
+        //yield return _base.PlayAttackAnimation();
+
+        Debug.Log("Animation playing");
+
+        foreach (Sprite sprite in Pokemon.Base.attackAnim)
         {
-            sequence.Append(image.transform.DOLocalMoveX(originalPos.x + 60f, 0.20f));
+            image.sprite = sprite;
+            yield return new WaitForSeconds(delay);
         }
-        else
-        {
-            sequence.Append(image.transform.DOLocalMoveX(originalPos.x - 60f, 0.20f));
-        }
-        sequence.Append(image.transform.DOLocalMoveX(originalPos.x, .025f));
+
+        image.sprite = Pokemon.Base.FrontSprite;
+
+        //var sequence = DOTween.Sequence();
+        //if (isPlayerUnit)
+        //{
+        //    sequence.Append(image.transform.DOLocalMoveX(originalPos.x + 60f, 0.20f));
+        //}
+        //else
+        //{
+        //    sequence.Append(image.transform.DOLocalMoveX(originalPos.x - 60f, 0.20f));
+        //}
+        //sequence.Append(image.transform.DOLocalMoveX(originalPos.x, .025f));
     }
 
     public void PlayHitAnimation()
@@ -84,7 +96,18 @@ public class BattleUnit : MonoBehaviour
     public void PlayFaintAnimation()
     {
         var sequence = DOTween.Sequence();
-        sequence.Append(image.transform.DOLocalMoveY(originalPos.y - 60f, 0.25f));
+        //sequence.Append(image.transform.DOLocalMoveY(originalPos.y - 60f, 0.25f));
+
+        if (isPlayerUnit)
+        {
+            sequence.Append(image.transform.DOLocalMoveX(originalPos.x - 90f, 0.25f));
+
+        }
+        else
+        {
+            sequence.Append(image.transform.DOLocalMoveX(originalPos.x + 90f, 0.25f));
+        }
+
         sequence.Join(image.DOFade(0f, 0.5f));
     }
 }

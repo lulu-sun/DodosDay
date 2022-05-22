@@ -43,8 +43,8 @@ public class NPCController : MonoBehaviour, Interactable
                 Talk(facingDirection);
                 break;
             case NPCType.Ollie:
-                Talk(facingDirection);
-                //Talk(facingDirection, () => BattleSystem.Instance.StartBattle());
+                //Talk(facingDirection);
+                Talk(facingDirection, () => BattleSystem.Instance.StartBattle());
                 break;
             case NPCType.Default:
             default:

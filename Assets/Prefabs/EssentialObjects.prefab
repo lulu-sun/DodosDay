@@ -6784,7 +6784,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 843b76cbf31ae084eb5cd6f1acf05220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _base: {fileID: 11400000, guid: 6b0bfc466b9ba044c85354f6ae63de28, type: 2}
+  _base: {fileID: 11400000, guid: 5cc855b55b4494b989fff8736d641fac, type: 2}
   level: 5
   isPlayerUnit: 0
 --- !u!1 &7304644464027786211

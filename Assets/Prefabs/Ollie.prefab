@@ -167,6 +167,8 @@ MonoBehaviour:
   dialogue:
     lines:
     - Bork
+    names:
+    - Ollie
 --- !u!114 &3126919313723330020
 MonoBehaviour:
   m_ObjectHideFlags: 0

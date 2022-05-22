@@ -15,21 +15,22 @@ MonoBehaviour:
   name: Ollie
   description: 
   frontSprite: {fileID: -370564048169120025, guid: 229715eb871701246a482f982cb77984, type: 3}
-  backSprite: {fileID: 5481888991699395864, guid: 229715eb871701246a482f982cb77984, type: 3}
+  attackAnim:
+  - {fileID: 6225050808280182851, guid: 229715eb871701246a482f982cb77984, type: 3}
   type1: 1
   type2: 0
   maxHp: 40
-  attack: 10
-  defense: 10
-  spAttack: 10
-  spDefense: 10
-  speed: 10
+  attack: 1
+  defense: 1
+  spAttack: 1
+  spDefense: 1
+  speed: 1
   learnableMoves:
   - moveBase: {fileID: 11400000, guid: f4ee7b6f93ffb464abcaea02ca0e58eb, type: 2}
     level: 1
-  - moveBase: {fileID: 11400000, guid: 8cfa12e187265c145acac6e08d71219d, type: 2}
-    level: 1
-  - moveBase: {fileID: 11400000, guid: c1093c54bf003ec4dae52fbdb7cfb444, type: 2}
+  - moveBase: {fileID: 11400000, guid: 6ade39ca767a9423296394986959e274, type: 2}
     level: 1
   - moveBase: {fileID: 11400000, guid: ae8c423872017c448a185b7eff8d46e0, type: 2}
+    level: 1
+  - moveBase: {fileID: 11400000, guid: d9e3887a280d24b2197a099659658d8a, type: 2}
     level: 1

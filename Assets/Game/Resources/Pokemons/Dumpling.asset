@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 129c44be613611c4297a44861e0fb3c0, type: 3}
+  m_Name: Dumpling
+  m_EditorClassIdentifier: 
+  name: Dumpling
+  description: 
+  frontSprite: {fileID: -2771064687102557668, guid: 2b8fc444191bf4a978ec20a26a57985b, type: 3}
+  attackAnim:
+  - {fileID: 493724267220557837, guid: 2b8fc444191bf4a978ec20a26a57985b, type: 3}
+  type1: 1
+  type2: 1
+  maxHp: 39
+  attack: 1
+  defense: 1
+  spAttack: 1
+  spDefense: 1
+  speed: 1
+  learnableMoves:
+  - moveBase: {fileID: 11400000, guid: c413df26d86f545b89896654a0d15474, type: 2}
+    level: 1
+  - moveBase: {fileID: 11400000, guid: d89b148d184b24933bac34ee15d46add, type: 2}
+    level: 1
+  - moveBase: {fileID: 11400000, guid: 835991d01cdbe422f8a1381b0bc6075b, type: 2}
+    level: 1
+  - moveBase: {fileID: 11400000, guid: 1fa27c8ebbe9445b5bf428023eb496ab, type: 2}
+    level: 1

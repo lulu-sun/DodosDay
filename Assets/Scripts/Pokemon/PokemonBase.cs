@@ -14,7 +14,8 @@ public class PokemonBase : ScriptableObject
     [SerializeField] string description;
 
     [SerializeField] Sprite frontSprite;
-    [SerializeField] Sprite backSprite;
+
+    public List<Sprite> attackAnim;
 
     [SerializeField] PokemonType type1;
     [SerializeField] PokemonType type2;
@@ -29,6 +30,20 @@ public class PokemonBase : ScriptableObject
     [SerializeField] List<LearnableMove> learnableMoves;
 
 
+    //public IEnumerator PlayAttackAnimation(float delay)
+    //{
+    //    Debug.Log("Animation playing");
+    //    Sprite frontSpriteSaved = frontSprite;
+
+    //    foreach(Sprite sprite in attackAnim)
+    //    {
+    //        frontSprite = sprite;
+    //        yield return new WaitForSeconds(delay);
+    //    }
+
+    //    frontSprite = frontSpriteSaved;
+    //}
+
     public string Name {
         // this is a property
         get { return name; }
@@ -41,9 +56,9 @@ public class PokemonBase : ScriptableObject
     public Sprite FrontSprite {
         get {return frontSprite; }
     }
-    public Sprite BackSprite {
-        get {return backSprite; }
-    }
+    //public Sprite BackSprite {
+    //    get {return backSprite; }
+    //}
 
     public PokemonType Type1 {
         get {return type1; }
@@ -121,3 +136,4 @@ public enum PokemonType
     Ghost,
     Dragon
 }
+

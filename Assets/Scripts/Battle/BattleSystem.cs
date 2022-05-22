@@ -87,22 +87,35 @@ public class BattleSystem : MonoBehaviour
 
         var move = playerUnit.Pokemon.Moves[currentMove];
         yield return dialogBox.TypeDialog($"{playerUnit.Pokemon.Base.Name} used {move.Base.Name}");
-        
-        playerUnit.PlayAttackAnimation();
+        yield return playerUnit.PlayAttackAnimation(0.3f);
         yield return new WaitForSeconds(1f);
+
+
+        if (move.Base.Name == "Whine")
+        {
+            yield return dialogBox.TypeDialog("But nothing happened!");
+        }
         
-        enemyUnit.PlayHitAnimation();
+
+        if (move.Base.Power != 0)
+        {
+            enemyUnit.PlayHitAnimation();
+
+        }
+
         // yield return new WaitForSeconds(1f);
+
 
         var damageDetails = enemyUnit.Pokemon.TakeDamage(move, playerUnit.Pokemon);
 
         yield return enemyHud.UpdateHP();
         yield return ShowDamageDetails(damageDetails);
 
-
         if (damageDetails.Fainted)
         {
-            yield return dialogBox.TypeDialog($"{enemyUnit.Pokemon.Base.Name} Fainted");
+            //yield return dialogBox.TypeDialog($"{enemyUnit.Pokemon.Base.Name} Fainted");
+            yield return dialogBox.TypeDialog("Dumpling lost interest!");
+            yield return dialogBox.TypeDialog("Dumpling ran away!");
             enemyUnit.PlayFaintAnimation();
             yield return new WaitForSeconds(1f);
             EndBattle();
@@ -121,11 +134,31 @@ public class BattleSystem : MonoBehaviour
         var move = enemyUnit.Pokemon.GetRandomMove();
 
         yield return dialogBox.TypeDialog($"{enemyUnit.Pokemon.Base.Name} used {move.Base.Name}");
-        
-        enemyUnit.PlayAttackAnimation();
+
+        yield return enemyUnit.PlayAttackAnimation(0.3f);
+        //enemyUnit.PlayAttackAnimation();
         yield return new WaitForSeconds(1f);
 
-        playerUnit.PlayHitAnimation();
+        if (move.Base.Name == "Meow")
+        {
+            yield return dialogBox.TypeDialog("Ollie wants to be friends\nwith Dumpling!");
+            yield return dialogBox.TypeDialog("Ollie's defense falls!");
+            playerUnit.PlayHitAnimation();
+        }
+
+        if (move.Base.Name == "Hide")
+        {
+            yield return dialogBox.TypeDialog("Dumpling is scared of everything!");
+            yield return dialogBox.TypeDialog("Dumpling's defense goes up!");
+        }
+
+
+        if (move.Base.Power != 0)
+        {
+            playerUnit.PlayHitAnimation();
+
+        }
+
         // yield return new WaitForSeconds(1f);
 
         var damageDetails = playerUnit.Pokemon.TakeDamage(move, playerUnit.Pokemon);
@@ -134,7 +167,9 @@ public class BattleSystem : MonoBehaviour
 
         if (damageDetails.Fainted)
         {
-            yield return dialogBox.TypeDialog($"{playerUnit.Pokemon.Base.Name} Fainted");
+            yield return dialogBox.TypeDialog($"Ollie is too afraid of Dumpling!");
+            yield return dialogBox.TypeDialog($"Ollie ran away!");
+
             playerUnit.PlayFaintAnimation();
             yield return new WaitForSeconds(1f);
             EndBattle();

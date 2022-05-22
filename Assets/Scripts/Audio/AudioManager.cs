@@ -10,8 +10,14 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioClip titleMusic;
     [SerializeField] AudioClip mainMusic;
     [SerializeField] AudioClip albumMusic;
+
     [SerializeField] AudioClip popSfx;
     [SerializeField] AudioClip typingSfx;
+
+    [SerializeField] AudioClip dumplingMeowSfx;
+    [SerializeField] AudioClip ollieMeowSfx;
+    [SerializeField] AudioClip dumplingAttackSfx;
+    [SerializeField] AudioClip ollieAttackSfx;
 
     public static AudioManager Instance
     {

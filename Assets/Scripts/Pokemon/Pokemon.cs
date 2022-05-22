@@ -54,8 +54,13 @@ public class Pokemon
     }
 
     public int MaxHp {
-        get {
-            return Mathf.FloorToInt((Base.MaxHp * Level) / 100f) + 10;}
+        //    get {
+        //        return Mathf.FloorToInt((Base.MaxHp * Level) / 100f) + 10;}
+        //}
+        get
+        {
+            return Base.MaxHp;
+        }
     }
 
     public int Defense {
@@ -97,10 +102,18 @@ public class Pokemon
 
     }
 
+    private Queue<int> moveIndices = new Queue<int>(new int[] { 0, 1, 2, 3 });
+
     public Move GetRandomMove()
     {
-        int r = Random.Range(0, Moves.Count);
+
+
+        int r = moveIndices.Dequeue();
+        moveIndices.Enqueue(r);
+
+        //int r = Random.Range(0, Moves.Count);
         return Moves[r];
+        
     }
 
 }
