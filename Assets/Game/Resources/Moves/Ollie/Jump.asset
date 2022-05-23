@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Jump
   description: 
-  type: 1
+  type: 0
   power: 9
   accuracy: 100
   pp: 10

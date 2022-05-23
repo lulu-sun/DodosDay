@@ -10,14 +10,16 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioClip titleMusic;
     [SerializeField] AudioClip mainMusic;
     [SerializeField] AudioClip albumMusic;
+    [SerializeField] AudioClip battleMusic;
 
     [SerializeField] AudioClip popSfx;
     [SerializeField] AudioClip typingSfx;
 
     [SerializeField] AudioClip dumplingMeowSfx;
-    [SerializeField] AudioClip ollieMeowSfx;
+    [SerializeField] AudioClip ollieBorkSfx;
     [SerializeField] AudioClip dumplingAttackSfx;
     [SerializeField] AudioClip ollieAttackSfx;
+    [SerializeField] AudioClip takeDamageSfx;
 
     public static AudioManager Instance
     {
@@ -45,6 +47,11 @@ public class AudioManager : MonoBehaviour
         PlayMusic(albumMusic, 3f, 0f, 0.3f);
     }
 
+    public void PlayBattleMusic()
+    {
+        PlayMusic(battleMusic, 0.5f, 0f, 0.5f); 
+    }
+
     public void PlayPopSfx()
     {
         PlaySfx(popSfx, 0.3f);
@@ -53,6 +60,38 @@ public class AudioManager : MonoBehaviour
     public void PlayTypingSfx()
     {
         PlaySfx(typingSfx, 0.3f, true);
+    }
+
+    public void PlayDumplingMeow()
+    {
+        PlaySfx(dumplingMeowSfx, 0.3f);
+    }
+
+    public void PlayDumplingAttack()
+    {
+        PlaySfx(dumplingAttackSfx, 0.3f);
+    }
+
+    public void PlayOllieBork()
+    {
+        PlaySfx(ollieBorkSfx, 0.3f);
+    }
+
+    public void PlayOllieAttack()
+    {
+        PlaySfx(ollieAttackSfx, 0.3f);
+    }
+
+    //public void PlayTakeDamage()
+    //{
+    //    PlaySfx(takeDamageSfx, 0.3f);
+    //}
+
+    public IEnumerator PlayTakeDamage()
+    {
+        yield return new WaitForSeconds(0.5f);
+        PlaySfx(takeDamageSfx, 0.3f);
+      
     }
 
     public void StopTypingSfx()

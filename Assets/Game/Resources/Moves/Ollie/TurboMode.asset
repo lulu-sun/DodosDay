@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: TurboMode
   description: 
-  type: 1
+  type: 0
   power: 15
   accuracy: 100
   pp: 1

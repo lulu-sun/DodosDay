@@ -36,6 +36,7 @@ public class BattleSystem : MonoBehaviour
     { 
         OnStartBattle?.Invoke();
         StartCoroutine(SetupBattle());
+        AudioManager.Instance.PlayBattleMusic();
         battleSystemCamera.gameObject.SetActive(true);
         worldCamera.gameObject.SetActive(false); 
     }
@@ -43,6 +44,7 @@ public class BattleSystem : MonoBehaviour
     public void EndBattle()
     { 
         OnEndBattle?.Invoke();
+        AudioManager.Instance.FadeMusic(0.5f, 0f);
         battleSystemCamera.gameObject.SetActive(false);
         worldCamera.gameObject.SetActive(true); 
     }
@@ -86,8 +88,13 @@ public class BattleSystem : MonoBehaviour
         state = BattleState.Busy;
 
         var move = playerUnit.Pokemon.Moves[currentMove];
+
+
         yield return dialogBox.TypeDialog($"{playerUnit.Pokemon.Base.Name} used {move.Base.Name}");
+        move.PP--;
+
         yield return playerUnit.PlayAttackAnimation(0.3f);
+        AudioManager.Instance.PlayOllieAttack();
         yield return new WaitForSeconds(1f);
 
 
@@ -99,8 +106,8 @@ public class BattleSystem : MonoBehaviour
 
         if (move.Base.Power != 0)
         {
+            yield return AudioManager.Instance.PlayTakeDamage();
             enemyUnit.PlayHitAnimation();
-
         }
 
         // yield return new WaitForSeconds(1f);
@@ -134,9 +141,10 @@ public class BattleSystem : MonoBehaviour
         var move = enemyUnit.Pokemon.GetRandomMove();
 
         yield return dialogBox.TypeDialog($"{enemyUnit.Pokemon.Base.Name} used {move.Base.Name}");
-
+        move.PP--;
         yield return enemyUnit.PlayAttackAnimation(0.3f);
         //enemyUnit.PlayAttackAnimation();
+        AudioManager.Instance.PlayDumplingAttack();
         yield return new WaitForSeconds(1f);
 
         if (move.Base.Name == "Meow")
@@ -155,8 +163,9 @@ public class BattleSystem : MonoBehaviour
 
         if (move.Base.Power != 0)
         {
+            yield return AudioManager.Instance.PlayTakeDamage();
             playerUnit.PlayHitAnimation();
-
+       
         }
 
         // yield return new WaitForSeconds(1f);
@@ -288,9 +297,17 @@ public class BattleSystem : MonoBehaviour
 
         if (Controls.GetSelectKeyDown())
         {
-            dialogBox.EnableMoveSelector(false);
-            dialogBox.EnableDialogText(true);
-            StartCoroutine(PerformPlayerMove());
+            
+
+            var move = playerUnit.Pokemon.Moves[currentMove];
+
+            if (move.PP > 0)
+            {
+                dialogBox.EnableMoveSelector(false);
+                dialogBox.EnableDialogText(true);
+                StartCoroutine(PerformPlayerMove());
+
+            }
         }
 
     }

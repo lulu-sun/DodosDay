@@ -25,11 +25,15 @@ public class BattleDialogBox : MonoBehaviour
     public IEnumerator TypeDialog(string dialog)
     {
         dialogText.text = "";
+        AudioManager.Instance.PlayTypingSfx();
+
+
         foreach (var letter in dialog.ToCharArray())
         {
             dialogText.text += letter;
             yield return new WaitForSeconds(1f/lettersPerSecond);
         }
+        AudioManager.Instance.StopTypingSfx();
 
         yield return new WaitForSeconds(1f);
     }
