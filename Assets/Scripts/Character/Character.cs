@@ -29,7 +29,6 @@ public class Character : MonoBehaviour
             animator.Direction = new Vector2(Mathf.Clamp(movement.x, -1f, 1f), Mathf.Clamp(movement.y, -1f, 1f));
         }
         animator.IsMoving = movement != Vector2.zero;
-        animator.HandleUpdate();
     }
 
     public Vector2 Direction { get => animator.Direction; private set => animator.Direction = value; }
