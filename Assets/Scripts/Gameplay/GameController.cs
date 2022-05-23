@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public enum GameState { Play, Battle, Dialogue, Cutscene, Paused, CatchingGame, ChasingGame, TitleScreen }
@@ -163,6 +165,28 @@ public class GameController : MonoBehaviour
         if (CutsceneManager.Instance.currentScene.name == "3_Island_n")
         {
             gameStateStack.Push(GameState.Cutscene);
+        }
+
+        // Set the player's position to a spawnpoint manually when starting the game, if there is one.
+        var spawnpoints = FindObjectsOfType<SpawnPoint>();        
+        if (spawnpoints.Any())
+        {
+            SpawnPoint spawnpoint = null;
+
+            var testSpawnpoints = spawnpoints.Where(sp => sp.SpawnHereIfTesting);
+            if (testSpawnpoints.Any())
+            {
+                spawnpoint = testSpawnpoints.First();
+            }
+            else
+            {
+                spawnpoint = spawnpoints.First();
+            }
+
+            if (spawnpoint != null)
+            {
+                playerController.transform.position = spawnpoint.transform.position;
+            }
         }
     }
 

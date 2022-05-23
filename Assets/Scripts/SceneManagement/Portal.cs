@@ -33,7 +33,7 @@ public class Portal : MonoBehaviour
 
         yield return SceneManager.LoadSceneAsync(SceneMapper.Instance.GetBuildIndexBySceneName(sceneToLoad));
 
-        var destinationSpawnPoint = GameObject.FindObjectsOfType<SpawnPoint>().Single(sp => sp.portalId == portalId);
+        var destinationSpawnPoint = FindObjectsOfType<SpawnPoint>().Single(sp => sp.portalId == portalId);
         GameController.Instance.playerController.transform.position = destinationSpawnPoint.transform.position;
 
         yield return fader.FadeOut(fadeTimeInSeconds);

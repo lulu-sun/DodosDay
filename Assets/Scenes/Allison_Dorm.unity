@@ -1117,6 +1117,10 @@ PrefabInstance:
       propertyPath: portalId
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5300927107413657452, guid: 1e96cdca129df6d4eaef3af969e292f9, type: 3}
+      propertyPath: SpawnHereIfTesting
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6279657847576733876, guid: 1e96cdca129df6d4eaef3af969e292f9, type: 3}
       propertyPath: m_Name
       value: SpawnPointEnterHouse
