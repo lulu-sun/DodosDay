@@ -81,6 +81,11 @@ public class NPCController : MonoBehaviour, Interactable
 
     private void Talk(Vector2 facingDirection, Action onFinished = null)
     {
+        Talk(dialogue, facingDirection, onFinished);
+    }
+
+    private void Talk(Dialogue dialogue, Vector2 facingDirection, Action onFinished = null)
+    {
         if (state == NPCState.Idle)
         {
             var originalDirection = character.Direction;
@@ -92,7 +97,7 @@ public class NPCController : MonoBehaviour, Interactable
             StartCoroutine(DialogueManager.Instance.ShowDialogue(dialogue, () => {
                 idleTimer = 0f;
                 state = NPCState.Idle;
-                
+
                 // Turn back to original orientation after talking.
                 character.FaceDirection(originalDirection);
 
