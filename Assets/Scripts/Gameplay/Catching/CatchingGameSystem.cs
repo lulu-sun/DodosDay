@@ -16,9 +16,13 @@ public class CatchingGameSystem : MonoBehaviour
 
     [SerializeField] Text scoreText;
 
-    [SerializeField] Text livesText;
-
     [SerializeField] Camera catchingGameCamera;
+
+    [SerializeField] Image[] hearts;
+
+    [SerializeField] Sprite filledHeart;
+
+    [SerializeField] Sprite emptyHeart;
 
     private int score;
 
@@ -51,8 +55,11 @@ public class CatchingGameSystem : MonoBehaviour
             score = 0;
             lives = startingLivesCount;
             SetScoreText();
-            SetLivesText();
             isRunning = true;
+            foreach (Image heart in hearts)
+            {
+                heart.sprite = filledHeart;
+            }
             catchingGameCamera.gameObject.SetActive(true);
             StartCoroutine(SpawnFallingObjects());
         };
@@ -96,12 +103,7 @@ public class CatchingGameSystem : MonoBehaviour
     public void DecreaseLife()
     {
         lives--;
-        SetLivesText();
-    }
-
-    private void SetLivesText()
-    {
-        livesText.text = lives.ToString();
+        hearts[lives].sprite = emptyHeart;
     }
 
     private IEnumerator SpawnFallingObjects()
