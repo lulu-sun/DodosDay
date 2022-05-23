@@ -595,7 +595,6 @@ MonoBehaviour:
   fallingObjectPrefab: {fileID: 9171153961742973143, guid: bb6189cb6866db54987a549903364c8f, type: 3}
   canvas: {fileID: 8650301239182948043}
   scoreText: {fileID: 8865470613569555956}
-  livesText: {fileID: 0}
   catchingGameCamera: {fileID: 5844307794490732929}
   hearts:
   - {fileID: 1854376042595210229}
@@ -1847,7 +1846,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5814661734107584982
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3131,7 +3130,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &657425988373865478
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10287,7 +10286,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7760895200409191217
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10656,7 +10655,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6518733387506924743
 RectTransform:
   m_ObjectHideFlags: 0

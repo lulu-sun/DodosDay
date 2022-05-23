@@ -211,7 +211,7 @@ public class BattleSystem : MonoBehaviour
 
     void HandleActionSelection()
     {
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Controls.GetDownKeyDown())
         {
             if (currentAction < 1)
             {
@@ -219,7 +219,7 @@ public class BattleSystem : MonoBehaviour
             }
         }
 
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
+        else if (Controls.GetUpKeyDown())
         {
             if (currentAction > 0)
             {

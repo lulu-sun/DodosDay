@@ -82,7 +82,7 @@ public class Character : MonoBehaviour
 
     public void HandleUpdate()
     {
-
+        animator.HandleUpdate();
     }
 
     public void MoveOneFrame(Vector2 direction)

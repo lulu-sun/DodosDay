@@ -3,7 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public enum NPCType { Default, Lulu, Jane, Naomi, JuanJuan, Rachel, Noelle, Ollie, ChasingGameChaser }
+public enum NPCType
+{ 
+    Default,
+    Lulu,
+    Jane,
+    Naomi,
+    JuanJuan,
+    Rachel,
+    Noelle,
+    Ollie,
+    ArcadeMachine,
+    ChasingGameChaser
+}
 
 public class NPCController : MonoBehaviour, Interactable
 {
@@ -45,6 +57,9 @@ public class NPCController : MonoBehaviour, Interactable
             case NPCType.Ollie:
                 //Talk(facingDirection);
                 Talk(facingDirection, () => BattleSystem.Instance.StartBattle());
+                break;
+            case NPCType.ArcadeMachine:
+                CatchingGameSystem.Instance.StartGame();
                 break;
             case NPCType.Default:
             default:
