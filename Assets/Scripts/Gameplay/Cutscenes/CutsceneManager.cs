@@ -227,8 +227,7 @@ public class CutsceneManager : MonoBehaviour
                 new SingleDialogue("Joce", "Goodbye!!"),
 
             }
-            ), facingDirection,
-            () => BattleSystem.Instance.StartBattle()
+            ), facingDirection
             );
     }
 
