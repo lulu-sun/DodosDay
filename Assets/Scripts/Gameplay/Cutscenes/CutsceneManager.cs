@@ -76,6 +76,7 @@ public class CutsceneManager : MonoBehaviour
     private void IntroCutscene()
     {
         AudioManager.Instance.PlayMainMusic();
+        MemoriesSystem.Instance.SetActive(false);
 
         GameObject npc = Instantiate(luluPrefab, new Vector3(2, 0, 0), Quaternion.identity);
         npc.SetActive(false);
@@ -116,7 +117,7 @@ public class CutsceneManager : MonoBehaviour
             new FadeInAction(fader, 0.5f),
             new ChangeSceneAction(SceneMapper.Instance.GetBuildIndexBySceneName("House")),
             new FadeOutAction(fader, 0.5f)
-        });
+        }, () => MemoriesSystem.Instance.SetActive(true));
     }
 
     private void NaomiFirstCutscene()
