@@ -9,6 +9,11 @@ public static class Controls
         return Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return);
     }
 
+    public static bool GetSelectKey()
+    {
+        return Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Return);
+    }
+
     public static bool GetDeselectKeyDown()
     {
         return Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Backspace) || Input.GetKeyDown(KeyCode.Delete);

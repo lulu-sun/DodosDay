@@ -61,6 +61,7 @@ public class CutsceneManager : MonoBehaviour
 
     public void RunIntroCutscene()
     {
+        StartCutscene();
         IntroCutscene();
     }
 

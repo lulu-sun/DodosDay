@@ -57,7 +57,6 @@ public class TitleScreen : MonoBehaviour
         });
     }
 
-
     public void LeaveTitle(string nextScene = null, Action onFinished = null)
     {
         startButton.interactable = false;

@@ -72,7 +72,12 @@ public class DialogueManager : MonoBehaviour
         foreach (var letter in singleDialogue.Line.ToCharArray())
         {
             dialogueText.text += letter;
-            yield return new WaitForSeconds(1f / lettersPerSecond);
+            var waitTime = 1.0f / lettersPerSecond;
+            if (Controls.GetSelectKey())
+            {
+                waitTime /= 3.0f;
+            }
+            yield return new WaitForSeconds(waitTime);
 
         }
         AudioManager.Instance.StopTypingSfx();
