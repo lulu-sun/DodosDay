@@ -6,9 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/TitleScreen.unity
-    guid: 7b906682311dec04881dae639d278dc8
-  - enabled: 1
     path: Assets/Scenes/Intro.unity
     guid: b4666eadcd67d3c44aa084d48cf8e6f0
   - enabled: 1
@@ -35,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Island_R.unity
     guid: 574705e81fde24ef1ac3672414698de9
+  - enabled: 1
+    path: Assets/Scenes/Island_j1.unity
+    guid: 42fcefc8779a24a078ee07b475ed0b6e
   m_configObjects: {}
