@@ -73,7 +73,7 @@ public class CutsceneManager : MonoBehaviour
     {
         AudioManager.Instance.PlayMainMusic();
 
-        GameObject npc = (GameObject)Instantiate(luluPrefab, new Vector3(2, 0, 0), Quaternion.identity);
+        GameObject npc = Instantiate(luluPrefab, new Vector3(2, 0, 0), Quaternion.identity);
         npc.SetActive(false);
         Character npcChar = npc.GetComponent<Character>();
 
@@ -82,7 +82,7 @@ public class CutsceneManager : MonoBehaviour
             //new DialogueAction(names[index], lines[index]),
             new DialogueAction(new string[]
             {
-            "Joce", "Joce", "???"
+                "Joce", "Joce", "???"
             },
             new string[]
             {
@@ -97,7 +97,7 @@ public class CutsceneManager : MonoBehaviour
             new FaceDirectionAction(player.Character, Vector2.down),
             new DialogueAction(new string[]
             {
-            "Joce", "???"
+                "Joce", "???"
             },
             new string[]
             {
@@ -111,9 +111,9 @@ public class CutsceneManager : MonoBehaviour
             new FaceDirectionAction(player.Character, Vector2.right),
             new DialogueAction(new string[]
             {
-            "Lulu",
-            "Joce",
-            "Lulu", "Lulu", "Lulu"
+                "Lulu",
+                "Joce",
+                "Lulu", "Lulu", "Lulu"
             },
             new string[]
             {
@@ -134,7 +134,7 @@ public class CutsceneManager : MonoBehaviour
 
     private void NaomiCutscene()
     {
-        GameObject npc = (GameObject)Instantiate(naomiPrefab, new Vector3(9.5f, 12f, 0f), Quaternion.identity);
+        GameObject npc = Instantiate(naomiPrefab, new Vector3(9.5f, 12f, 0f), Quaternion.identity);
         Character npcChar = npc.GetComponent<Character>();
 
 
@@ -144,7 +144,7 @@ public class CutsceneManager : MonoBehaviour
             new FaceDirectionAction(player.Character, Vector2.right),
             new DialogueAction(new string[]
             {
-            "???", "Joce", "???", "Joce", "???", "???"
+                "???", "Joce", "???", "Joce", "???", "???"
             },
             new string[]
             {

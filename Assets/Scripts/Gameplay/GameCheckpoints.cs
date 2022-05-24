@@ -59,7 +59,7 @@ public enum Checkpoint
     CatchingGame,
     PokemonBattle,
     IceRinkGame,
-    CheeseGame
+    CheeseGame,
 }
 
 public enum CheckpointState

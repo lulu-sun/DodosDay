@@ -61,7 +61,7 @@ public class NPCController : MonoBehaviour, Interactable
                 Talk(facingDirection, () => BattleSystem.Instance.StartBattle());
                 break;
             case NPCType.ArcadeMachine:
-                CatchingGameSystem.Instance.StartGame();
+                Talk(Vector2.zero, () => CatchingGameSystem.Instance.StartGame());
                 break;
             case NPCType.Radio:
                 Debug.Log("Radio");
