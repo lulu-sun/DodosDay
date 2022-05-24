@@ -44,6 +44,7 @@ public class GameController : MonoBehaviour
     private void ToggleMainCamera(bool on)
     {
         worldCamera.gameObject.SetActive(on);
+        MemoriesSystem.Instance.SetActive(on);
     }
     
     private void Start()

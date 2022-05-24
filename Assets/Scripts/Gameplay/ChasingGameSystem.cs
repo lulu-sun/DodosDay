@@ -79,6 +79,7 @@ public class ChasingGameSystem : MonoBehaviour
             if (FinishTime >= winningTime)
             {
                 state = CheckpointState.Complete;
+                MemoriesSystem.Instance.MarkMemoryFound();
             }
 
             GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.ChasingGame, state);

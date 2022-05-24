@@ -13,17 +13,12 @@ public class MemoriesSystem : MonoBehaviour
 
     public static MemoriesSystem Instance { get; private set; }
 
-    public int memoriesFound;
+    public int memoriesFound = 0;
 
-    public void FindMemory()
+    public void MarkMemoryFound()
     {
-        ShowMemoryFound();
+        memories[memoriesFound].sprite = filledMemory;
         ++memoriesFound;
-    }
-
-    public void ShowMemoryFound()
-    {
-        memories[memoriesFound - 1].sprite = filledMemory;
     }
 
     private void Awake()
@@ -31,14 +26,9 @@ public class MemoriesSystem : MonoBehaviour
         Instance = this;
     }
 
-    public void StartGame()
+    public void SetActive(bool on)
     {
-        overlay.gameObject.SetActive(true);
-    }
-
-    public void EndGame()
-    {
-        overlay.gameObject.SetActive(false);
+        overlay.gameObject.SetActive(on);
     }
 
 
