@@ -37,6 +37,12 @@ public class GameCheckpoints : MonoBehaviour
         return GetState(checkpoint) == CheckpointState.NeverStarted;
     }
 
+    public bool StartedButNotComplete(Checkpoint checkpoint)
+    {
+        return GetState(checkpoint) == CheckpointState.StartedButNotComplete;
+    }
+
+
     public bool NotComplete(Checkpoint checkpoint)
     {
         return !Complete(checkpoint);
@@ -68,13 +74,15 @@ public enum Checkpoint
     // Cutscenes
     IntroCutscene,
     NaomiCutscene,
-
     // Minigames
     ChasingGame,
     CatchingGame,
     PokemonBattle,
     IceRinkGame,
     CheeseGame,
+
+    // Dialogues
+    //Interactions
 }
 
 public enum CheckpointState

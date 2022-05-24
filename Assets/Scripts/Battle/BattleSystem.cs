@@ -125,6 +125,9 @@ public class BattleSystem : MonoBehaviour
             yield return dialogBox.TypeDialog("Dumpling ran away!");
             enemyUnit.PlayFaintAnimation();
             yield return new WaitForSeconds(1f);
+
+            GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.PokemonBattle, CheckpointState.Complete);
+
             EndBattle();
         }
 

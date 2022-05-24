@@ -178,6 +178,61 @@ public class CutsceneManager : MonoBehaviour
             facingDirection);
     }
 
+    public void JaneFirstDialogue(NPCController jane, Vector2 facingDirection)
+    {
+        jane.Talk(new Dialogue(
+            new SingleDialogue[]
+            {
+                new SingleDialogue("???", "Halt! You don't remember me, do you?"),
+                new SingleDialogue("Joce", "No...but your cat is cute!"),
+                new SingleDialogue("???", "Thank you! Her name is Dumpling, and I'm OBSESSED."),
+                new SingleDialogue("???", "But WAIT! Don't let me get off topic. You must battle me to regain our memories together!"),
+                new SingleDialogue("Joce", "Wait, I don't even know how to fight!"),
+                new SingleDialogue("???", "Well, first you need a companion who is willing to fight for you!"),
+                new SingleDialogue("Joce", "Oh yeah, I have Ollie!"),
+                new SingleDialogue("???", "Yeah! And Ollie will know a certain set of attacks that he can use during battle."),
+                new SingleDialogue("???", "Some may do damage, and others may not. Attacks can only be used a certain number of times, or Power Points (PP)!"),
+                new SingleDialogue("???", "Each companion has a health bar (HP). When the health of your opponent's companion is down to 0, you win!"),
+                new SingleDialogue("Joce", "I think I get it..."),
+                new SingleDialogue("Joce", "(...the way she explains things like this feels familiar to me for some reason...)"),
+                new SingleDialogue("Joce", "Ok, I'm ready to battle!")
+            }
+            ), facingDirection,
+            () => BattleSystem.Instance.StartBattle());
+        GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.PokemonBattle, CheckpointState.StartedButNotComplete);
+    }
+
+    public void JaneBattleAgainDialogue(NPCController jane, Vector2 facingDirection)
+    {
+        jane.Talk(new Dialogue(
+            new SingleDialogue[]
+            {
+                new SingleDialogue("???", "Here to battle me again? Let's do it!")
+               
+            }
+            ), facingDirection,
+            () => BattleSystem.Instance.StartBattle()
+            );
+    }
+
+    public void JaneAfterBattleDialogue(NPCController jane, Vector2 facingDirection)
+    {
+        jane.Talk(new Dialogue(
+            new SingleDialogue[]
+            {
+                new SingleDialogue("???", "Nooo, Dumpling!! Joce, you've beaten me!"),
+                new SingleDialogue("Joce", "I remember you now! I can't believe I forgot about you!"),
+                new SingleDialogue("Jane", "It's okay! Good luck on the rest of your journey!"),
+                new SingleDialogue("Jane", "Meanwhile, I'll have to go find where Dumpling ran off to."),
+                new SingleDialogue("Joce", "Goodbye!!"),
+
+            }
+            ), facingDirection,
+            () => BattleSystem.Instance.StartBattle()
+            );
+    }
+
+
     private void RunMultipleActions(IEnumerable<ICutsceneAction> cutsceneActions, Action onFinished = null)
     {
         if (cutsceneActions.Count() == 0)

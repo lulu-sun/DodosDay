@@ -61,6 +61,19 @@ public class GameEventSystem : MonoBehaviour
         });
 
         // Jane
+        AddNPCGameTrigger(NPCType.Jane, new GameEvent[]
+        {
+            new GameEvent(
+                () => GameCheckpoints.Instance.NeverStarted(Checkpoint.PokemonBattle),
+                (n, f) => CutsceneManager.Instance.JaneFirstDialogue(n, f)),
+            new GameEvent(
+                () => GameCheckpoints.Instance.StartedButNotComplete(Checkpoint.PokemonBattle),
+                (n, f) => CutsceneManager.Instance.JaneBattleAgainDialogue(n, f)),
+            new GameEvent(
+                () => GameCheckpoints.Instance.Complete(Checkpoint.PokemonBattle),
+                (n, f) => CutsceneManager.Instance.JaneAfterBattleDialogue(n, f))
+        });
+
         // JuanJuan
         // Rachel
         // Noelle
