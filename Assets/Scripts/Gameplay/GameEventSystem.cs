@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -9,6 +8,8 @@ public class GameEventSystem : MonoBehaviour
 
     private Dictionary<NPCType, GameEventTrigger> npcGameTriggers;
 
+    private Dictionary<string, GameEventTrigger> enterSceneGameTriggers;
+
     private void Awake()
     {
         Instance = this;
@@ -17,11 +18,70 @@ public class GameEventSystem : MonoBehaviour
     private void Start()
     {
         npcGameTriggers = new Dictionary<NPCType, GameEventTrigger>();
+        enterSceneGameTriggers = new Dictionary<string, GameEventTrigger>();
+
+        InitializeGameEvents();
     }
 
-    public void TriggerNPCGameEvent(NPCType npcType, Vector2 facingDirection)
+    public bool TryTriggerNPCGameEvent(NPCType npcType, Vector2 facingDirection)
     {
-        npcGameTriggers[npcType].TriggerGameEvent(facingDirection);
+        if (npcGameTriggers.ContainsKey(npcType))
+        {
+            npcGameTriggers[npcType].TriggerGameEvent(facingDirection);
+            return true;
+        }
+
+        return false;
+    }
+
+    public bool TryTriggerEnterSceneGameEvent(string sceneName)
+    {
+        if (enterSceneGameTriggers.ContainsKey(sceneName))
+        {
+            enterSceneGameTriggers[sceneName].TriggerGameEvent(Vector2.zero);
+            return true;
+        }
+
+        return false;
+    }
+
+    private void InitializeGameEvents()
+    {
+        //// NPC Game events
+
+        // Naomi
+        // Jane
+        // JuanJuan
+        // Rachel
+        // Noelle
+        // Arcade
+        // Radio
+
+        //// Enter Scene Game events
+
+        // Island_n
+        AddEnterSceneGameTrigger("Island_n", new GameEvent[]
+        {
+            new GameEvent(
+                () => GameCheckpoints.Instance.NeverStarted(Checkpoint.NaomiCutscene),
+                (_) => CutsceneManager.Instance.RunNaomiCutscene())
+        });
+    }
+
+    private void AddEnterSceneGameTrigger(string sceneName, IEnumerable<GameEvent> gameEvents)
+    {
+        // Verify sceneName exists.
+        if (!SceneMapper.Instance.SceneNameExists(sceneName))
+        {
+            throw new ArgumentException($"Scene {sceneName} cannot be found. Make sure there are no typos (case sensitive!) and the scene has been added in build settings.");
+        }
+
+        enterSceneGameTriggers[sceneName] = new GameEventTrigger(gameEvents);
+    }
+
+    private void AddNPCGameTrigger(NPCType npcType, IEnumerable<GameEvent> gameEvents)
+    {
+        npcGameTriggers[npcType] = new GameEventTrigger(gameEvents);
     }
 }
 

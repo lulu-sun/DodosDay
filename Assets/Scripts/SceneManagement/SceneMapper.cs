@@ -51,4 +51,9 @@ public class SceneMapper : MonoBehaviour
     {
         return scenesByIndex[sceneIndex];
     }
+
+    public bool SceneNameExists(string sceneName)
+    {
+        return sceneIndicesByName.ContainsKey(sceneName);
+    }
 }

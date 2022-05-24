@@ -18,11 +18,11 @@ public class GameCheckpoints : MonoBehaviour
         gameCheckpointsState = new Dictionary<Checkpoint, CheckpointState>();
         foreach (Checkpoint checkpoint in Enum.GetValues(typeof(Checkpoint)))
         {
-            gameCheckpointsState[checkpoint] = CheckpointState.NotStarted;
+            gameCheckpointsState[checkpoint] = CheckpointState.NeverStarted;
         }
     }
 
-    public CheckpointState GetCheckpointState(Checkpoint checkpoint)
+    public CheckpointState GetState(Checkpoint checkpoint)
     {
         return gameCheckpointsState[checkpoint];
     }
@@ -32,6 +32,21 @@ public class GameCheckpoints : MonoBehaviour
         this.gameCheckpointsState[checktpoint] = checkpointState;
     }
 
+    public bool NeverStarted(Checkpoint checkpoint)
+    {
+        return GetState(checkpoint) == CheckpointState.NeverStarted;
+    }
+
+    public bool NotComplete(Checkpoint checkpoint)
+    {
+        return !Complete(checkpoint);
+    }
+
+    public bool Complete(Checkpoint checkpoint)
+    {
+        return GetState(checkpoint) == CheckpointState.Complete;
+    }
+    
     public void LogCurrentStates()
     {
         string statesString = "GameCheckpoints:\n";
@@ -64,7 +79,7 @@ public enum Checkpoint
 
 public enum CheckpointState
 {
-    NotStarted,
-    NotCompleted,
+    NeverStarted,
+    StartedButNotComplete,
     Complete
 }

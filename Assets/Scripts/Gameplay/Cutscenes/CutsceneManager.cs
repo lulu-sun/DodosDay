@@ -41,15 +41,15 @@ public class CutsceneManager : MonoBehaviour
     // Update is called once per frame
     public void HandleUpdate()
     {
-        if (currentScene.name == "Intro" && !IsRunning)
-        {
-            RunCutscene(IntroCutscene);
-        }
-        else if (currentScene.name == "3_Island_n" && !IsRunning && !naomiCutsceneComplete)
-        {
-            Debug.Log("Naomi Cutscene");
-            RunCutscene(NaomiCutscene);
-        }
+        //if (currentScene.name == "Intro" && !IsRunning)
+        //{
+        //    RunCutscene(IntroCutscene);
+        //}
+        //else if (currentScene.name == "3_Island_n" && !IsRunning && !naomiCutsceneComplete)
+        //{
+        //    Debug.Log("Naomi Cutscene");
+        //    RunCutscene(NaomiCutscene);
+        //}
     }
 
     public void StartCutscene()
@@ -62,11 +62,21 @@ public class CutsceneManager : MonoBehaviour
         OnEndCutscene?.Invoke();
     }
 
-    public void RunCutscene(Action cutscene)
+    private void RunCutscene(Action cutscene)
     {
         IsRunning = true;
 
         cutscene.Invoke();
+    }
+
+    public void RunIntroCutscene()
+    {
+        RunCutscene(IntroCutscene);
+    }
+
+    public void RunNaomiCutscene()
+    {
+        RunCutscene(NaomiCutscene);
     }
 
     private void IntroCutscene()
@@ -79,49 +89,32 @@ public class CutsceneManager : MonoBehaviour
 
         RunMultipleActions(new ICutsceneAction[] {
             new FadeOutAction(fader, 0.5f),
-            //new DialogueAction(names[index], lines[index]),
-            new DialogueAction(new string[]
+            new DialogueAction(new SingleDialogue[]
             {
-                "Joce", "Joce", "???"
-            },
-            new string[]
-            {
-                "...",
-                "...",
-                "You're awake!"
+                new SingleDialogue("Joce", "..."),
+                new SingleDialogue("Joce", "..."),
+                new SingleDialogue("???", "You're awake!"),
             }),
             new FaceDirectionAction(player.Character, Vector2.left),
             new WaitAction(1),
             new FaceDirectionAction(player.Character, Vector2.right),
             new WaitAction(1),
             new FaceDirectionAction(player.Character, Vector2.down),
-            new DialogueAction(new string[]
+            new DialogueAction(new SingleDialogue[]
             {
-                "Joce", "???"
-            },
-            new string[]
-            {
-                "... Where am I? Who are you?",
-                "Oh! How silly, I should introduce myself!"
-
-            }),
-         
+                new SingleDialogue("Joce", "... Where am I? Who are you?"),
+                new SingleDialogue("???", "Oh! How silly, I should introduce myself!"),
+            }),         
             new SetActiveAction(npc, true),
             new FaceDirectionAction(npcChar, Vector2.left),
             new FaceDirectionAction(player.Character, Vector2.right),
-            new DialogueAction(new string[]
+            new DialogueAction(new SingleDialogue[]
             {
-                "Lulu",
-                "Joce",
-                "Lulu", "Lulu", "Lulu"
-            },
-            new string[]
-            {
-                "I'm Lulu, one of your childhood friends! And I'm here to guide you on your journey.",
-                "Wait… If you're my childhood friend, how come I don't remember you?",
-                "A magic spell stole your memories, and now you have to go on a journey to retrieve them.",
-                "At the end, you will receive your heart's desire. But many trials will stand in your way, including familiar faces.",
-                "Defeat them, and you will receive your memories again!"
+                new SingleDialogue("Lulu", "I'm Lulu, one of your childhood friends! And I'm here to guide you on your journey."),
+                new SingleDialogue("Joce", "Wait… If you're my childhood friend, how come I don't remember you?"),
+                new SingleDialogue("Lulu", "A magic spell stole your memories, and now you have to go on a journey to retrieve them."),
+                new SingleDialogue("Lulu", "At the end, you will receive your heart's desire. But many trials will stand in your way, including familiar faces."),
+                new SingleDialogue("Lulu", "Defeat them, and you will receive your memories again!"),
             }),
             new SetActiveAction(npc, false),
             new WaitAction(1),
@@ -142,27 +135,20 @@ public class CutsceneManager : MonoBehaviour
 
             new MoveAction(npcChar, new Vector2(-8.5f, 0f)),
             new FaceDirectionAction(player.Character, Vector2.right),
-            new DialogueAction(new string[]
+            new DialogueAction(new SingleDialogue[]
             {
-                "???", "Joce", "???", "Joce", "???", "???"
-            },
-            new string[]
-            {
-                "You're finally here! Now I can cuddle you FOREVER!!",
-                "W - what? I don't know who you are, I don't want to cuddle you!",
-                "What! You always wanted to cuddle me before!",
-                "Somehow, I don't think that's true...",
-                "Okay fine, I might be exaggerating.",
-                "But if you want to remember me, you have to escape me first!"
+                new SingleDialogue("???", "You're finally here! Now I can cuddle you FOREVER!!"),
+                new SingleDialogue("Joce", "W - what? I don't know who you are, I don't want to cuddle you!"),
+                new SingleDialogue("???", "What! You always wanted to cuddle me before!"),
+                new SingleDialogue("Joce", "Somehow, I don't think that's true..."),
+                new SingleDialogue("???", "Okay fine, I might be exaggerating."),
+                new SingleDialogue("???", "But if you want to remember me, you have to escape me first!"),
             }),
-
-            
+            new FaceDirectionAction(npcChar, Vector2.down)
         }, () => ChasingGameSystem.Instance.StartGame());
        
         naomiCutsceneComplete = true;
     }
-
-
 
     private void RunMultipleActions(IEnumerable<ICutsceneAction> cutsceneActions, Action onFinished = null)
     {

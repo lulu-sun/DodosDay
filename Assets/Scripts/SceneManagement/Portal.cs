@@ -6,7 +6,7 @@ using System.Linq;
 public class Portal : MonoBehaviour
 {
     [SerializeField] float fadeTimeInSeconds = 0.5f;
-    [SerializeField] string sceneToLoad = "";
+    [SerializeField] string sceneToLoadName = "";
     [SerializeField] PortalId portalId = PortalId.A;
     Fader fader;
 
@@ -14,7 +14,7 @@ public class Portal : MonoBehaviour
     {
         if (collision.GetComponent<PlayerController>() != null)
         {
-            Debug.Log($"Player entered the portal with sceneToLoad={sceneToLoad}");
+            Debug.Log($"Player entered the portal with sceneToLoadName={sceneToLoadName}");
             StartCoroutine(SwitchScene());
         }
     }
@@ -31,12 +31,14 @@ public class Portal : MonoBehaviour
         GameController.Instance.Pause();
         yield return fader.FadeIn(fadeTimeInSeconds);
 
-        yield return SceneManager.LoadSceneAsync(SceneMapper.Instance.GetBuildIndexBySceneName(sceneToLoad));
+        yield return SceneManager.LoadSceneAsync(SceneMapper.Instance.GetBuildIndexBySceneName(sceneToLoadName));
 
         var destinationSpawnPoint = FindObjectsOfType<SpawnPoint>().Single(sp => sp.portalId == portalId);
         GameController.Instance.playerController.transform.position = destinationSpawnPoint.transform.position;
 
         yield return fader.FadeOut(fadeTimeInSeconds);
+
+        GameEventSystem.Instance.TryTriggerEnterSceneGameEvent(sceneToLoadName);
         GameController.Instance.Unpause();
 
         Destroy(gameObject);

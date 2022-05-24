@@ -39,7 +39,7 @@ public class DialogueManager : MonoBehaviour
         onDialogueFinished = onFinished;
 
         dialogueBox.SetActive(true);
-        StartCoroutine(TypeDialogue(dialogue.Names[0], dialogue.Lines[0]));
+        StartCoroutine(TypeDialogue(dialogue.Dialogues[0]));
     }
 
     public void HandleUpdate()
@@ -47,9 +47,9 @@ public class DialogueManager : MonoBehaviour
         if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)) && !isTyping)
         {
             ++currentLine;
-            if (currentLine < dialogue.Lines.Count)
+            if (currentLine < dialogue.Dialogues.Count)
             {
-                StartCoroutine(TypeDialogue(dialogue.Names[currentLine], dialogue.Lines[currentLine]));
+                StartCoroutine(TypeDialogue(dialogue.Dialogues[currentLine]));
             }
             else
             {
@@ -62,14 +62,14 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public IEnumerator TypeDialogue(string name, string line)
+    public IEnumerator TypeDialogue(SingleDialogue singleDialogue)
     {
         isTyping = true;
-        dialogueName.text = name;
+        dialogueName.text = singleDialogue.Name;
         AudioManager.Instance.PlayTypingSfx();
 
         dialogueText.text = "";
-        foreach (var letter in line.ToCharArray())
+        foreach (var letter in singleDialogue.Line.ToCharArray())
         {
             dialogueText.text += letter;
             yield return new WaitForSeconds(1f / lettersPerSecond);

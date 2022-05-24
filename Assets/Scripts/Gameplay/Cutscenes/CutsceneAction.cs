@@ -14,9 +14,9 @@ public class DialogueAction : ICutsceneAction
 {
     private Dialogue dialogue;
 
-    public DialogueAction(string[] names, string[] lines)
+    public DialogueAction(SingleDialogue[] dialogues)
     {
-        dialogue = new Dialogue(new List<string>(names), new List<string>(lines));
+        dialogue = new Dialogue(dialogues);
     }
 
     public IEnumerator PerformAction(Action onFinished = null)
