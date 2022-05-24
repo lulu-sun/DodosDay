@@ -11,6 +11,8 @@ public class ChasingGameSystem : MonoBehaviour
 
     [SerializeField] Camera chasingGameCamera;
 
+    public float winningTime = 20f;
+
     public event Action OnStartGame;
     
     public event Action OnEndGame;
@@ -34,6 +36,8 @@ public class ChasingGameSystem : MonoBehaviour
     private Character chaserCharacter;
 
     private float timerInSeconds = 0f;
+
+    public float FinishTime { get; private set; }
 
     public float getFasterTimeInSeconds = 5f;
 
@@ -69,6 +73,15 @@ public class ChasingGameSystem : MonoBehaviour
         OnEndGame += () =>
         {
             chasingGameCamera.gameObject.SetActive(false);
+            FinishTime = timerInSeconds;
+
+            var state = CheckpointState.StartedButNotComplete;
+            if (FinishTime >= winningTime)
+            {
+                state = CheckpointState.Complete;
+            }
+
+            GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.ChasingGame, state);
             IsRunning = false;
         };
 

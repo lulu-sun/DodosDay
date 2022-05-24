@@ -9,8 +9,6 @@ public class CutsceneManager : MonoBehaviour
 {
     public Scene currentScene;
 
-    public bool IsRunning;
-
     PlayerController player;
 
     [SerializeField] GameObject luluPrefab;
@@ -22,8 +20,6 @@ public class CutsceneManager : MonoBehaviour
     Fader fader;
 
     public static CutsceneManager Instance { get; private set; }
-
-    private bool naomiCutsceneComplete;
     
     private void Awake()
     {
@@ -52,6 +48,7 @@ public class CutsceneManager : MonoBehaviour
         //}
     }
 
+    // change game mode
     public void StartCutscene()
     {
         OnStartCutscene?.Invoke();
@@ -62,21 +59,17 @@ public class CutsceneManager : MonoBehaviour
         OnEndCutscene?.Invoke();
     }
 
-    private void RunCutscene(Action cutscene)
-    {
-        IsRunning = true;
-
-        cutscene.Invoke();
-    }
-
     public void RunIntroCutscene()
     {
-        RunCutscene(IntroCutscene);
+        IntroCutscene();
     }
 
     public void RunNaomiCutscene()
     {
-        RunCutscene(NaomiCutscene);
+        StartCutscene();
+        NaomiFirstCutscene();
+
+        GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.NaomiCutscene, CheckpointState.Complete);
     }
 
     private void IntroCutscene()
@@ -125,16 +118,21 @@ public class CutsceneManager : MonoBehaviour
         });
     }
 
-    private void NaomiCutscene()
+    private void NaomiFirstCutscene()
     {
-        GameObject npc = Instantiate(naomiPrefab, new Vector3(9.5f, 12f, 0f), Quaternion.identity);
+        GameObject npc = Instantiate(naomiPrefab, new Vector3(9.5f, 12.5f, 0f), Quaternion.identity);
+        npc.GetComponent<NPCController>().npcType = NPCType.Naomi;
         Character npcChar = npc.GetComponent<Character>();
 
-
-        RunMultipleActions(new ICutsceneAction[] {
-
-            new MoveAction(npcChar, new Vector2(-8.5f, 0f)),
+        RunMultipleActions(new ICutsceneAction[]
+        {
+            new DialogueAction(new SingleDialogue[]
+            {
+                new SingleDialogue("???", "!! Wait!!!"),
+                new SingleDialogue("Joce", "!!")
+            }),
             new FaceDirectionAction(player.Character, Vector2.right),
+            new MoveAction(npcChar, new Vector2(-8.5f, 0f)),
             new DialogueAction(new SingleDialogue[]
             {
                 new SingleDialogue("???", "You're finally here! Now I can cuddle you FOREVER!!"),
@@ -146,22 +144,50 @@ public class CutsceneManager : MonoBehaviour
             }),
             new FaceDirectionAction(npcChar, Vector2.down)
         }, () => ChasingGameSystem.Instance.StartGame());
-       
-        naomiCutsceneComplete = true;
+    }
+
+    public void SpawnNaomi()
+    {
+        GameObject npc = Instantiate(naomiPrefab, new Vector3(10f, 12.5f, 0f), Quaternion.identity);
+        npc.GetComponent<NPCController>().npcType = NPCType.Naomi;
+    }
+
+    public void NaomiTryAgainDialogue(NPCController naomi, Vector2 facingDirection)
+    {
+        naomi.Talk(new Dialogue(
+            new SingleDialogue[]
+            {
+                new SingleDialogue("???", $"I caught you in only {ChasingGameSystem.Instance.FinishTime} seconds!"),
+                new SingleDialogue("???", "You can do better than that!")
+            }),
+            facingDirection,
+            () => ChasingGameSystem.Instance.StartGame());
+    }
+
+    public void NaomiCompletedDialogue(NPCController naomi, Vector2 facingDirection)
+    {
+        naomi.Talk(new Dialogue(
+            new SingleDialogue[]
+            {
+                new SingleDialogue("???", $"Wow! You evaded me for {ChasingGameSystem.Instance.FinishTime} seconds. Do you remember my name now?"),
+                new SingleDialogue("Joce", "Naomi! I can't believe I forgot about you!"),
+                new SingleDialogue("Naomi", "That’s okay, you remember me now!"),
+                new SingleDialogue("Naomi", "*HUGS*")
+            }),
+            facingDirection);
     }
 
     private void RunMultipleActions(IEnumerable<ICutsceneAction> cutsceneActions, Action onFinished = null)
     {
         if (cutsceneActions.Count() == 0)
         {
-            IsRunning = false;
-            onFinished?.Invoke();
             EndCutscene();
+            onFinished?.Invoke();
             return;
         }
 
         StartCoroutine(cutsceneActions.First().PerformAction(() => {
-            RunMultipleActions(cutsceneActions.Skip(1));
+            RunMultipleActions(cutsceneActions.Skip(1), onFinished);
         }));
     }
 }

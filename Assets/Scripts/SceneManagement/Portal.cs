@@ -38,8 +38,8 @@ public class Portal : MonoBehaviour
 
         yield return fader.FadeOut(fadeTimeInSeconds);
 
-        GameEventSystem.Instance.TryTriggerEnterSceneGameEvent(sceneToLoadName);
         GameController.Instance.Unpause();
+        GameEventSystem.Instance.TryTriggerEnterSceneGameEvent(sceneToLoadName);
 
         Destroy(gameObject);
     }

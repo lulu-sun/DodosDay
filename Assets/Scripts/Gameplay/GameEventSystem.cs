@@ -23,11 +23,11 @@ public class GameEventSystem : MonoBehaviour
         InitializeGameEvents();
     }
 
-    public bool TryTriggerNPCGameEvent(NPCType npcType, Vector2 facingDirection)
+    public bool TryTriggerNPCGameEvent(NPCController npc, Vector2 facingDirection)
     {
-        if (npcGameTriggers.ContainsKey(npcType))
+        if (npcGameTriggers.ContainsKey(npc.npcType))
         {
-            npcGameTriggers[npcType].TriggerGameEvent(facingDirection);
+            npcGameTriggers[npc.npcType].TriggerGameEvent(npc, facingDirection);
             return true;
         }
 
@@ -38,7 +38,7 @@ public class GameEventSystem : MonoBehaviour
     {
         if (enterSceneGameTriggers.ContainsKey(sceneName))
         {
-            enterSceneGameTriggers[sceneName].TriggerGameEvent(Vector2.zero);
+            enterSceneGameTriggers[sceneName].TriggerGameEvent(null, Vector2.zero);
             return true;
         }
 
@@ -50,6 +50,16 @@ public class GameEventSystem : MonoBehaviour
         //// NPC Game events
 
         // Naomi
+        AddNPCGameTrigger(NPCType.Naomi, new GameEvent[]
+        {
+            new GameEvent(
+                () => GameCheckpoints.Instance.NotComplete(Checkpoint.ChasingGame),
+                (n, f) => CutsceneManager.Instance.NaomiTryAgainDialogue(n, f)),
+            new GameEvent(
+                () => GameCheckpoints.Instance.Complete(Checkpoint.ChasingGame),
+                (n, f) => CutsceneManager.Instance.NaomiCompletedDialogue(n, f))
+        });
+
         // Jane
         // JuanJuan
         // Rachel
@@ -64,7 +74,10 @@ public class GameEventSystem : MonoBehaviour
         {
             new GameEvent(
                 () => GameCheckpoints.Instance.NeverStarted(Checkpoint.NaomiCutscene),
-                (_) => CutsceneManager.Instance.RunNaomiCutscene())
+                (n, f) => CutsceneManager.Instance.RunNaomiCutscene()),
+            new GameEvent(
+                () => GameCheckpoints.Instance.Complete(Checkpoint.NaomiCutscene),
+                (n, f) => CutsceneManager.Instance.SpawnNaomi())
         });
     }
 
@@ -92,19 +105,19 @@ public class GameEvent
     private Func<bool> shouldEventTrigger;
 
     // runs the gameEvent
-    private Action<Vector2> gameEvent;
+    private Action<NPCController, Vector2> gameEvent;
 
-    public GameEvent(Func<bool> shouldEventTrigger, Action<Vector2> gameEvent)
+    public GameEvent(Func<bool> shouldEventTrigger, Action<NPCController, Vector2> gameEvent)
     {
         this.shouldEventTrigger = shouldEventTrigger;
         this.gameEvent = gameEvent;
     }
 
-    public bool TryRunGameEvent(Vector2 facingDirection)
+    public bool TryRunGameEvent(NPCController npc, Vector2 facingDirection)
     {
         if (this.shouldEventTrigger())
         {
-            this.gameEvent(facingDirection);
+            this.gameEvent(npc, facingDirection);
             return true;
         }
 
@@ -123,11 +136,11 @@ public class GameEventTrigger
         this.gameEvents = new List<GameEvent>(gameEvents);
     }
 
-    public void TriggerGameEvent(Vector2 facingDirection)
+    public void TriggerGameEvent(NPCController npc, Vector2 facingDirection)
     {
         foreach (GameEvent gameEvent in gameEvents)
         {
-            if (gameEvent.TryRunGameEvent(facingDirection))
+            if (gameEvent.TryRunGameEvent(npc, facingDirection))
             {
                 break;
             }

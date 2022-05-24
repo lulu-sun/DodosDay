@@ -36,42 +36,44 @@ public class NPCController : MonoBehaviour, Interactable
     public void Interact(Vector2 facingDirection)
     {
         Debug.Log("NPC Interact");
-        switch (npcType)
-        {
-            case NPCType.Lulu:
-                Talk(facingDirection);
-                break;
-            case NPCType.Jane:
-                Talk(facingDirection);
-                break;
-            case NPCType.Naomi:
-                Talk(facingDirection, () => ChasingGameSystem.Instance.StartGame());
-                break;
-            case NPCType.JuanJuan:
-                Talk(facingDirection, () => CatchingGameSystem.Instance.StartGame());
-                break;
-            case NPCType.Rachel:
-                Talk(facingDirection);
-                break;
-            case NPCType.Noelle:
-                Talk(facingDirection);
-                break;
-            case NPCType.Ollie:
-                //Talk(facingDirection);
-                Talk(facingDirection, () => BattleSystem.Instance.StartBattle());
-                break;
-            case NPCType.ArcadeMachine:
-                Talk(Vector2.zero, () => CatchingGameSystem.Instance.StartGame());
-                break;
-            case NPCType.Radio:
-                Debug.Log("Radio");
-                Talk(facingDirection, () => AudioManager.Instance.PlayDay6Music());
-                break;
-            case NPCType.Default:
-            default:
-                Talk(facingDirection);
-                break;
-        }
+
+        GameEventSystem.Instance.TryTriggerNPCGameEvent(this, facingDirection);
+        //switch (npcType)
+        //{
+        //    case NPCType.Lulu:
+        //        Talk(facingDirection);
+        //        break;
+        //    case NPCType.Jane:
+        //        Talk(facingDirection);
+        //        break;
+        //    case NPCType.Naomi:
+        //        Talk(facingDirection, () => ChasingGameSystem.Instance.StartGame());
+        //        break;
+        //    case NPCType.JuanJuan:
+        //        Talk(facingDirection, () => CatchingGameSystem.Instance.StartGame());
+        //        break;
+        //    case NPCType.Rachel:
+        //        Talk(facingDirection);
+        //        break;
+        //    case NPCType.Noelle:
+        //        Talk(facingDirection);
+        //        break;
+        //    case NPCType.Ollie:
+        //        //Talk(facingDirection);
+        //        Talk(facingDirection, () => BattleSystem.Instance.StartBattle());
+        //        break;
+        //    case NPCType.ArcadeMachine:
+        //        Talk(Vector2.zero, () => CatchingGameSystem.Instance.StartGame());
+        //        break;
+        //    case NPCType.Radio:
+        //        Debug.Log("Radio");
+        //        Talk(facingDirection, () => AudioManager.Instance.PlayDay6Music());
+        //        break;
+        //    case NPCType.Default:
+        //    default:
+        //        Talk(facingDirection);
+        //        break;
+        //}
         
         // Talk(facingDirection, () => BattleSystem.Instance.StartBattle());
         // Talk(facingDirection);
@@ -85,12 +87,12 @@ public class NPCController : MonoBehaviour, Interactable
         // }));
     }
 
-    private void Talk(Vector2 facingDirection, Action onFinished = null)
+    public void Talk(Vector2 facingDirection, Action onFinished = null)
     {
         Talk(dialogue, facingDirection, onFinished);
     }
 
-    private void Talk(Dialogue dialogue, Vector2 facingDirection, Action onFinished = null)
+    public void Talk(Dialogue dialogue, Vector2 facingDirection, Action onFinished = null)
     {
         if (state == NPCState.Idle)
         {
