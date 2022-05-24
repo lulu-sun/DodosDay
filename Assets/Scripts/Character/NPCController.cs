@@ -14,6 +14,7 @@ public enum NPCType
     Noelle,
     Ollie,
     ArcadeMachine,
+    Radio,
     ChasingGameChaser
 }
 
@@ -34,6 +35,7 @@ public class NPCController : MonoBehaviour, Interactable
 
     public void Interact(Vector2 facingDirection)
     {
+        Debug.Log("NPC Interact");
         switch (npcType)
         {
             case NPCType.Lulu:
@@ -60,6 +62,10 @@ public class NPCController : MonoBehaviour, Interactable
                 break;
             case NPCType.ArcadeMachine:
                 CatchingGameSystem.Instance.StartGame();
+                break;
+            case NPCType.Radio:
+                Debug.Log("Radio");
+                Talk(facingDirection, () => AudioManager.Instance.PlayDay6Music());
                 break;
             case NPCType.Default:
             default:

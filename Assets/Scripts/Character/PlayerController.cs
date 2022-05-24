@@ -54,6 +54,7 @@ public class PlayerController : MonoBehaviour
 
         if (Controls.GetSelectKeyDown())
         {
+            Debug.Log("Player trying to interact");
             Interact();
         }
 
@@ -104,6 +105,7 @@ public class PlayerController : MonoBehaviour
         var collider = Physics2D.OverlapCircle(interactPos, 0.3f, GameLayers.Instance.InteractableLayer);
         if (collider != null)
         {
+            Debug.Log(collider.GetComponent<Interactable>());
             collider.GetComponent<Interactable>()?.Interact(character.Direction);
         }
     }
