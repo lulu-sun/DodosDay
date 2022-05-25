@@ -116,12 +116,12 @@ public class NPCController : MonoBehaviour, Interactable
 
     public void Walk(Vector2 movement, Action onFinished = null)
     {
-        StartCoroutine(character.Move(movement, onFinished));
+        StartCoroutine(character.Move(movement, onFinished: onFinished));
     }
 
     public IEnumerator WalkEnumerator(Vector2 movement, Action onFinished = null)
     {
-        yield return character.Move(movement, onFinished);
+        yield return character.Move(movement, onFinished: onFinished);
     }
 
 
@@ -145,7 +145,7 @@ public class NPCController : MonoBehaviour, Interactable
                 {
                     idleTimer = 0f;
                     state = NPCState.Walking;
-                    yield return character.Move(movementPattern[currentPatternIndex], () => {
+                    yield return character.Move(movementPattern[currentPatternIndex], onFinished: () => {
                         state = NPCState.Idle;
                     });
                     currentPatternIndex++;

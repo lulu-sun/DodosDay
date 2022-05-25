@@ -142,9 +142,21 @@ public class CutsceneManager : MonoBehaviour
                 new SingleDialogue("???", "What! You always wanted to cuddle me before!"),
                 new SingleDialogue("Joce", "Somehow, I don't think that's true..."),
                 new SingleDialogue("???", "Okay fine, I might be exaggerating."),
-                new SingleDialogue("???", "But if you want to remember me, you have to escape me first!"),
+                new SingleDialogue("???", "But you don't have a choice, because I'm going to hug you anyway!"),
+                new SingleDialogue("Joce", "What?? No!!"),
             }),
-            new FaceDirectionAction(npcChar, Vector2.down)
+            new FaceDirectionAction(player.Character, Vector2.left),
+            new MoveAction(player.Character, new Vector2(-6.5f, 0f)),
+
+            new FaceDirectionAction(npcChar, Vector2.left),
+            new MoveAction(npcChar, new Vector2(-6.5f, 0f)),
+
+            new FaceDirectionAction(player.Character, Vector2.down),
+            new MoveAction(player.Character, new Vector2(0f, -10f)),
+
+            new FaceDirectionAction(npcChar, Vector2.down),
+            new MoveAction(npcChar, new Vector2(0f, -10f)),
+
         }, () => ChasingGameSystem.Instance.StartGame());
     }
 

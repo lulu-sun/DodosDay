@@ -78,7 +78,7 @@ public class MoveAction : ICutsceneAction
 
     public IEnumerator PerformAction(Action onFinished = null)
     {
-        yield return character.Move(movement, onFinished);
+        yield return character.Move(movement, true, onFinished);
     }
 }
 
