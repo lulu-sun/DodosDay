@@ -375,7 +375,7 @@ public class CutsceneManager : MonoBehaviour
                 new SingleDialogue("Joce", "I'll be right back with your cheese..."),
 
             }), facingDirection,
-            () => ScavengerGameSystem.Instance.StartGame());
+            () => CheeseGameSystem.Instance.StartGame());
 
         GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.CheeseGame, CheckpointState.StartedButNotComplete);
     }
@@ -387,10 +387,35 @@ public class CutsceneManager : MonoBehaviour
             {
                 new SingleDialogue("???", "Do you have all the cheese yet? Mmm, you kind of smell like cheese..."),
                 
-            }), facingDirection,
-            () => CatchingGameSystem.Instance.StartGame());
+            }), facingDirection);
     }
 
+    public void RachelHasCheeseDialogue(NPCController rachel, Vector2 facingDirection)
+    {
+        rachel.Talk(new Dialogue(
+            new SingleDialogue[]
+            {
+                new SingleDialogue("???", "YES! The cheese! Thank you so much!"),
+                new SingleDialogue("???", "To fulfill my promise, my name is -"),
+                new SingleDialogue("Joce", "RACHEL! I remember you now!"),
+                new SingleDialogue("Rachel", "Finally!! Would you like to eat some of this cheese with me?"),
+                new SingleDialogue("Joce", "I would love to, but I think I have to go. I'm looking for my heart's desire."),
+                new SingleDialogue("Rachel", "Oh, it's not cheese? Well, I hope you find it, whatever it is!"),
+                new SingleDialogue("Joce", "I hope so too!"),
+
+            }), facingDirection);
+    }
+
+    public void RachelEndGameDialogue(NPCController rachel, Vector2 facingDirection)
+    {
+        rachel.Talk(new Dialogue(
+            new SingleDialogue[]
+            {
+                new SingleDialogue("Rachel", "Can you help me get some more cheese?"),
+
+            }), facingDirection,
+            () => CheeseGameSystem.Instance.StartGame());
+    }
 
     private void RunMultipleActions(IEnumerable<ICutsceneAction> cutsceneActions, Action onFinished = null)
     {

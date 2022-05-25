@@ -115,6 +115,27 @@ public class GameEventSystem : MonoBehaviour
         });
 
         // Rachel
+
+        AddNPCGameTrigger(NPCType.Rachel, new GameEvent[]
+        {
+            new GameEvent(
+                () => GameCheckpoints.Instance.NeverStarted(Checkpoint.CheeseGame),
+                (n, f) => CutsceneManager.Instance.RachelFirstDialogue(n, f)),
+
+            new GameEvent(
+                () => GameCheckpoints.Instance.StartedButNotComplete(Checkpoint.CheeseGame),
+                (n, f) => CutsceneManager.Instance.RachelWaitingDialogue(n, f)),
+
+            new GameEvent(
+                () => GameCheckpoints.Instance.Complete(Checkpoint.GameCompleted),
+                (n, f) => CutsceneManager.Instance.RachelEndGameDialogue(n, f)),
+
+            new GameEvent(
+                () => GameCheckpoints.Instance.Complete(Checkpoint.CheeseGame),
+                (n, f) => CutsceneManager.Instance.RachelHasCheeseDialogue(n, f))
+        });
+
+
         // Noelle
         // Radio
 
