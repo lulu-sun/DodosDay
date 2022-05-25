@@ -20,7 +20,7 @@ public class Character : MonoBehaviour
         isPlayer = GetComponent<PlayerController>() != null;
     }
 
-    public void Animate(Vector2 movement)
+    public void UpdateAnimator(Vector2 movement)
     {
         if (movement.x != 0 && movement.y != 0)
         {
@@ -72,7 +72,11 @@ public class Character : MonoBehaviour
             // Debug.Log($"{transform.position}, {targetPosition}, {Vector2.Distance(targetPosition, new Vector2(transform.position.x, transform.position.y))}");
 
             MoveOneFrame(moveDir);
-            Animate(moveDir);
+            UpdateAnimator(moveDir);
+            if (isPlayer)
+            {
+                animator.HandleUpdate();
+            }
             yield return null;
         }
 
@@ -90,8 +94,9 @@ public class Character : MonoBehaviour
         animator.HandleUpdate();
     }
 
-    public void MoveOneFrame(Vector2 direction)
+    public void MoveOneFrame(Vector2 movement)
     {
-        rb.MovePosition(rb.position + direction * moveSpeed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        UpdateAnimator(movement);
     }
 }

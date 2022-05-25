@@ -9,8 +9,6 @@ public class PlayerController : MonoBehaviour
 
     Character character; 
 
-    [SerializeField] bool allowDiagonalMovement = false;
-
     public Character Character { get => character; }
 
     private void Awake()
@@ -31,6 +29,8 @@ public class PlayerController : MonoBehaviour
         {
             NormalHandleUpdate();
         }
+
+        character.HandleUpdate();
     }
 
     private void NormalHandleUpdate()
@@ -38,14 +38,11 @@ public class PlayerController : MonoBehaviour
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
-        if (!allowDiagonalMovement)
+        // Prevent diagonal movement by prioritizing
+        // horizontal movement.
+        if (movement.x != 0)
         {
-            // Prevent diagonal movement by prioritizing
-            // horizontal movement.
-            if (movement.x != 0)
-            {
-                movement.y = 0;
-            }
+            movement.y = 0;
         }
 
         movement.Normalize();
@@ -57,8 +54,6 @@ public class PlayerController : MonoBehaviour
         }
 
         character.MoveOneFrame(movement);
-        character.HandleUpdate();
-        character.Animate(movement);
     }
 
     private void IceRinkHandleUpdate()
@@ -78,11 +73,10 @@ public class PlayerController : MonoBehaviour
         if (!IceRinkGameHelper.Instance.IsSliding(transform.position))
         {
             IceRinkGameHelper.Instance.SlideDirection = movement;
-            character.Animate(movement);
+            //character.UpdateAnimator(movement);
         }
 
         character.MoveOneFrame(IceRinkGameHelper.Instance.SlideDirection);
-        character.HandleUpdate();
 
         IceRinkGameHelper.Instance.PreviousFramePosition = transform.position;
     }
