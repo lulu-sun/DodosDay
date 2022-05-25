@@ -10,11 +10,14 @@ public class Character : MonoBehaviour
 
     Rigidbody2D rb;
 
+    bool isPlayer;
+
     // Start is called before the first frame update
     void Awake()
     {
         animator = GetComponent<CharacterAnimator>();
         rb = GetComponent<Rigidbody2D>();
+        isPlayer = GetComponent<PlayerController>() != null;
     }
 
     public void Animate(Vector2 movement)
@@ -73,7 +76,10 @@ public class Character : MonoBehaviour
             yield return null;
         }
 
-        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        if (!isPlayer)
+        {
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        }    
         animator.IsMoving = false;
 
         onMoveOver?.Invoke();

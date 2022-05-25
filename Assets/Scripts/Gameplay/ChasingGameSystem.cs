@@ -67,7 +67,7 @@ public class ChasingGameSystem : MonoBehaviour
             nextTimeCheckPointInSeconds = getFasterTimeInSeconds;
             chasingGameCamera.gameObject.SetActive(true);
             IsRunning = true;
-           
+
             StartCoroutine(ChasePlayer());
         };
 

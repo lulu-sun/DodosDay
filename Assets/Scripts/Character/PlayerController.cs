@@ -11,8 +11,6 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] bool allowDiagonalMovement = false;
 
-    [SerializeField] bool animate = true;
-
     public Character Character { get => character; }
 
     private void Awake()
@@ -60,10 +58,7 @@ public class PlayerController : MonoBehaviour
 
         character.MoveOneFrame(movement);
         character.HandleUpdate();
-        if (animate)
-        {
-            character.Animate(movement);
-        }
+        character.Animate(movement);
     }
 
     private void IceRinkHandleUpdate()

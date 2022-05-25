@@ -4,17 +4,30 @@ using UnityEngine;
 using System;
 using UnityEngine.SceneManagement;
 
+public interface ICutsceneAction { }
 
-public interface ICutsceneAction
+public interface ISingleCutsceneAction : ICutsceneAction
 {
     public IEnumerator PerformAction(Action onFinished = null);
 }
 
-public class DialogueAction : ICutsceneAction
+public class MultipleSimultaneousCutsceneAction : ICutsceneAction
+{
+    private List<ISingleCutsceneAction> cutsceneActions;
+
+    public MultipleSimultaneousCutsceneAction(IEnumerable<ISingleCutsceneAction> cutsceneActions)
+    {
+        this.cutsceneActions = new List<ISingleCutsceneAction>(cutsceneActions);
+    }
+
+    public IEnumerable<ISingleCutsceneAction> CutsceneActions { get => cutsceneActions; }
+}
+
+public class DialogueAction : ISingleCutsceneAction
 {
     private Dialogue dialogue;
 
-    public DialogueAction(SingleDialogue[] dialogues)
+    public DialogueAction(IEnumerable<SingleDialogue> dialogues)
     {
         dialogue = new Dialogue(dialogues);
     }
@@ -25,7 +38,7 @@ public class DialogueAction : ICutsceneAction
     }
 }
 
-public class FaceDirectionAction : ICutsceneAction
+public class FaceDirectionAction : ISingleCutsceneAction
 {
     private Character character;
 
@@ -47,7 +60,7 @@ public class FaceDirectionAction : ICutsceneAction
     }
 }
 
-public class WaitAction : ICutsceneAction
+public class WaitAction : ISingleCutsceneAction
 {
     private float seconds;
 
@@ -64,7 +77,7 @@ public class WaitAction : ICutsceneAction
     }
 }
 
-public class MoveAction : ICutsceneAction
+public class MoveAction : ISingleCutsceneAction
 {
     private Character character;
 
@@ -82,7 +95,7 @@ public class MoveAction : ICutsceneAction
     }
 }
 
-public class InstantiateAction : ICutsceneAction
+public class InstantiateAction : ISingleCutsceneAction
 {
     private GameObject prefab;
 
@@ -102,7 +115,7 @@ public class InstantiateAction : ICutsceneAction
     }
 }
 
-public class SetActiveAction : ICutsceneAction
+public class SetActiveAction : ISingleCutsceneAction
 {
     private GameObject gameObject;
 
@@ -122,7 +135,7 @@ public class SetActiveAction : ICutsceneAction
     }
 }
 
-public class ChangeSceneAction : ICutsceneAction
+public class ChangeSceneAction : ISingleCutsceneAction
 {
     private int sceneToLoad;
 
@@ -139,7 +152,7 @@ public class ChangeSceneAction : ICutsceneAction
     }
 }
 
-public class FadeInAction : ICutsceneAction
+public class FadeInAction : ISingleCutsceneAction
 {
     private Fader fader;
 
@@ -159,7 +172,7 @@ public class FadeInAction : ICutsceneAction
     }
 }
 
-public class FadeOutAction : ICutsceneAction
+public class FadeOutAction : ISingleCutsceneAction
 {
     private Fader fader;
 

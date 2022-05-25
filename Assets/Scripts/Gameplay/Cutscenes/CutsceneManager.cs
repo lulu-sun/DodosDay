@@ -82,7 +82,7 @@ public class CutsceneManager : MonoBehaviour
         npc.SetActive(false);
         Character npcChar = npc.GetComponent<Character>();
 
-        RunMultipleActions(new ICutsceneAction[] {
+        RunMultipleActions(new ISingleCutsceneAction[] {
             new FadeOutAction(fader, 0.5f),
             new DialogueAction(new SingleDialogue[]
             {
@@ -126,7 +126,7 @@ public class CutsceneManager : MonoBehaviour
         npc.GetComponent<NPCController>().npcType = NPCType.Naomi;
         Character npcChar = npc.GetComponent<Character>();
 
-        RunMultipleActions(new ICutsceneAction[]
+        RunMultipleActions(new ISingleCutsceneAction[]
         {
             new DialogueAction(new SingleDialogue[]
             {
@@ -137,19 +137,19 @@ public class CutsceneManager : MonoBehaviour
             new MoveAction(npcChar, new Vector2(-8.5f, 0f)),
             new DialogueAction(new SingleDialogue[]
             {
-                new SingleDialogue("???", "You're finally here! Now I can cuddle you FOREVER!!"),
-                new SingleDialogue("Joce", "W - what? I don't know who you are, I don't want to cuddle you!"),
-                new SingleDialogue("???", "What! You always wanted to cuddle me before!"),
-                new SingleDialogue("Joce", "Somehow, I don't think that's true..."),
-                new SingleDialogue("???", "Okay fine, I might be exaggerating."),
+                //new SingleDialogue("???", "You're finally here! Now I can cuddle you FOREVER!!"),
+                //new SingleDialogue("Joce", "W - what? I don't know who you are, I don't want to cuddle you!"),
+                //new SingleDialogue("???", "What! You always wanted to cuddle me before!"),
+                //new SingleDialogue("Joce", "Somehow, I don't think that's true..."),
+                //new SingleDialogue("???", "Okay fine, I might be exaggerating."),
                 new SingleDialogue("???", "But you don't have a choice, because I'm going to hug you anyway!"),
                 new SingleDialogue("Joce", "What?? No!!"),
             }),
-            new FaceDirectionAction(player.Character, Vector2.left),
-            new MoveAction(player.Character, new Vector2(-6.5f, 0f)),
+            //new FaceDirectionAction(player.Character, Vector2.left),
+            //new MoveAction(player.Character, new Vector2(-1f, 0f)),
 
-            new FaceDirectionAction(npcChar, Vector2.left),
-            new MoveAction(npcChar, new Vector2(-6.5f, 0f)),
+            //new FaceDirectionAction(npcChar, Vector2.left),
+            //new MoveAction(npcChar, new Vector2(-1f, 0f)),
 
             new FaceDirectionAction(player.Character, Vector2.down),
             new MoveAction(player.Character, new Vector2(0f, -10f)),
@@ -311,8 +311,23 @@ public class CutsceneManager : MonoBehaviour
             return;
         }
 
-        StartCoroutine(cutsceneActions.First().PerformAction(() => {
+        ICutsceneAction cutsceneAction = cutsceneActions.First();
+
+        ISingleCutsceneAction singleCutsceneAction = cutsceneAction as ISingleCutsceneAction;
+
+        if (cutsceneAction is MultipleSimultaneousCutsceneAction multipleCutsceneAction)
+        {
+            foreach (ISingleCutsceneAction c in multipleCutsceneAction.CutsceneActions.Skip(1))
+            {
+                StartCoroutine(c.PerformAction());
+            }
+
+            singleCutsceneAction = multipleCutsceneAction.CutsceneActions.First();
+        }
+
+        StartCoroutine(singleCutsceneAction.PerformAction(() => {
             RunMultipleActions(cutsceneActions.Skip(1), onFinished);
         }));
+
     }
 }

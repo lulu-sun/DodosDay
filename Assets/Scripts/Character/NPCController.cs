@@ -158,12 +158,10 @@ public class NPCController : MonoBehaviour, Interactable
 
     private void Update()
     {
-        if (DialogueManager.Instance.IsShowing)
+        if (!DialogueManager.Instance.IsShowing)
         {
-            return;
+            character.HandleUpdate();
         }
-
-        character.HandleUpdate();
     }
     
     private void Awake()
