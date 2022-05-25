@@ -417,6 +417,101 @@ public class CutsceneManager : MonoBehaviour
             () => CheeseGameSystem.Instance.StartGame());
     }
 
+    public void NoelleFirstDialogue(NPCController noelle, Vector2 facingDirection)
+    {
+        noelle.Talk(new Dialogue(
+            new SingleDialogue[]
+            {
+                new SingleDialogue("???", "Hey! Are you ready to start studying?"),
+                new SingleDialogue("Joce", "Study? I don't think I'm in school anymore. And who are you?"),
+                new SingleDialogue("???", "Never mind that, we have a lot of work to do!"),
+                new SingleDialogue("???", "The only thing that could make all this work tolerable would be some wings..."),
+                new SingleDialogue("???", "I heard there's a pop-up stand at the Norris ice rink. Could you buy us some wings?"),
+                new SingleDialogue("???", "We can even watch a scary tv show together when you get back!"),
+                new SingleDialogue("Joce", "Hmm, this feels somewhat familiar to me. I'll be right back with the wings!"),
+
+            }), facingDirection);
+
+        GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.IceRinkGame, CheckpointState.StartedButNotComplete);
+    }
+
+    public void NoelleWaitingDialogue(NPCController noelle, Vector2 facingDirection)
+    {
+        noelle.Talk(new Dialogue(
+            new SingleDialogue[]
+            {
+                new SingleDialogue("???", "Are you back with the wings?"),
+            }), facingDirection);
+    }
+
+    public void NoelleCompletedDialogue(NPCController noelle, Vector2 facingDirection)
+    {
+        noelle.Talk(new Dialogue(
+            new SingleDialogue[]
+            {
+                new SingleDialogue("???", "You're back! Let's get some work done!"),
+                new SingleDialogue("Joce", "Noelle! How could I have forgotten! We used to do this all the time together!"),
+                new SingleDialogue("Noelle", "Now you're one step closer to remembering everything...and him."),
+                new SingleDialogue("Joce", "Who?"),
+                new SingleDialogue("Noelle", "Oops! Nothing! I think you'd better get going now!"),
+                new SingleDialogue("Joce", "(Is this something related to my quest?)"),
+            }), facingDirection);
+    }
+
+    public void NoelleEndGameDialogue(NPCController noelle, Vector2 facingDirection)
+    {
+        noelle.Talk(new Dialogue(
+            new SingleDialogue[]
+            {
+                new SingleDialogue("Noelle", "I think I've had enough wings. But I think the pop-up stand is still at the ice rink!"),
+            }), facingDirection);
+    }
+
+    public void FinalIslandCutscene(NPCController lulu, Vector2 facingDirection)
+        //THIS IS COPIED FROM NAOMI CUTSCENE!!!!
+    {
+        GameObject npc = Instantiate(naomiPrefab, new Vector3(9.5f, 12.35f, 0f), Quaternion.identity);
+        npc.GetComponent<NPCController>().npcType = NPCType.Naomi;
+        Character npcChar = npc.GetComponent<Character>();
+
+        RunMultipleActions(new ICutsceneAction[]
+        {
+            new DialogueAction(new SingleDialogue[]
+            {
+                new SingleDialogue("???", "!! Wait!!!"),
+                new SingleDialogue("Joce", "!!")
+            }),
+            new FaceDirectionAction(player.Character, Vector2.right),
+            new MoveAction(npcChar, new Vector2(-8.5f, 0f)),
+            new DialogueAction(new SingleDialogue[]
+            {
+                new SingleDialogue("???", "You're finally here! Now I can cuddle you FOREVER!!"),
+                new SingleDialogue("Joce", "W - what? I don't know who you are, I don't want to cuddle you!"),
+                new SingleDialogue("???", "What! You always wanted to cuddle me before!"),
+                new SingleDialogue("Joce", "Somehow, I don't think that's true..."),
+                new SingleDialogue("???", "Okay fine, I might be exaggerating."),
+                new SingleDialogue("???", "But you don't have a choice, because I'm going to hug you anyway!"),
+                new SingleDialogue("Joce", "What?? No!!"),
+            }),
+            new FaceDirectionAction(player.Character, Vector2.left),
+            new MoveAction(player.Character, new Vector2(-0.7f, 0f)),
+            new FaceDirectionAction(player.Character, Vector2.down),
+            new MultipleSimultaneousCutsceneAction(new ISingleCutsceneAction[]
+            {
+                new MoveAction(npcChar, new Vector2(-1.8f, 0f)),
+                new MoveAction(player.Character, new Vector2(0f, -1.8f)),
+            }),
+            new FaceDirectionAction(npcChar, Vector2.down),
+            new MultipleSimultaneousCutsceneAction(new ISingleCutsceneAction[]
+            {
+                new MoveAction(npcChar, new Vector2(0f, -8f)),
+                new MoveAction(player.Character, new Vector2(0f, -8f))
+            }),
+        });
+    }
+
+
+
     private void RunMultipleActions(IEnumerable<ICutsceneAction> cutsceneActions, Action onFinished = null)
     {
         if (cutsceneActions.Count() == 0)

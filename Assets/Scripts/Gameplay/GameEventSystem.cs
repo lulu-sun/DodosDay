@@ -137,6 +137,27 @@ public class GameEventSystem : MonoBehaviour
 
 
         // Noelle
+
+        AddNPCGameTrigger(NPCType.Noelle, new GameEvent[]
+        {
+            new GameEvent(
+                () => GameCheckpoints.Instance.NeverStarted(Checkpoint.IceRinkGame),
+                (n, f) => CutsceneManager.Instance.NoelleFirstDialogue(n, f)),
+
+            new GameEvent(
+                () => GameCheckpoints.Instance.StartedButNotComplete(Checkpoint.IceRinkGame),
+                (n, f) => CutsceneManager.Instance.NoelleWaitingDialogue(n, f)),
+
+            new GameEvent(
+                () => GameCheckpoints.Instance.Complete(Checkpoint.GameCompleted),
+                (n, f) => CutsceneManager.Instance.NoelleEndGameDialogue(n, f)),
+
+            new GameEvent(
+                () => GameCheckpoints.Instance.Complete(Checkpoint.IceRinkGame),
+                (n, f) => CutsceneManager.Instance.NoelleCompletedDialogue(n, f))
+        });
+
+
         // Radio
 
         AddNPCGameTrigger(NPCType.Radio, new GameEvent[]
@@ -177,6 +198,13 @@ public class GameEventSystem : MonoBehaviour
                     AudioManager.Instance.PlayMainMusic();
                     GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.RadioPlayingMusic, CheckpointState.NeverStarted);
                 })
+        });
+
+        AddEnterSceneGameTrigger("Final_Island", new GameEvent[]
+        {
+            new GameEvent(
+                () => true,
+                (n, f) => CutsceneManager.Instance.FinalIslandCutscene(n, f))
         });
     }
 
