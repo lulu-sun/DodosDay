@@ -124,6 +124,7 @@ public class CatchingGameSystem : MonoBehaviour
         if (lives <= 0 || score >= winningScore)
         {
             // TODO: make more smooth
+            GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.CatchingGame, CheckpointState.Complete);
             this.EndGame();
         }
     }

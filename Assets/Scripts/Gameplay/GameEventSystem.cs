@@ -79,7 +79,7 @@ public class GameEventSystem : MonoBehaviour
 
             new GameEvent(
                 () => GameCheckpoints.Instance.Complete(Checkpoint.GameCompleted),
-                (n, f) => CutsceneManager.Instance.JaneAfterBattleDialogue(n, f)),
+                (n, f) => CutsceneManager.Instance.JaneGameEndDialogue(n, f)),
 
             new GameEvent(
                 () => GameCheckpoints.Instance.Complete(Checkpoint.PokemonBattle),
@@ -87,9 +87,35 @@ public class GameEventSystem : MonoBehaviour
         });
 
         // JuanJuan
+
+        AddNPCGameTrigger(NPCType.JuanJuan, new GameEvent[]
+        {
+            new GameEvent(
+                () => GameCheckpoints.Instance.NeverStarted(Checkpoint.CatchingGame),
+                (n, f) => CutsceneManager.Instance.JuanJuanFirstDialogue(n, f)),
+
+            new GameEvent(
+                () => GameCheckpoints.Instance.StartedButNotComplete(Checkpoint.CatchingGame),
+                (n, f) => CutsceneManager.Instance.JuanJuanTryAgainDialogue(n, f)),
+
+            new GameEvent(
+                () => GameCheckpoints.Instance.Complete(Checkpoint.GameCompleted),
+                (n, f) => CutsceneManager.Instance.JuanJuanGameEndDialogue(n, f)),
+
+            new GameEvent(
+                () => GameCheckpoints.Instance.Complete(Checkpoint.CatchingGame),
+                (n, f) => CutsceneManager.Instance.JuanJuanCompletedDialogue(n, f))
+        });
+        // Arcade
+        AddNPCGameTrigger(NPCType.ArcadeMachine, new GameEvent[]
+        {       
+            new GameEvent(
+                () => true,
+                (n, f) => CutsceneManager.Instance.StartArcadeGame(n, f)),
+        });
+
         // Rachel
         // Noelle
-        // Arcade
         // Radio
 
         AddNPCGameTrigger(NPCType.Radio, new GameEvent[]

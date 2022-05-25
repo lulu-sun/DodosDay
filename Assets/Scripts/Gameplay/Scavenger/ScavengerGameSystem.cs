@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-public class ScavengerGameSystem : MonoBehaviour
+public class CheeseGameSystem : MonoBehaviour
 {
     [SerializeField] Sprite filledCheese;
     [SerializeField] Sprite unfilledCheese;
@@ -11,7 +11,7 @@ public class ScavengerGameSystem : MonoBehaviour
 
     public bool IsActive { get => overlay.gameObject.activeSelf; }
 
-    public static ScavengerGameSystem Instance { get; private set; }
+    public static CheeseGameSystem Instance { get; private set; }
 
     private void Awake()
     {
@@ -42,5 +42,6 @@ public class ScavengerGameSystem : MonoBehaviour
     public void ShowCheeseFound(int cheeseId)
     {
         cheeses[cheeseId].sprite = filledCheese;
+        
     }
 }

@@ -201,10 +201,9 @@ public class CutsceneManager : MonoBehaviour
             {
                 new SingleDialogue("Naomi", "I LOVE cuddles!!")
 
-            }
-            ), facingDirection,
-            () => ChasingGameSystem.Instance.StartGame()
-            );
+            }),
+            facingDirection,
+            () => ChasingGameSystem.Instance.StartGame());
     }
 
     public void JaneFirstDialogue(NPCController jane, Vector2 facingDirection)
@@ -225,8 +224,8 @@ public class CutsceneManager : MonoBehaviour
                 new SingleDialogue("Joce", "I think I get it..."),
                 new SingleDialogue("Joce", "(...the way she explains things like this feels familiar to me for some reason...)"),
                 new SingleDialogue("Joce", "Ok, I'm ready to battle!")
-            }
-            ), facingDirection,
+            }),
+            facingDirection,
             () => BattleSystem.Instance.StartBattle());
 
         GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.PokemonBattle, CheckpointState.StartedButNotComplete);
@@ -239,10 +238,8 @@ public class CutsceneManager : MonoBehaviour
             {
                 new SingleDialogue("Jane", "Here to battle me again? Let's do it!")
                
-            }
-            ), facingDirection,
-            () => BattleSystem.Instance.StartBattle()
-            );
+            }), facingDirection,
+            () => BattleSystem.Instance.StartBattle());
     }
 
     public void JaneAfterBattleDialogue(NPCController jane, Vector2 facingDirection)
@@ -256,9 +253,7 @@ public class CutsceneManager : MonoBehaviour
                 new SingleDialogue("Jane", "Meanwhile, I'll have to go find where Dumpling ran off to."),
                 new SingleDialogue("Joce", "Goodbye!!"),
 
-            }
-            ), facingDirection
-            );
+            }), facingDirection);
 
         GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.PokemonBattle, CheckpointState.Complete);
     }
@@ -269,11 +264,8 @@ public class CutsceneManager : MonoBehaviour
             new SingleDialogue[]
             {
                 new SingleDialogue("Jane", "Ready for a rematch?"),
-            }
-
-            ), facingDirection,
-            () => BattleSystem.Instance.StartBattle()
-            );
+            }), facingDirection,
+            () => BattleSystem.Instance.StartBattle());
     }
 
     public void RadioStartMusic(NPCController radio, Vector2 facingDirection)
@@ -282,11 +274,8 @@ public class CutsceneManager : MonoBehaviour
             new SingleDialogue[]
             {
                 new SingleDialogue("Radio", "Playing: Love Me Or Leave Me by Day6"),
-            }
-
-            ), facingDirection,
-            () => AudioManager.Instance.PlayDay6Music()
-            );
+            }), facingDirection,
+            () => AudioManager.Instance.PlayDay6Music());
 
         GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.RadioPlayingMusic, CheckpointState.Complete);
     }
@@ -299,11 +288,109 @@ public class CutsceneManager : MonoBehaviour
             {
                 new SingleDialogue("Joce", "..."),
                 new SingleDialogue("Joce", "there's no way to turn it off"),
-            }
-
-            ), facingDirection
-            );
+            }), facingDirection);
     }
+
+    public void JuanJuanFirstDialogue(NPCController juanjuan, Vector2 facingDirection)
+    {
+        juanjuan.Talk(new Dialogue(
+            new SingleDialogue[]
+            {
+                new SingleDialogue("???", " * CRASH * "),
+                new SingleDialogue("???", " AAaaaAAahh!!! "),
+                new SingleDialogue("Joce", "Are you ok?? Do you need help?"),
+                new SingleDialogue("???", "JOCELYN! Yes! You came at just the right time!"),
+                new SingleDialogue("Joce", "How can I help?"),
+                new SingleDialogue("???", "I heard this vending machine has the best ice cream on this island!"),
+                new SingleDialogue("???", "But it looks like you have to get a certain score to win an ice cream cone, and I've been trying for so long..."),
+                new SingleDialogue("Joce", "Oh? Let me see if I can help!"),
+                new SingleDialogue("???", "Thanks so much! You have to catch the yellow ducklings, and avoid the rotten ones!"),
+            }), facingDirection);
+
+        GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.CatchingGame, CheckpointState.StartedButNotComplete);
+    }
+
+    public void JuanJuanTryAgainDialogue(NPCController juanjuan, Vector2 facingDirection)
+    {
+        juanjuan.Talk(new Dialogue(
+            new SingleDialogue[]
+            {
+                new SingleDialogue("???", "Have you gotten the ice cream yet?"),                
+            }), facingDirection);
+    }
+
+    public void JuanJuanCompletedDialogue(NPCController juanjuan, Vector2 facingDirection)
+    {
+        juanjuan.Talk(new Dialogue(
+            new SingleDialogue[]
+            {
+                new SingleDialogue("JuanJuan", "Thank you so much!!"),
+                new SingleDialogue("Joce", "JuanJuan! I remember you now!!"),
+                new SingleDialogue("JuanJuan", "Wait, you forgot about me?"),
+                new SingleDialogue("Joce", "Nevermind, I hope you enjoy your ice cream!"),
+                new SingleDialogue("JuanJuan", "I will, thanks to you! I'll see you later!"),
+                new SingleDialogue("Joce", "(Wait I will? Are you my heart's desire...?)"),
+            }), facingDirection);
+
+    }
+
+    public void JuanJuanGameEndDialogue(NPCController juanjuan, Vector2 facingDirection)
+    {
+        juanjuan.Talk(new Dialogue(
+            new SingleDialogue[]
+            {
+                new SingleDialogue("JuanJuan", "If you want more ice cream, you can get it from the arcade machine!"),
+                
+            }), facingDirection);
+
+    }
+
+    public void StartArcadeGame(NPCController arcade, Vector2 facingDirection)
+    {
+        arcade.Talk(new Dialogue(
+            new SingleDialogue[]
+            {
+                new SingleDialogue("Arcade", "Starting game . . ."),
+
+            }), facingDirection,
+            () => CatchingGameSystem.Instance.StartGame());
+
+        GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.CatchingGame, CheckpointState.StartedButNotComplete);
+    }
+
+    public void RachelFirstDialogue(NPCController rachel, Vector2 facingDirection)
+    {
+        rachel.Talk(new Dialogue(
+            new SingleDialogue[]
+            {
+                new SingleDialogue("???", "Jocelyn! You're here!"),
+                new SingleDialogue("Joce", "Who are you again?"),
+                new SingleDialogue("???", "You don't remember?"),
+                new SingleDialogue("???", "I'll tell you my name if you help me with something!"),
+                new SingleDialogue("Joce", "Okay, what do you need?"),
+                new SingleDialogue("???", "I need some cheese to complete my cheese collection!"),
+                new SingleDialogue("???", "There's some cheese lying around this island. Could you get 5 pieces for me?"),
+                new SingleDialogue("Joce", "That's quite a lot of cheese. You really need that much?"),
+                new SingleDialogue("???", "I LOVE CHEESE!"),
+                new SingleDialogue("Joce", "I'll be right back with your cheese..."),
+
+            }), facingDirection,
+            () => ScavengerGameSystem.Instance.StartGame());
+
+        GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.CheeseGame, CheckpointState.StartedButNotComplete);
+    }
+
+    public void RachelWaitingDialogue(NPCController rachel, Vector2 facingDirection)
+    {
+        rachel.Talk(new Dialogue(
+            new SingleDialogue[]
+            {
+                new SingleDialogue("???", "Do you have all the cheese yet? Mmm, you kind of smell like cheese..."),
+                
+            }), facingDirection,
+            () => CatchingGameSystem.Instance.StartGame());
+    }
+
 
     private void RunMultipleActions(IEnumerable<ICutsceneAction> cutsceneActions, Action onFinished = null)
     {
