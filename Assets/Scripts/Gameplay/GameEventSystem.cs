@@ -55,6 +55,12 @@ public class GameEventSystem : MonoBehaviour
             new GameEvent(
                 () => GameCheckpoints.Instance.NotComplete(Checkpoint.ChasingGame),
                 (n, f) => CutsceneManager.Instance.NaomiTryAgainDialogue(n, f)),
+
+            new GameEvent(
+                () => GameCheckpoints.Instance.Complete(Checkpoint.GameCompleted),
+                (n, f) => CutsceneManager.Instance.NaomiChaseAgainDialogue(n, f)),
+
+
             new GameEvent(
                 () => GameCheckpoints.Instance.Complete(Checkpoint.ChasingGame),
                 (n, f) => CutsceneManager.Instance.NaomiCompletedDialogue(n, f))
@@ -66,9 +72,15 @@ public class GameEventSystem : MonoBehaviour
             new GameEvent(
                 () => GameCheckpoints.Instance.NeverStarted(Checkpoint.PokemonBattle),
                 (n, f) => CutsceneManager.Instance.JaneFirstDialogue(n, f)),
+
             new GameEvent(
                 () => GameCheckpoints.Instance.StartedButNotComplete(Checkpoint.PokemonBattle),
                 (n, f) => CutsceneManager.Instance.JaneBattleAgainDialogue(n, f)),
+
+            new GameEvent(
+                () => GameCheckpoints.Instance.Complete(Checkpoint.GameCompleted),
+                (n, f) => CutsceneManager.Instance.JaneAfterBattleDialogue(n, f)),
+
             new GameEvent(
                 () => GameCheckpoints.Instance.Complete(Checkpoint.PokemonBattle),
                 (n, f) => CutsceneManager.Instance.JaneAfterBattleDialogue(n, f))
@@ -80,17 +92,44 @@ public class GameEventSystem : MonoBehaviour
         // Arcade
         // Radio
 
+        AddNPCGameTrigger(NPCType.Radio, new GameEvent[]
+        {
+            new GameEvent(
+                () => GameCheckpoints.Instance.NotComplete(Checkpoint.RadioPlayingMusic),
+                (n, f) => CutsceneManager.Instance.RadioStartMusic(n, f)),
+
+            new GameEvent(
+                () => GameCheckpoints.Instance.Complete(Checkpoint.RadioPlayingMusic),
+                (n, f) => CutsceneManager.Instance.RadioAlreadyPlayingMusic(n, f)),
+
+
+        });
+
         //// Enter Scene Game events
 
         // Island_n
         AddEnterSceneGameTrigger("Island_n", new GameEvent[]
         {
+
             new GameEvent(
                 () => GameCheckpoints.Instance.NeverStarted(Checkpoint.NaomiCutscene),
                 (n, f) => CutsceneManager.Instance.RunNaomiCutscene()),
+
             new GameEvent(
                 () => GameCheckpoints.Instance.Complete(Checkpoint.NaomiCutscene),
                 (n, f) => CutsceneManager.Instance.SpawnNaomi())
+        });
+
+        AddEnterSceneGameTrigger("Island_R", new GameEvent[]
+        {
+            new GameEvent(
+                () => GameCheckpoints.Instance.Complete(Checkpoint.RadioPlayingMusic),
+                (n, f) =>
+                {
+                    AudioManager.Instance.FadeMusic(0.3f, 0f);
+                    AudioManager.Instance.PlayMainMusic();
+                    GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.RadioPlayingMusic, CheckpointState.NeverStarted);
+                })
         });
     }
 

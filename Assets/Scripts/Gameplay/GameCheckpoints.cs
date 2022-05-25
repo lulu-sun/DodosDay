@@ -83,6 +83,10 @@ public enum Checkpoint
 
     // Dialogues
     //Interactions
+    RadioPlayingMusic,
+
+    // Game State
+    GameCompleted,
 }
 
 public enum CheckpointState

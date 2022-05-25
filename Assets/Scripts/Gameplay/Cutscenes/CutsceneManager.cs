@@ -191,6 +191,19 @@ public class CutsceneManager : MonoBehaviour
             facingDirection);
     }
 
+    public void NaomiChaseAgainDialogue(NPCController naomi, Vector2 facingDirection)
+    {
+        naomi.Talk(new Dialogue(
+            new SingleDialogue[]
+            {
+                new SingleDialogue("Naomi", "I LOVE cuddles!!")
+
+            }
+            ), facingDirection,
+            () => ChasingGameSystem.Instance.StartGame()
+            );
+    }
+
     public void JaneFirstDialogue(NPCController jane, Vector2 facingDirection)
     {
         jane.Talk(new Dialogue(
@@ -212,6 +225,7 @@ public class CutsceneManager : MonoBehaviour
             }
             ), facingDirection,
             () => BattleSystem.Instance.StartBattle());
+
         GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.PokemonBattle, CheckpointState.StartedButNotComplete);
     }
 
@@ -220,7 +234,7 @@ public class CutsceneManager : MonoBehaviour
         jane.Talk(new Dialogue(
             new SingleDialogue[]
             {
-                new SingleDialogue("???", "Here to battle me again? Let's do it!")
+                new SingleDialogue("Jane", "Here to battle me again? Let's do it!")
                
             }
             ), facingDirection,
@@ -242,8 +256,51 @@ public class CutsceneManager : MonoBehaviour
             }
             ), facingDirection
             );
+
+        GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.PokemonBattle, CheckpointState.Complete);
     }
 
+    public void JaneGameEndDialogue(NPCController jane, Vector2 facingDirection)
+    {
+        jane.Talk(new Dialogue(
+            new SingleDialogue[]
+            {
+                new SingleDialogue("Jane", "Ready for a rematch?"),
+            }
+
+            ), facingDirection,
+            () => BattleSystem.Instance.StartBattle()
+            );
+    }
+
+    public void RadioStartMusic(NPCController radio, Vector2 facingDirection)
+    {
+        radio.Talk(new Dialogue(
+            new SingleDialogue[]
+            {
+                new SingleDialogue("Radio", "Playing: Love Me Or Leave Me by Day6"),
+            }
+
+            ), facingDirection,
+            () => AudioManager.Instance.PlayDay6Music()
+            );
+
+        GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.RadioPlayingMusic, CheckpointState.Complete);
+    }
+
+
+    public void RadioAlreadyPlayingMusic(NPCController radio, Vector2 facingDirection)
+    {
+        radio.Talk(new Dialogue(
+            new SingleDialogue[]
+            {
+                new SingleDialogue("Joce", "..."),
+                new SingleDialogue("Joce", "there's no way to turn it off"),
+            }
+
+            ), facingDirection
+            );
+    }
 
     private void RunMultipleActions(IEnumerable<ICutsceneAction> cutsceneActions, Action onFinished = null)
     {
