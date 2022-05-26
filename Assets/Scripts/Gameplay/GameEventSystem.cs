@@ -200,7 +200,7 @@ public class GameEventSystem : MonoBehaviour
                 })
         });
 
-        AddEnterSceneGameTrigger("Final_Island", new GameEvent[]
+        AddEnterSceneGameTrigger("Last_Island", new GameEvent[]
         {
             new GameEvent(
                 () => true,

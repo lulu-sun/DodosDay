@@ -249,7 +249,7 @@ public class CutsceneManager : MonoBehaviour
             {
                 new SingleDialogue("???", "Nooo, Dumpling!! Joce, you've beaten me!"),
                 new SingleDialogue("Joce", "I remember you now! I can't believe I forgot about you!"),
-                new SingleDialogue("Jane", "It's okay! Good luck on the rest of your journey!"),
+                new SingleDialogue("Jane", "It's okay, I still love you! Good luck on the rest of your journey!"),
                 new SingleDialogue("Jane", "Meanwhile, I'll have to go find where Dumpling ran off to."),
                 new SingleDialogue("Joce", "Goodbye!!"),
 
@@ -304,7 +304,7 @@ public class CutsceneManager : MonoBehaviour
                 new SingleDialogue("???", "I heard this vending machine has the best ice cream on this island!"),
                 new SingleDialogue("???", "But it looks like you have to get a certain score to win an ice cream cone, and I've been trying for so long..."),
                 new SingleDialogue("Joce", "Oh? Let me see if I can help!"),
-                new SingleDialogue("???", "Thanks so much! You have to catch the yellow ducklings, and avoid the rotten ones!"),
+                new SingleDialogue("???", "Thanks so much! You have to catch the yellow ducklings, and avoid catching the rotten ones - you'll have 3 lives!"),
             }), facingDirection);
 
         GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.CatchingGame, CheckpointState.StartedButNotComplete);
@@ -324,7 +324,7 @@ public class CutsceneManager : MonoBehaviour
         juanjuan.Talk(new Dialogue(
             new SingleDialogue[]
             {
-                new SingleDialogue("JuanJuan", "Thank you so much!!"),
+                new SingleDialogue("???", "Thank you so much!!"),
                 new SingleDialogue("Joce", "JuanJuan! I remember you now!!"),
                 new SingleDialogue("JuanJuan", "Wait, you forgot about me?"),
                 new SingleDialogue("Joce", "Nevermind, I hope you enjoy your ice cream!"),
@@ -451,7 +451,7 @@ public class CutsceneManager : MonoBehaviour
             {
                 new SingleDialogue("???", "You're back! Let's get some work done!"),
                 new SingleDialogue("Joce", "Noelle! How could I have forgotten! We used to do this all the time together!"),
-                new SingleDialogue("Noelle", "Now you're one step closer to remembering everything...and him."),
+                new SingleDialogue("Noelle", "Now you're one step closer to remembering everything...and a special someone..."),
                 new SingleDialogue("Joce", "Who?"),
                 new SingleDialogue("Noelle", "Oops! Nothing! I think you'd better get going now!"),
                 new SingleDialogue("Joce", "(Is this something related to my quest?)"),
@@ -481,32 +481,32 @@ public class CutsceneManager : MonoBehaviour
                 new SingleDialogue("???", "!! Wait!!!"),
                 new SingleDialogue("Joce", "!!")
             }),
-            new FaceDirectionAction(player.Character, Vector2.right),
-            new MoveAction(npcChar, new Vector2(-8.5f, 0f)),
-            new DialogueAction(new SingleDialogue[]
-            {
-                new SingleDialogue("???", "You're finally here! Now I can cuddle you FOREVER!!"),
-                new SingleDialogue("Joce", "W - what? I don't know who you are, I don't want to cuddle you!"),
-                new SingleDialogue("???", "What! You always wanted to cuddle me before!"),
-                new SingleDialogue("Joce", "Somehow, I don't think that's true..."),
-                new SingleDialogue("???", "Okay fine, I might be exaggerating."),
-                new SingleDialogue("???", "But you don't have a choice, because I'm going to hug you anyway!"),
-                new SingleDialogue("Joce", "What?? No!!"),
-            }),
-            new FaceDirectionAction(player.Character, Vector2.left),
-            new MoveAction(player.Character, new Vector2(-0.7f, 0f)),
-            new FaceDirectionAction(player.Character, Vector2.down),
-            new MultipleSimultaneousCutsceneAction(new ISingleCutsceneAction[]
-            {
-                new MoveAction(npcChar, new Vector2(-1.8f, 0f)),
-                new MoveAction(player.Character, new Vector2(0f, -1.8f)),
-            }),
-            new FaceDirectionAction(npcChar, Vector2.down),
-            new MultipleSimultaneousCutsceneAction(new ISingleCutsceneAction[]
-            {
-                new MoveAction(npcChar, new Vector2(0f, -8f)),
-                new MoveAction(player.Character, new Vector2(0f, -8f))
-            }),
+            //new FaceDirectionAction(player.Character, Vector2.right),
+            //new MoveAction(npcChar, new Vector2(-8.5f, 0f)),
+            //new DialogueAction(new SingleDialogue[]
+            //{
+            //    new SingleDialogue("???", "You're finally here! Now I can cuddle you FOREVER!!"),
+            //    new SingleDialogue("Joce", "W - what? I don't know who you are, I don't want to cuddle you!"),
+            //    new SingleDialogue("???", "What! You always wanted to cuddle me before!"),
+            //    new SingleDialogue("Joce", "Somehow, I don't think that's true..."),
+            //    new SingleDialogue("???", "Okay fine, I might be exaggerating."),
+            //    new SingleDialogue("???", "But you don't have a choice, because I'm going to hug you anyway!"),
+            //    new SingleDialogue("Joce", "What?? No!!"),
+            //}),
+            //new FaceDirectionAction(player.Character, Vector2.left),
+            //new MoveAction(player.Character, new Vector2(-0.7f, 0f)),
+            //new FaceDirectionAction(player.Character, Vector2.down),
+            //new MultipleSimultaneousCutsceneAction(new ISingleCutsceneAction[]
+            //{
+            //    new MoveAction(npcChar, new Vector2(-1.8f, 0f)),
+            //    new MoveAction(player.Character, new Vector2(0f, -1.8f)),
+            //}),
+            //new FaceDirectionAction(npcChar, Vector2.down),
+            //new MultipleSimultaneousCutsceneAction(new ISingleCutsceneAction[]
+            //{
+            //    new MoveAction(npcChar, new Vector2(0f, -8f)),
+            //    new MoveAction(player.Character, new Vector2(0f, -8f))
+            //}),
         });
     }
 
