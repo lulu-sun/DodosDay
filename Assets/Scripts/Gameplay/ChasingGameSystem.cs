@@ -11,7 +11,7 @@ public class ChasingGameSystem : MonoBehaviour
 
     [SerializeField] Camera chasingGameCamera;
 
-    public float winningTime = 20f;
+    public float winningTime = 30f;
 
     public event Action OnStartGame;
     
@@ -88,7 +88,7 @@ public class ChasingGameSystem : MonoBehaviour
         };
 
         collisionSize = (player.GetComponent<BoxCollider2D>().size + chaser.GetComponent<BoxCollider2D>().size) / 2;
-        collisionSize += new Vector2(0.1f, 0.1f);
+        collisionSize += new Vector2(0.05f, 0.05f);
     }
 
     public void StartGame()
