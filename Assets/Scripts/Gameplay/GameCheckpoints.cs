@@ -82,6 +82,7 @@ public enum Checkpoint
     CheeseGame,
 
     // Dialogues
+    EnteredAllison,
     //Interactions
     RadioPlayingMusic,
 

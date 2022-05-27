@@ -157,6 +157,23 @@ public class GameEventSystem : MonoBehaviour
                 (n, f) => CutsceneManager.Instance.NoelleCompletedDialogue(n, f))
         });
 
+        // Signs
+
+        AddNPCGameTrigger(NPCType.SchoolSign, new GameEvent[]
+        {
+            new GameEvent(
+                () => true,
+                (n, f) => CutsceneManager.Instance.SchoolSignDialogue(n, f)),
+    
+        });
+
+        AddNPCGameTrigger(NPCType.WingsSign, new GameEvent[]
+{
+            new GameEvent(
+                () => true,
+                (n, f) => CutsceneManager.Instance.WingsSignDialogue(n, f)),
+
+});
 
         // Radio
 
@@ -186,6 +203,14 @@ public class GameEventSystem : MonoBehaviour
             new GameEvent(
                 () => GameCheckpoints.Instance.Complete(Checkpoint.NaomiCutscene),
                 (n, f) => CutsceneManager.Instance.SpawnNaomi())
+        });
+
+        AddEnterSceneGameTrigger("Allison_Dorm", new GameEvent[]
+        {
+            new GameEvent(
+                () => GameCheckpoints.Instance.NeverStarted(Checkpoint.EnteredAllison),
+                (n, f) => CutsceneManager.Instance.EnterAllisonDialogue()),
+
         });
 
         AddEnterSceneGameTrigger("Island_R", new GameEvent[]

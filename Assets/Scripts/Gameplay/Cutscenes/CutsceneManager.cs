@@ -467,6 +467,45 @@ public class CutsceneManager : MonoBehaviour
             }), facingDirection);
     }
 
+
+    public void SchoolSignDialogue(NPCController sign, Vector2 facingDirection)
+    {
+        sign.Talk(new Dialogue(
+            new SingleDialogue[]
+            {
+                new SingleDialogue("Joce", "Is this Northwestern??"),
+                new SingleDialogue("Lulu", "GO CATS"),
+                new SingleDialogue("Lulu", "Go U Northwestern, break right through that line, with your colors flying we will cheer you all the time U RAH RAH! Go U Northwestern fight for victory! Spread far the fame of our fair name"),
+                new SingleDialogue("Lulu", "Go Northwestern win that game GO CATS!!"),
+                new SingleDialogue("Joce", "..."),
+                new SingleDialogue("Joce", "Oh."),
+
+            }), facingDirection);
+    }
+
+    public void WingsSignDialogue(NPCController sign, Vector2 facingDirection)
+    {
+        sign.Talk(new Dialogue(
+            new SingleDialogue[]
+            {
+                new SingleDialogue("Sign", "Wings Stop Over"),
+                new SingleDialogue("Joce", "Wings Stop Over? That doesn't sound quite right."),
+
+            }), facingDirection);
+    }
+
+    public void EnterAllisonDialogue()
+    {
+        RunMultipleActions(new ISingleCutsceneAction[] {
+            new DialogueAction(new SingleDialogue[]
+            {
+                new SingleDialogue("Joce", "It's bigger on the inside!"),
+            })
+        });
+
+        GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.EnteredAllison, CheckpointState.Complete);
+    }
+
     public void FinalIslandCutscene(NPCController lulu, Vector2 facingDirection)
         //THIS IS COPIED FROM NAOMI CUTSCENE!!!!
     {

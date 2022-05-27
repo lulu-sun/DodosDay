@@ -15,6 +15,8 @@ public enum NPCType
     Ollie,
     ArcadeMachine,
     Radio,
+    SchoolSign,
+    WingsSign,
     ChasingGameChaser
 }
 
