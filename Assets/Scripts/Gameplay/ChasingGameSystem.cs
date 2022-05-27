@@ -88,7 +88,7 @@ public class ChasingGameSystem : MonoBehaviour
         };
 
         collisionSize = (player.GetComponent<BoxCollider2D>().size + chaser.GetComponent<BoxCollider2D>().size) / 2;
-        collisionSize += new Vector2(0.05f, 0.05f);
+        collisionSize += new Vector2(0.1f, 0.1f);
     }
 
     public void StartGame()
@@ -116,6 +116,8 @@ public class ChasingGameSystem : MonoBehaviour
 
     private IEnumerator ChasePlayer()
     {
+        Vector2 prevDiffVec = Vector2.zero;
+
         while (IsRunning)
         {
             Vector2 playerLoc = player.transform.position;
@@ -130,18 +132,81 @@ public class ChasingGameSystem : MonoBehaviour
                 yield break;
             }
 
-            if (Mathf.Abs(differenceVec.y) <= 0.5f)
+            bool yDiff = Mathf.Abs(differenceVec.y) > 0.1f;
+            bool xDiff = Mathf.Abs(differenceVec.x) > 0.1f;
+
+            if (!yDiff)
             {
                 differenceVec.y = 0;
             }
-            else
+            else if (!xDiff)
             {
                 differenceVec.x = 0;
+            }
+            else
+            {
+                bool xSameAsPrev = Mathf.Clamp(differenceVec.x, -1f, 1f) == prevDiffVec.x;
+                bool ySameAsPrev = Mathf.Clamp(differenceVec.y, -1f, 1f) == prevDiffVec.y;
+
+                // Can only change path if at least x or y is different.
+                bool changePath = (!xSameAsPrev || !ySameAsPrev) && UnityEngine.Random.Range(0f, 100f) < 0.1f;
+
+                // Keep the same path. Only possible if either x or y is the same.
+                if (!changePath)
+                {
+                    // At least one of the diff directions have remained the same.
+                    if (xSameAsPrev || ySameAsPrev)
+                    {
+                        differenceVec = prevDiffVec;
+                    }
+                    // Both diff directions have changed. Pick one randomly.
+                    else
+                    {
+                        if (UnityEngine.Random.Range(0f, 100f) < 50f)
+                        {
+                            differenceVec.x = 0;
+                        }
+                        else
+                        {
+                            differenceVec.y = 0;
+                        }
+                    }
+                }
+                // Change path. 
+                else
+                {
+                    // If at least one diff direction remained the same, pick the other one.
+                    if (xSameAsPrev || ySameAsPrev)
+                    {
+                        if (xSameAsPrev)
+                        {
+                            differenceVec.x = 0;
+                        }
+                        else
+                        {
+                            differenceVec.y = 0;
+                        }
+                    }
+                    // No directions are the same, so just pick one randomly.
+                    else
+                    {
+                        if (UnityEngine.Random.Range(0f, 100f) < 50f)
+                        {
+                            differenceVec.x = 0;
+                        }
+                        else
+                        {
+                            differenceVec.y = 0;
+                        }
+                    }
+                }
             }
 
             differenceVec.Normalize();
 
-            yield return chaser.WalkEnumerator(differenceVec);
+            chaser.character.MoveOneFrame(differenceVec);
+            yield return null;
+            prevDiffVec = differenceVec;
 
             if (timerInSeconds >= nextTimeCheckPointInSeconds)
             {
