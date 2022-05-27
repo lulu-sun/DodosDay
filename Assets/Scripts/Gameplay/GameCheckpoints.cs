@@ -80,6 +80,9 @@ public enum Checkpoint
     PokemonBattle,
     IceRinkGame,
     CheeseGame,
+    
+    // Hack to record cheese game properly
+    CheeseGameMemoryRecorded,
 
     // Dialogues
     EnteredAllison,

@@ -403,7 +403,17 @@ public class CutsceneManager : MonoBehaviour
                 new SingleDialogue("Rachel", "Oh, it's not cheese? Well, I hope you find it, whatever it is!"),
                 new SingleDialogue("Joce", "I hope so too!"),
 
-            }), facingDirection);
+            }),
+            facingDirection,
+            () => 
+            {
+                CheeseGameSystem.Instance.EndGame();
+                if (GameCheckpoints.Instance.NotComplete(Checkpoint.CheeseGameMemoryRecorded))
+                {
+                    MemoriesSystem.Instance.MarkMemoryFound();
+                    GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.CheeseGameMemoryRecorded, CheckpointState.Complete);
+                }                
+            });
     }
 
     public void RachelEndGameDialogue(NPCController rachel, Vector2 facingDirection)

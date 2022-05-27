@@ -40,7 +40,4 @@ public class MemoriesSystem : MonoBehaviour
             memory.sprite = unfilledMemory;
         }
     }
-
-
-
 }

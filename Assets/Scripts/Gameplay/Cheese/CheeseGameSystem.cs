@@ -21,19 +21,35 @@ public class CheeseGameSystem : MonoBehaviour
     public void StartGame()
     {
         overlay.gameObject.SetActive(true);
+        ResetCheeseImages();
+        CheeseSetActive(true);
     }
 
     public void EndGame()
     {
         overlay.gameObject.SetActive(false);
+        CheeseSetActive(false);
     }
 
-    private void Start()
+    private void CheeseSetActive(bool active)
+    {
+        foreach (Cheese cheese in Resources.FindObjectsOfTypeAll<Cheese>())
+        {
+            cheese.gameObject.SetActive(active);
+        }
+    }
+
+    private void ResetCheeseImages()
     {
         foreach (Image cheese in cheeses)
         {
             cheese.sprite = unfilledCheese;
         }
+    }
+
+    private void Start()
+    {
+        ResetCheeseImages();
 
         // For Testing
         //StartGame();
@@ -42,6 +58,24 @@ public class CheeseGameSystem : MonoBehaviour
     public void ShowCheeseFound(int cheeseId)
     {
         cheeses[cheeseId].sprite = filledCheese;
-        
+
+        if (AllCheesesFound())
+        {
+            GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.CheeseGame, CheckpointState.Complete);
+        }
+    }
+
+    public bool AllCheesesFound()
+    {
+        int count = 0;
+        foreach (Image cheeseImage in cheeses)
+        {
+            if (cheeseImage.sprite == filledCheese)
+            {
+                count++;
+            }
+        }
+
+        return count == cheeses.Length;
     }
 }
