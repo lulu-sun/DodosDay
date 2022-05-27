@@ -65,6 +65,27 @@ public class GameEventSystem : MonoBehaviour
                 () => GameCheckpoints.Instance.Complete(Checkpoint.ChasingGame),
                 (n, f) => CutsceneManager.Instance.NaomiCompletedDialogue(n, f))
         });
+        // Ollie
+        AddNPCGameTrigger(NPCType.Ollie, new GameEvent[]
+        {
+            new GameEvent(
+                () => GameCheckpoints.Instance.NeverStarted(Checkpoint.MeetingOllie),
+                (n, f) => CutsceneManager.Instance.OllieFirstDialogue(n, f)),
+
+            new GameEvent(
+                () => GameCheckpoints.Instance.StartedButNotComplete(Checkpoint.MeetingOllie),
+                (n, f) => CutsceneManager.Instance.OllieBorkDialogue(n, f)),
+
+            new GameEvent(
+                () => GameCheckpoints.Instance.Complete(Checkpoint.GameCompleted),
+                (n, f) => CutsceneManager.Instance.OllieBorkDialogue(n, f)),
+
+            new GameEvent(
+                () => GameCheckpoints.Instance.Complete(Checkpoint.MeetingOllie),
+                (n, f) => CutsceneManager.Instance.OllieJaneIslandDialogue(n, f))
+        });
+
+
 
         // Jane
         AddNPCGameTrigger(NPCType.Jane, new GameEvent[]
@@ -224,6 +245,18 @@ public class GameEventSystem : MonoBehaviour
                     GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.RadioPlayingMusic, CheckpointState.NeverStarted);
                 })
         });
+
+        AddEnterSceneGameTrigger("Island_J", new GameEvent[]
+        {
+            new GameEvent(
+                () => GameCheckpoints.Instance.StartedButNotComplete(Checkpoint.MeetingOllie),
+                (n, f) =>
+                {
+                 
+                    GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.MeetingOllie, CheckpointState.Complete);
+                })
+        });
+
 
         AddEnterSceneGameTrigger("Last_Island", new GameEvent[]
         {
