@@ -449,8 +449,8 @@ MonoBehaviour:
   player: {fileID: 1431427206525943229}
   chaser: {fileID: 6410144094553399519}
   chasingGameCamera: {fileID: 693240814832155794}
-  winningTime: 30
-  getFasterTimeInSeconds: 5
+  winningTime: 20
+  getFasterTimeInSeconds: 4
 --- !u!1 &664367357851127436
 GameObject:
   m_ObjectHideFlags: 0

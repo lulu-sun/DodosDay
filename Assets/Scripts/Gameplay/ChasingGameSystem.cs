@@ -11,7 +11,7 @@ public class ChasingGameSystem : MonoBehaviour
 
     [SerializeField] Camera chasingGameCamera;
 
-    public float winningTime = 30f;
+    public float winningTime = 20f;
 
     public event Action OnStartGame;
     
@@ -39,7 +39,7 @@ public class ChasingGameSystem : MonoBehaviour
 
     public float FinishTime { get; private set; }
 
-    public float getFasterTimeInSeconds = 5f;
+    public float getFasterTimeInSeconds = 4f;
 
     private float nextTimeCheckPointInSeconds;
 
