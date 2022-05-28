@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Final Scenes/House.unity
     guid: 1d0175175fbc00b4f98fdc95dad5f970
   - enabled: 1
-    path: Assets/Scenes/Island_J.unity
+    path: Assets/Scenes/Final Scenes/Island_J.unity
     guid: 2285b58e52543404b804fd461fa10fd0
   - enabled: 1
     path: Assets/Scenes/Final Scenes/Island_N1.unity
@@ -33,7 +33,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Island_R.unity
     guid: 574705e81fde24ef1ac3672414698de9
   - enabled: 1
-    path: Assets/Scenes/Island_j1.unity
+    path: Assets/Scenes/Final Scenes/Island_j1.unity
     guid: 42fcefc8779a24a078ee07b475ed0b6e
   - enabled: 1
     path: Assets/Scenes/Last_Island.unity

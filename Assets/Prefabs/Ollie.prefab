@@ -126,31 +126,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkDownSprites:
-  - {fileID: 916636349266774502, guid: c47cfccdb4cc7b049bd158dd126cca67, type: 3}
-  - {fileID: 1977882913071815953, guid: c47cfccdb4cc7b049bd158dd126cca67, type: 3}
+  - {fileID: -370564048169120025, guid: 229715eb871701246a482f982cb77984, type: 3}
   walkUpSprites:
-  - {fileID: -482817475027689853, guid: c47cfccdb4cc7b049bd158dd126cca67, type: 3}
-  - {fileID: -6473723951585435398, guid: c47cfccdb4cc7b049bd158dd126cca67, type: 3}
+  - {fileID: -370564048169120025, guid: 229715eb871701246a482f982cb77984, type: 3}
   walkRightSprites:
-  - {fileID: -6903272246175638528, guid: c47cfccdb4cc7b049bd158dd126cca67, type: 3}
-  - {fileID: -3966255296109044564, guid: c47cfccdb4cc7b049bd158dd126cca67, type: 3}
-  - {fileID: -6903272246175638528, guid: c47cfccdb4cc7b049bd158dd126cca67, type: 3}
-  - {fileID: 3890147401136147452, guid: c47cfccdb4cc7b049bd158dd126cca67, type: 3}
+  - {fileID: -370564048169120025, guid: 229715eb871701246a482f982cb77984, type: 3}
   walkLeftSprites:
-  - {fileID: -7229197155405563450, guid: c47cfccdb4cc7b049bd158dd126cca67, type: 3}
-  - {fileID: 9218525884499115748, guid: c47cfccdb4cc7b049bd158dd126cca67, type: 3}
-  - {fileID: -7229197155405563450, guid: c47cfccdb4cc7b049bd158dd126cca67, type: 3}
-  - {fileID: 7244340031321626645, guid: c47cfccdb4cc7b049bd158dd126cca67, type: 3}
+  - {fileID: -370564048169120025, guid: 229715eb871701246a482f982cb77984, type: 3}
   idleDownSprites:
   - {fileID: -370564048169120025, guid: 229715eb871701246a482f982cb77984, type: 3}
   - {fileID: 5481888991699395864, guid: 229715eb871701246a482f982cb77984, type: 3}
   idleUpSprites:
-  - {fileID: -482817475027689853, guid: c47cfccdb4cc7b049bd158dd126cca67, type: 3}
+  - {fileID: -370564048169120025, guid: 229715eb871701246a482f982cb77984, type: 3}
   idleRightSprites:
   - {fileID: -370564048169120025, guid: 229715eb871701246a482f982cb77984, type: 3}
-  - {fileID: 5481888991699395864, guid: 229715eb871701246a482f982cb77984, type: 3}
   idleLeftSprites:
-  - {fileID: -7229197155405563450, guid: c47cfccdb4cc7b049bd158dd126cca67, type: 3}
+  - {fileID: -370564048169120025, guid: 229715eb871701246a482f982cb77984, type: 3}
 --- !u!114 &4965876148081648015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,9 +157,8 @@ MonoBehaviour:
   npcType: 7
   dialogue:
     lines:
-    - Bork
-    names:
-    - Ollie
+    - line: 
+      name: 
 --- !u!114 &3126919313723330020
 MonoBehaviour:
   m_ObjectHideFlags: 0

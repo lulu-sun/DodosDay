@@ -120,6 +120,43 @@ public class CutsceneManager : MonoBehaviour
         }, () => MemoriesSystem.Instance.SetActive(true));
     }
 
+    public void OllieFirstDialogue(NPCController ollie, Vector2 facingDirection)
+    {
+        ollie.Talk(new Dialogue(
+            new SingleDialogue[]
+            {
+                new SingleDialogue("???", "Bork!"),
+                new SingleDialogue("Joce", "What a cute dog! Why are you in my room?"),
+                new SingleDialogue("???", "Bork!"),
+                new SingleDialogue("Joce", "Your name tag says...Ollie? Ollie!"),
+                new SingleDialogue("Ollie", "!!!!"),
+            }),
+            facingDirection);
+        GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.MeetingOllie, CheckpointState.StartedButNotComplete);
+    }
+
+    public void OllieBorkDialogue(NPCController ollie, Vector2 facingDirection)
+    {
+        ollie.Talk(new Dialogue(
+            new SingleDialogue[]
+            {
+                new SingleDialogue("Ollie", "Bork!"),
+                new SingleDialogue("Joce", "Good boy!!!!"),
+            }),
+            facingDirection);
+    }
+
+    public void OllieJaneIslandDialogue(NPCController ollie, Vector2 facingDirection)
+    {
+        ollie.Talk(new Dialogue(
+            new SingleDialogue[]
+            {
+                new SingleDialogue("Ollie", "Bork!"),
+                new SingleDialogue("Joce", "What are you doing here?"),
+            }),
+            facingDirection);
+    }
+
     private void NaomiFirstCutscene()
     {
         GameObject npc = Instantiate(naomiPrefab, new Vector3(9.5f, 12.35f, 0f), Quaternion.identity);
@@ -250,7 +287,6 @@ public class CutsceneManager : MonoBehaviour
                 new SingleDialogue("???", "Nooo, Dumpling!! Joce, you've beaten me!"),
                 new SingleDialogue("Joce", "I remember you now! I can't believe I forgot about you!"),
                 new SingleDialogue("Jane", "It's okay, I still love you! Good luck on the rest of your journey!"),
-                new SingleDialogue("Jane", "Meanwhile, I'll have to go find where Dumpling ran off to."),
                 new SingleDialogue("Joce", "Goodbye!!"),
 
             }), facingDirection);

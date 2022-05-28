@@ -88,6 +88,8 @@ public enum Checkpoint
     EnteredAllison,
     //Interactions
     RadioPlayingMusic,
+    MeetingOllie,
+
 
     // Game State
     GameCompleted,

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 
 public enum BattleState {
     Start, PlayerAction, PlayerMove, EnemyMove, Busy
@@ -127,6 +128,7 @@ public class BattleSystem : MonoBehaviour
             yield return new WaitForSeconds(1f);
 
             GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.PokemonBattle, CheckpointState.Complete);
+            //Destroy(FindObjectsOfType<NPCController>().Where(npc => npc.gameObject.name == "Dumpling").Single().gameObject);
 
             EndBattle();
         }
