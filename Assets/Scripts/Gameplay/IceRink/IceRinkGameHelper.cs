@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class IceRinkGameHelper : MonoBehaviour
 {
-    public bool IsSlippery { get; set; }
+    public bool OnIce { get; set; }
 
     public Vector2 SlideDirection { get; set; }
 
@@ -13,9 +13,8 @@ public class IceRinkGameHelper : MonoBehaviour
     
     public static IceRinkGameHelper Instance { get; private set; }
 
-    private Queue<bool> isSlidingWindow;
-    private int queueSize = 75;
-    private double threshold = 0.05;
+    private Queue<bool> isSlidingHistory;
+    private int queueSize = 50;
 
     private void Awake()
     {
@@ -24,7 +23,7 @@ public class IceRinkGameHelper : MonoBehaviour
 
     private void Start()
     {
-        isSlidingWindow = new Queue<bool>();
+        isSlidingHistory = new Queue<bool>();
         ResetIsSliding();
     }
 
@@ -32,14 +31,17 @@ public class IceRinkGameHelper : MonoBehaviour
     {
         for (int i = 0; i < queueSize; i++)
         {
-            isSlidingWindow.Enqueue(true);
+            isSlidingHistory.Enqueue(true);
         }
     }
 
     public bool IsSliding(Vector3 currentPosition)
     {
-        isSlidingWindow.Enqueue(Mathf.Abs((currentPosition - PreviousFramePosition).magnitude) > 0);
-        isSlidingWindow.Dequeue();
-        return isSlidingWindow.Count(b => b) * 1.0 / isSlidingWindow.Count >= threshold;
+        isSlidingHistory.Enqueue(Mathf.Abs((currentPosition - PreviousFramePosition).magnitude) > 0);
+        isSlidingHistory.Dequeue();
+        bool isSliding = isSlidingHistory.Count(b => b) * 1.0 / isSlidingHistory.Count > 0;
+        //Debug.Log($"isSliding: {isSliding}");
+        //Debug.Log($"previousPosition == currentPosition: {currentPosition == PreviousFramePosition}");
+        return isSliding;
     }
 }

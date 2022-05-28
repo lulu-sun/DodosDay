@@ -96,7 +96,19 @@ public class Character : MonoBehaviour
 
     public void MoveOneFrame(Vector2 movement)
     {
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        MoveRigidBodyOneFrame(movement);
         UpdateAnimator(movement);
+    }
+
+    public void MoveOneFrameWithoutAnimation(Vector2 movement)
+    {
+        MoveRigidBodyOneFrame(movement);
+        UpdateAnimator(Vector2.zero);
+        FaceDirection(movement);
+    }
+
+    private void MoveRigidBodyOneFrame(Vector2 movement)
+    {
+        rb.MovePosition(rb.position + moveSpeed * Time.fixedDeltaTime * movement);
     }
 }

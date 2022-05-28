@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     public void HandleUpdate()
     {
         if (SceneManager.GetActiveScene().name.Equals("IceRink") &&
-            IceRinkGameHelper.Instance.IsSlippery)
+            IceRinkGameHelper.Instance.OnIce)
         {
             IceRinkHandleUpdate();
         }
@@ -70,13 +70,13 @@ public class PlayerController : MonoBehaviour
 
         movement.Normalize();
 
-        if (!IceRinkGameHelper.Instance.IsSliding(transform.position))
+        if (IceRinkGameHelper.Instance.SlideDirection == Vector2.zero || !IceRinkGameHelper.Instance.IsSliding(transform.position))
         {
             IceRinkGameHelper.Instance.SlideDirection = movement;
-            //character.UpdateAnimator(movement);
+            //Debug.Log($"SlideDirection: {IceRinkGameHelper.Instance.SlideDirection}");
         }
 
-        character.MoveOneFrame(IceRinkGameHelper.Instance.SlideDirection);
+        character.MoveOneFrameWithoutAnimation(IceRinkGameHelper.Instance.SlideDirection);
 
         IceRinkGameHelper.Instance.PreviousFramePosition = transform.position;
     }

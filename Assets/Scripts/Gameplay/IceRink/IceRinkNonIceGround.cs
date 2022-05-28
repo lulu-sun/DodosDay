@@ -4,18 +4,16 @@ using UnityEngine;
 
 public class IceRinkNonIceGround : MonoBehaviour
 {
-    private int count;
-
     private void OnTriggerEnter2D(Collider2D col)
     {
         // reset slide direction
         IceRinkGameHelper.Instance.SlideDirection = Vector2.zero;
-        IceRinkGameHelper.Instance.IsSlippery = false;
+        IceRinkGameHelper.Instance.OnIce = false;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        IceRinkGameHelper.Instance.IsSlippery = true;
+        IceRinkGameHelper.Instance.OnIce = true;
     }
 
     private void OnTriggerStay2D(Collider2D collision)
