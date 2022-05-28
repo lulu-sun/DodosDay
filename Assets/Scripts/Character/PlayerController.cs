@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 
     Vector2 movement;
 
-    Character character; 
+    Character character;
 
     public Character Character { get => character; }
 
