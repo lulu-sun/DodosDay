@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -14,7 +13,7 @@ public class IceRinkGameHelper : MonoBehaviour
     public static IceRinkGameHelper Instance { get; private set; }
 
     private Queue<bool> isSlidingHistory;
-    private int queueSize = 50;
+    private int queueSize = 10;
 
     private void Awake()
     {
