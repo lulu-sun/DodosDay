@@ -478,7 +478,7 @@ public class CutsceneManager : MonoBehaviour
 
             }), facingDirection);
 
-        GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.IceRinkGame, CheckpointState.StartedButNotComplete);
+        GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.IceRinkGameAndChickenWings, CheckpointState.StartedButNotComplete);
     }
 
     public void NoelleWaitingDialogue(NPCController noelle, Vector2 facingDirection)
@@ -501,7 +501,17 @@ public class CutsceneManager : MonoBehaviour
                 new SingleDialogue("Joce", "Who?"),
                 new SingleDialogue("Noelle", "Oops! Nothing! I think you'd better get going now!"),
                 new SingleDialogue("Joce", "(Is this something related to my quest?)"),
-            }), facingDirection);
+            }),
+            facingDirection,
+            () =>
+            {
+                ChickenWingsSystem.Instance.SetActive(false);
+                if (!GameCheckpoints.Instance.Complete(Checkpoint.ChickenWingsMemoryRecorded))
+                {
+                    MemoriesSystem.Instance.MarkMemoryFound();
+                    GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.ChickenWingsMemoryRecorded, CheckpointState.Complete);
+                }
+            });
     }
 
     public void NoelleEndGameDialogue(NPCController noelle, Vector2 facingDirection)
@@ -538,6 +548,31 @@ public class CutsceneManager : MonoBehaviour
                 new SingleDialogue("Joce", "Wings Stop Over? That doesn't sound quite right."),
 
             }), facingDirection);
+    }
+
+    public void WingsShopFirstDialogue(NPCController shopKeeper, Vector2 facingDirection)
+    {
+        shopKeeper.Talk(new Dialogue(
+            new SingleDialogue[]
+            {
+                new SingleDialogue("Counter server", "(LULU TODO: Fix this dialogue) Here's your chicken wings."),
+            }),
+            facingDirection,
+            () =>
+            {
+                ChickenWingsSystem.Instance.SetActive(true);
+                GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.IceRinkGameAndChickenWings, CheckpointState.Complete);
+            });
+    }
+
+    public void WingsShopWingsAcquiredDialogue(NPCController shopKeeper, Vector2 facingDirection)
+    {
+        shopKeeper.Talk(new Dialogue(
+            new SingleDialogue[]
+            {
+                new SingleDialogue("Counter server", "(LULU TODO: Fix this dialogue) Sorry, we're all out."),
+            }),
+            facingDirection);
     }
 
     public void EnterAllisonDialogue()

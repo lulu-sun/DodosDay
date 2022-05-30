@@ -17,8 +17,11 @@ public class MemoriesSystem : MonoBehaviour
 
     public void MarkMemoryFound()
     {
-        memories[memoriesFound].sprite = filledMemory;
-        ++memoriesFound;
+        if (memoriesFound < memories.Length)
+        {
+            memories[memoriesFound].sprite = filledMemory;
+            ++memoriesFound;
+        }
     }
 
     private void Awake()

@@ -163,9 +163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcType: 0
   dialogue:
-    lines:
-    - Hello, I am an NPC.
-    - Run along now.
+    lines: []
 --- !u!114 &7504730561195576703
 MonoBehaviour:
   m_ObjectHideFlags: 0

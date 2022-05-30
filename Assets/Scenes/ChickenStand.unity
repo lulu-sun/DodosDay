@@ -32424,7 +32424,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6110305278217342256, guid: cb7a5ecbca251ac4883e59108f9e7028, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6110305278217342256, guid: cb7a5ecbca251ac4883e59108f9e7028, type: 3}
       propertyPath: m_LocalPosition.x
@@ -32513,7 +32513,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8630726818619578143, guid: af719973705014b67932e4cc78164459, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8630726818619578143, guid: af719973705014b67932e4cc78164459, type: 3}
       propertyPath: m_LocalPosition.x
@@ -32574,7 +32574,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6279657847576733877, guid: 1e96cdca129df6d4eaef3af969e292f9, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6279657847576733877, guid: 1e96cdca129df6d4eaef3af969e292f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -32627,7 +32627,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 258340317283101468, guid: 4595ec90dfa7f0049b826b00e4037189, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 258340317283101468, guid: 4595ec90dfa7f0049b826b00e4037189, type: 3}
       propertyPath: m_LocalPosition.x
@@ -32726,9 +32726,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 301433940564939931, guid: 4a94d44d82d8d564c9db8f77023dead0, type: 3}
+      propertyPath: m_Size.x
+      value: 2.2482843
+      objectReference: {fileID: 0}
+    - target: {fileID: 301433940564939931, guid: 4a94d44d82d8d564c9db8f77023dead0, type: 3}
+      propertyPath: m_Size.y
+      value: 1.7131667
+      objectReference: {fileID: 0}
+    - target: {fileID: 301433940564939931, guid: 4a94d44d82d8d564c9db8f77023dead0, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.03556776
+      objectReference: {fileID: 0}
+    - target: {fileID: 301433940564939931, guid: 4a94d44d82d8d564c9db8f77023dead0, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.052653074
+      objectReference: {fileID: 0}
+    - target: {fileID: 301433940564939933, guid: 4a94d44d82d8d564c9db8f77023dead0, type: 3}
+      propertyPath: npcType
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 301433940564939933, guid: 4a94d44d82d8d564c9db8f77023dead0, type: 3}
+      propertyPath: dialogue.lines.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 301433940564939934, guid: 4a94d44d82d8d564c9db8f77023dead0, type: 3}
       propertyPath: m_Name
-      value: NPC
+      value: ChickenStandNPC
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a94d44d82d8d564c9db8f77023dead0, type: 3}

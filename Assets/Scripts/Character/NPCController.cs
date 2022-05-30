@@ -17,6 +17,7 @@ public enum NPCType
     Radio,
     SchoolSign,
     WingsSign,
+    ChickenWingsShop,
     ChasingGameChaser
 }
 
@@ -40,53 +41,6 @@ public class NPCController : MonoBehaviour, Interactable
         Debug.Log("NPC Interact");
 
         GameEventSystem.Instance.TryTriggerNPCGameEvent(this, facingDirection);
-        //switch (npcType)
-        //{
-        //    case NPCType.Lulu:
-        //        Talk(facingDirection);
-        //        break;
-        //    case NPCType.Jane:
-        //        Talk(facingDirection);
-        //        break;
-        //    case NPCType.Naomi:
-        //        Talk(facingDirection, () => ChasingGameSystem.Instance.StartGame());
-        //        break;
-        //    case NPCType.JuanJuan:
-        //        Talk(facingDirection, () => CatchingGameSystem.Instance.StartGame());
-        //        break;
-        //    case NPCType.Rachel:
-        //        Talk(facingDirection);
-        //        break;
-        //    case NPCType.Noelle:
-        //        Talk(facingDirection);
-        //        break;
-        //    case NPCType.Ollie:
-        //        //Talk(facingDirection);
-        //        Talk(facingDirection, () => BattleSystem.Instance.StartBattle());
-        //        break;
-        //    case NPCType.ArcadeMachine:
-        //        Talk(Vector2.zero, () => CatchingGameSystem.Instance.StartGame());
-        //        break;
-        //    case NPCType.Radio:
-        //        Debug.Log("Radio");
-        //        Talk(facingDirection, () => AudioManager.Instance.PlayDay6Music());
-        //        break;
-        //    case NPCType.Default:
-        //    default:
-        //        Talk(facingDirection);
-        //        break;
-        //}
-        
-        // Talk(facingDirection, () => BattleSystem.Instance.StartBattle());
-        // Talk(facingDirection);
-        // Talk(facingDirection, () => Walk(new Vector2(0, -3)));
-        // StartCoroutine(Walk(new List<Vector2>() 
-        // { 
-        //     new Vector2(4, 0),
-        //     new Vector2(0, -4),
-        //     new Vector2(-4, 0),
-        //     new Vector2(0, 4)
-        // }));
     }
 
     public void Talk(Vector2 facingDirection, Action onFinished = null)

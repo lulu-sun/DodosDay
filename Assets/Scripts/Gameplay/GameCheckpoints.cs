@@ -27,9 +27,10 @@ public class GameCheckpoints : MonoBehaviour
         return gameCheckpointsState[checkpoint];
     }
 
-    public void UpdateCheckpointState(Checkpoint checktpoint, CheckpointState checkpointState)
+    public void UpdateCheckpointState(Checkpoint checkpoint, CheckpointState checkpointState)
     {
-        this.gameCheckpointsState[checktpoint] = checkpointState;
+        Debug.Log($"Update GameCheckpoint {checkpoint}: {gameCheckpointsState[checkpoint]} -> {checkpointState}");
+        this.gameCheckpointsState[checkpoint] = checkpointState;
     }
 
     public bool NeverStarted(Checkpoint checkpoint)
@@ -78,11 +79,12 @@ public enum Checkpoint
     ChasingGame,
     CatchingGame,
     PokemonBattle,
-    IceRinkGame,
+    IceRinkGameAndChickenWings,
     CheeseGame,
     
-    // Hack to record cheese game properly
+    // Memories
     CheeseGameMemoryRecorded,
+    ChickenWingsMemoryRecorded,
 
     // Dialogues
     EnteredAllison,

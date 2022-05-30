@@ -127,6 +127,7 @@ public class GameEventSystem : MonoBehaviour
                 () => GameCheckpoints.Instance.Complete(Checkpoint.CatchingGame),
                 (n, f) => CutsceneManager.Instance.JuanJuanCompletedDialogue(n, f))
         });
+
         // Arcade
         AddNPCGameTrigger(NPCType.ArcadeMachine, new GameEvent[]
         {       
@@ -136,7 +137,6 @@ public class GameEventSystem : MonoBehaviour
         });
 
         // Rachel
-
         AddNPCGameTrigger(NPCType.Rachel, new GameEvent[]
         {
             new GameEvent(
@@ -156,17 +156,15 @@ public class GameEventSystem : MonoBehaviour
                 (n, f) => CutsceneManager.Instance.RachelHasCheeseDialogue(n, f))
         });
 
-
         // Noelle
-
         AddNPCGameTrigger(NPCType.Noelle, new GameEvent[]
         {
             new GameEvent(
-                () => GameCheckpoints.Instance.NeverStarted(Checkpoint.IceRinkGame),
+                () => GameCheckpoints.Instance.NeverStarted(Checkpoint.IceRinkGameAndChickenWings),
                 (n, f) => CutsceneManager.Instance.NoelleFirstDialogue(n, f)),
 
             new GameEvent(
-                () => GameCheckpoints.Instance.StartedButNotComplete(Checkpoint.IceRinkGame),
+                () => GameCheckpoints.Instance.StartedButNotComplete(Checkpoint.IceRinkGameAndChickenWings),
                 (n, f) => CutsceneManager.Instance.NoelleWaitingDialogue(n, f)),
 
             new GameEvent(
@@ -174,12 +172,23 @@ public class GameEventSystem : MonoBehaviour
                 (n, f) => CutsceneManager.Instance.NoelleEndGameDialogue(n, f)),
 
             new GameEvent(
-                () => GameCheckpoints.Instance.Complete(Checkpoint.IceRinkGame),
+                () => GameCheckpoints.Instance.Complete(Checkpoint.IceRinkGameAndChickenWings),
                 (n, f) => CutsceneManager.Instance.NoelleCompletedDialogue(n, f))
         });
 
-        // Signs
+        // Chicken Wings Shop
+        AddNPCGameTrigger(NPCType.ChickenWingsShop, new GameEvent[]
+        {
+            new GameEvent(
+                () => GameCheckpoints.Instance.NotComplete(Checkpoint.IceRinkGameAndChickenWings),
+                (n, f) => CutsceneManager.Instance.WingsShopFirstDialogue(n, f)),
 
+            new GameEvent(
+                () => GameCheckpoints.Instance.Complete(Checkpoint.IceRinkGameAndChickenWings),
+                (n, f) => CutsceneManager.Instance.WingsShopWingsAcquiredDialogue(n, f)),
+        });
+
+        // Signs
         AddNPCGameTrigger(NPCType.SchoolSign, new GameEvent[]
         {
             new GameEvent(
@@ -197,7 +206,6 @@ public class GameEventSystem : MonoBehaviour
 });
 
         // Radio
-
         AddNPCGameTrigger(NPCType.Radio, new GameEvent[]
         {
             new GameEvent(
