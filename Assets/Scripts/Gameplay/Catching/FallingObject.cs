@@ -45,10 +45,12 @@ public class FallingObject : MonoBehaviour
         {
             if (isGood)
             {
+                AudioManager.Instance.PlayPopSfx();
                 CatchingGameSystem.Instance.IncrementScore();
             }
             else
             {
+                AudioManager.Instance.PlayLosePointSfx();
                 CatchingGameSystem.Instance.DecreaseLife();
             }
             Destroy(gameObject);

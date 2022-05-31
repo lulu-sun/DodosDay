@@ -600,6 +600,9 @@ MonoBehaviour:
   day6Music: {fileID: 8300000, guid: 347c435cba56f4636b7ca38b95a6cb92, type: 3}
   popSfx: {fileID: 8300000, guid: 37086136561018e4b94110fce7116761, type: 3}
   typingSfx: {fileID: 8300000, guid: aa76e120f72dbcc4d9775c066932b177, type: 3}
+  losePointSfx: {fileID: 8300000, guid: 7a831b059d207430492d26298f0f9334, type: 3}
+  endGameSfx: {fileID: 8300000, guid: f1f879179cd5c4d8faee1a3a58485d72, type: 3}
+  successSfx: {fileID: 8300000, guid: 9e96f7d132d1047568d5db24887b4ad4, type: 3}
   dumplingMeowSfx: {fileID: 8300000, guid: 2d3b0d4c33fd6486b8c54e0d4d9e436e, type: 3}
   ollieBorkSfx: {fileID: 8300000, guid: 0334bb37300ab43628834f691fb0c7ee, type: 3}
   dumplingAttackSfx: {fileID: 8300000, guid: 2d3b0d4c33fd6486b8c54e0d4d9e436e, type: 3}

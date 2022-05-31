@@ -121,10 +121,16 @@ public class CatchingGameSystem : MonoBehaviour
     {
         player.HandleUpdate();
 
-        if (lives <= 0 || score >= winningScore)
+        if (lives <= 0)
         {
             // TODO: make more smooth
+            AudioManager.Instance.PlayEndGameSfx();
+            this.EndGame();
+        }
+        else if (score >= winningScore)
+        {
             GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.CatchingGame, CheckpointState.Complete);
+            AudioManager.Instance.PlaySuccessSfx();
             this.EndGame();
         }
     }

@@ -15,6 +15,9 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] AudioClip popSfx;
     [SerializeField] AudioClip typingSfx;
+    [SerializeField] AudioClip losePointSfx;
+    [SerializeField] AudioClip endGameSfx;
+    [SerializeField] AudioClip successSfx;
 
     [SerializeField] AudioClip dumplingMeowSfx;
     [SerializeField] AudioClip ollieBorkSfx;
@@ -64,6 +67,22 @@ public class AudioManager : MonoBehaviour
         PlaySfx(popSfx, 0.3f);
     }
 
+    public void PlayEndGameSfx()
+    {
+        PlaySfx(endGameSfx, 0.3f);
+    }
+
+    public void PlayLosePointSfx()
+    {
+        PlaySfx(losePointSfx, 0.3f);
+    }
+
+    public void PlaySuccessSfx()
+    {
+        PlaySfx(successSfx, 0.3f);
+    }
+
+
     public void PlayTypingSfx()
     {
         PlaySfx(typingSfx, 0.3f, true);
@@ -89,17 +108,17 @@ public class AudioManager : MonoBehaviour
         PlaySfx(ollieAttackSfx, 0.3f);
     }
 
-    //public void PlayTakeDamage()
-    //{
-    //    PlaySfx(takeDamageSfx, 0.3f);
-    //}
-
-    public IEnumerator PlayTakeDamage()
+    public void PlayTakeDamage()
     {
-        yield return new WaitForSeconds(0.5f);
         PlaySfx(takeDamageSfx, 0.3f);
-      
     }
+
+    //public IEnumerator PlayTakeDamage()
+    //{
+    //    yield return new WaitForSeconds(0.5f);
+    //    PlaySfx(takeDamageSfx, 0.3f);
+
+    //}
 
     public void StopTypingSfx()
     {

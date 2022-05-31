@@ -107,7 +107,7 @@ public class BattleSystem : MonoBehaviour
 
         if (move.Base.Power != 0)
         {
-            yield return AudioManager.Instance.PlayTakeDamage();
+            AudioManager.Instance.PlayTakeDamage();
             enemyUnit.PlayHitAnimation();
         }
 
@@ -168,7 +168,7 @@ public class BattleSystem : MonoBehaviour
 
         if (move.Base.Power != 0)
         {
-            yield return AudioManager.Instance.PlayTakeDamage();
+            AudioManager.Instance.PlayTakeDamage();
             playerUnit.PlayHitAnimation();
        
         }
