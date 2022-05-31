@@ -762,7 +762,7 @@ MonoBehaviour:
   endGameSfx: {fileID: 8300000, guid: f1f879179cd5c4d8faee1a3a58485d72, type: 3}
   successSfx: {fileID: 8300000, guid: 9e96f7d132d1047568d5db24887b4ad4, type: 3}
   turboModeSfx: {fileID: 8300000, guid: 1b945ac94217b4a63af2b0b4c65c0764, type: 3}
-  getMemorySfx: {fileID: 8300000, guid: b7fbe8b603db9455d8e51821c8ad35f6, type: 3}
+  getMemorySfx: {fileID: 8300000, guid: a64a1abf4b1d1fc4db192e39d2635168, type: 3}
   dumplingMeowSfx: {fileID: 8300000, guid: 2d3b0d4c33fd6486b8c54e0d4d9e436e, type: 3}
   ollieBorkSfx: {fileID: 8300000, guid: 0334bb37300ab43628834f691fb0c7ee, type: 3}
   dumplingAttackSfx: {fileID: 8300000, guid: 2d3b0d4c33fd6486b8c54e0d4d9e436e, type: 3}
