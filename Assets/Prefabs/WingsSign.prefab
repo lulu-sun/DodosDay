@@ -57,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 556beb94025fe41288e5dc8d1a15ad9c, type: 3}
     - target: {fileID: 632692791776788612, guid: d3e5b9a8f75f64c83bb91851b474fcb2, type: 3}
       propertyPath: npcType
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 632692791776788613, guid: d3e5b9a8f75f64c83bb91851b474fcb2, type: 3}
       propertyPath: idleUpSprites.Array.size

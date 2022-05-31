@@ -37,15 +37,6 @@ public class CutsceneManager : MonoBehaviour
     // Update is called once per frame
     public void HandleUpdate()
     {
-        //if (currentScene.name == "Intro" && !IsRunning)
-        //{
-        //    RunCutscene(IntroCutscene);
-        //}
-        //else if (currentScene.name == "3_Island_n" && !IsRunning && !naomiCutsceneComplete)
-        //{
-        //    Debug.Log("Naomi Cutscene");
-        //    RunCutscene(NaomiCutscene);
-        //}
     }
 
     // change game mode
@@ -126,7 +117,7 @@ public class CutsceneManager : MonoBehaviour
             new SingleDialogue[]
             {
                 new SingleDialogue("???", "Bork!"),
-                new SingleDialogue("Joce", "What a cute dog! Why are you in my room?"),
+                new SingleDialogue("Joce", "What a cute dog!"),
                 new SingleDialogue("???", "Bork!"),
                 new SingleDialogue("Joce", "Your name tag says...Ollie? Ollie!"),
                 new SingleDialogue("Ollie", "!!!!"),
@@ -238,7 +229,15 @@ public class CutsceneManager : MonoBehaviour
                 new SingleDialogue("Naomi", "That’s okay, you remember me now!"),
                 new SingleDialogue("Naomi", "*HUGS*")
             }),
-            facingDirection);
+            facingDirection,
+            () =>
+            {
+                if (GameCheckpoints.Instance.NotComplete(Checkpoint.NaomiChasingMemoryRecorded))
+                {
+                    MemoriesSystem.Instance.MarkMemoryFound();
+                    GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.NaomiChasingMemoryRecorded, CheckpointState.Complete);
+                }
+            });
     }
 
     public void NaomiChaseAgainDialogue(NPCController naomi, Vector2 facingDirection)

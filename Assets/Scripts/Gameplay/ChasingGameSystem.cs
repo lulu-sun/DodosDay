@@ -80,7 +80,6 @@ public class ChasingGameSystem : MonoBehaviour
             if (FinishTime >= winningTime)
             {
                 state = CheckpointState.Complete;
-                MemoriesSystem.Instance.MarkMemoryFound();
             }
 
             GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.ChasingGame, state);
@@ -149,7 +148,7 @@ public class ChasingGameSystem : MonoBehaviour
                 bool ySameAsPrev = Mathf.Clamp(differenceVec.y, -1f, 1f) == prevDiffVec.y;
 
                 // Can only change path if at least x or y is different.
-                bool changePath = (!xSameAsPrev || !ySameAsPrev) && UnityEngine.Random.Range(0f, 100f) < 0.1f;
+                bool changePath = (!xSameAsPrev || !ySameAsPrev) && UnityEngine.Random.Range(0f, 100f) < 0.2f;
 
                 // Keep the same path. Only possible if either x or y is the same.
                 if (!changePath)

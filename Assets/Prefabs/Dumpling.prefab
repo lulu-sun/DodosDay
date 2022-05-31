@@ -143,5 +143,9 @@ PrefabInstance:
       propertyPath: walkRightSprites.Array.data[0]
       value: 
       objectReference: {fileID: 1950735504177107162, guid: 6b476386246114a248d68a5000182490, type: 3}
+    - target: {fileID: 4965876148081648015, guid: d792c79e69ebd6141bf13eedd0fe0d8e, type: 3}
+      propertyPath: npcType
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d792c79e69ebd6141bf13eedd0fe0d8e, type: 3}

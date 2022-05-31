@@ -169,7 +169,7 @@ PrefabInstance:
       objectReference: {fileID: 3983129093806024612, guid: 4d6cd141d5f974715a99ccb24881d1d1, type: 3}
     - target: {fileID: 301433940564939933, guid: 4a94d44d82d8d564c9db8f77023dead0, type: 3}
       propertyPath: npcType
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 301433940564939933, guid: 4a94d44d82d8d564c9db8f77023dead0, type: 3}
       propertyPath: dialogue.lines.Array.size

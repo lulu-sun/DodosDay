@@ -18,8 +18,7 @@ public enum NPCType
     Radio,
     SchoolSign,
     WingsSign,
-    ChickenWingsShop,
-    ChasingGameChaser
+    ChickenWingsShop
 }
 
 public class NPCController : MonoBehaviour, Interactable

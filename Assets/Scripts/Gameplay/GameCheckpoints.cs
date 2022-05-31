@@ -85,6 +85,7 @@ public enum Checkpoint
     // Memories
     CheeseGameMemoryRecorded,
     ChickenWingsMemoryRecorded,
+    NaomiChasingMemoryRecorded,
 
     // Dialogues
     EnteredAllison,
