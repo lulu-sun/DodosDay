@@ -481,8 +481,8 @@ public class CutsceneManager : MonoBehaviour
                 new SingleDialogue("Joce", "Study? I don't think I'm in school anymore. And who are you?"),
                 new SingleDialogue("???", "Never mind that, we have a lot of work to do!"),
                 new SingleDialogue("???", "The only thing that could make all this work tolerable would be some wings..."),
-                new SingleDialogue("???", "I heard there's a pop-up stand at the Norris ice rink. Could you buy us some wings?"),
-                new SingleDialogue("???", "We can even watch a scary tv show together when you get back!"),
+                new SingleDialogue("???", "I heard there's a Wings Over stand at the Norris ice rink. Could you pick some up?"),
+                new SingleDialogue("???", "And you know what goes well with wings? A scary TV show…"),
                 new SingleDialogue("Joce", "Hmm, this feels somewhat familiar to me. I'll be right back with the wings!"),
 
             }), facingDirection);
@@ -504,7 +504,9 @@ public class CutsceneManager : MonoBehaviour
         noelle.Talk(new Dialogue(
             new SingleDialogue[]
             {
-                new SingleDialogue("???", "You're back! Let's get some work done!"),
+                new SingleDialogue("???", "You're back! Let’s watch American Horror Story!"),
+                new SingleDialogue("Joce", " I thought we were supposed to be studying!"),
+                new SingleDialogue("???", "Oh, right..."),
                 new SingleDialogue("Joce", "Noelle! How could I have forgotten! We used to do this all the time together!"),
                 new SingleDialogue("Noelle", "Now you're one step closer to remembering everything...and a special someone..."),
                 new SingleDialogue("Joce", "Who?"),
@@ -528,7 +530,7 @@ public class CutsceneManager : MonoBehaviour
         noelle.Talk(new Dialogue(
             new SingleDialogue[]
             {
-                new SingleDialogue("Noelle", "I think I've had enough wings. But I think the pop-up stand is still at the ice rink!"),
+                new SingleDialogue("Noelle", "I think I've had enough wings. But I think the Wings Over stand is still at the ice rink!"),
             }), facingDirection);
     }
 

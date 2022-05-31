@@ -15,6 +15,6 @@ MonoBehaviour:
   name: Meow
   description: Meow
   type: 1
-  power: 5
+  power: 0
   accuracy: 100
   pp: 5

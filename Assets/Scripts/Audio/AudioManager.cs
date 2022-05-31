@@ -18,6 +18,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioClip losePointSfx;
     [SerializeField] AudioClip endGameSfx;
     [SerializeField] AudioClip successSfx;
+    [SerializeField] AudioClip turboModeSfx;
+    [SerializeField] AudioClip getMemorySfx;
 
     [SerializeField] AudioClip dumplingMeowSfx;
     [SerializeField] AudioClip ollieBorkSfx;
@@ -82,6 +84,15 @@ public class AudioManager : MonoBehaviour
         PlaySfx(successSfx, 0.3f);
     }
 
+    public void PlayTurboModeSfx()
+    {
+        PlaySfx(turboModeSfx, 0.3f);
+    }
+
+    public void PlayGetMemorySfx()
+    {
+        PlaySfx(getMemorySfx, 0.3f);
+    }
 
     public void PlayTypingSfx()
     {

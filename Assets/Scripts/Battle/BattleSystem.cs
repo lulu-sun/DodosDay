@@ -95,8 +95,18 @@ public class BattleSystem : MonoBehaviour
         move.PP--;
 
         yield return playerUnit.PlayAttackAnimation(0.3f);
-        AudioManager.Instance.PlayOllieAttack();
+
+        if (move.Base.Name == "TurboMode")
+        {
+            AudioManager.Instance.PlayTurboModeSfx();
+        }
+        else
+        {
+            AudioManager.Instance.PlayOllieAttack();
+        }
+
         yield return new WaitForSeconds(1f);
+
 
 
         if (move.Base.Name == "Whine")
