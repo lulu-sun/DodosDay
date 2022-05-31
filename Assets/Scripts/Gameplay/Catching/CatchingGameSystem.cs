@@ -98,7 +98,6 @@ public class CatchingGameSystem : MonoBehaviour
 
     private void SetScoreText()
     {
-        Debug.Log($"scoreText: {scoreText}, score: {score}");
         scoreText.text = score.ToString();
     }
 
