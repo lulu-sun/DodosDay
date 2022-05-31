@@ -111,9 +111,7 @@ public class CatchingGameSystem : MonoBehaviour
         while (isRunning)
         {
             yield return new WaitForSeconds(Random.Range(0.25f, 0.5f));
-            SpawnFallingObject(Random.Range(-xLength, xLength), true, GetRandomGravityScale());
-            yield return new WaitForSeconds(Random.Range(0.25f, 0.5f));
-            SpawnFallingObject(Random.Range(-xLength, xLength), false, GetRandomGravityScale());
+            SpawnFallingObject(Random.Range(-xLength, xLength), Random.Range(0f, 3f) >= 1, GetRandomGravityScale());
         }
     }
 
@@ -123,15 +121,14 @@ public class CatchingGameSystem : MonoBehaviour
 
         if (lives <= 0)
         {
-            // TODO: make more smooth
             AudioManager.Instance.PlayEndGameSfx();
-            this.EndGame();
+            EndGame();
         }
         else if (score >= winningScore)
         {
             GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.CatchingGame, CheckpointState.Complete);
             AudioManager.Instance.PlaySuccessSfx();
-            this.EndGame();
+            EndGame();
         }
     }
 

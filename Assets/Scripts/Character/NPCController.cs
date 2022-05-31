@@ -27,10 +27,9 @@ public class NPCController : MonoBehaviour, Interactable
 
     public NPCType npcType;
 
-    [SerializeField] Dialogue dialogue;
+    public Vector2 startingFacingDirection = Vector2.down;
     
     NPCState state;
-    // int currentPattern = 0;
 
     float idleTimer = 0f;
 
@@ -38,14 +37,8 @@ public class NPCController : MonoBehaviour, Interactable
 
     public void Interact(Vector2 facingDirection)
     {
-        Debug.Log("NPC Interact");
-
+        Debug.Log($"Interaction with {npcType}");
         GameEventSystem.Instance.TryTriggerNPCGameEvent(this, facingDirection);
-    }
-
-    public void Talk(Vector2 facingDirection, Action onFinished = null)
-    {
-        Talk(dialogue, facingDirection, onFinished);
     }
 
     public void Talk(Dialogue dialogue, Vector2 facingDirection, Action onFinished = null)
@@ -120,7 +113,11 @@ public class NPCController : MonoBehaviour, Interactable
     private void Awake()
     {
         character = GetComponent<Character>();
-        //dialogue.Name = Name;
+    }
+
+    private void Start()
+    {
+        character.FaceDirection(startingFacingDirection);
     }
 }
 

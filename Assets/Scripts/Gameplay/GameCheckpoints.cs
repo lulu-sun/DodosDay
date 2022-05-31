@@ -86,13 +86,13 @@ public enum Checkpoint
     CheeseGameMemoryRecorded,
     ChickenWingsMemoryRecorded,
     NaomiChasingMemoryRecorded,
+    CatchingGameMemoryRecorded,
 
     // Dialogues
     EnteredAllison,
     //Interactions
     RadioPlayingMusic,
     MeetingOllie,
-
 
     // Game State
     AllMemoriesFound,

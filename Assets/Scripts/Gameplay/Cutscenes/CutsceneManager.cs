@@ -339,21 +339,30 @@ public class CutsceneManager : MonoBehaviour
 
     public void JuanJuanFirstDialogue(NPCController juanjuan, Vector2 facingDirection)
     {
-        juanjuan.Talk(new Dialogue(
-            new SingleDialogue[]
+        Vector2 originalDirection = juanjuan.character.Direction;
+
+        RunMultipleActions(new ICutsceneAction[]
+        {
+            new FaceDirectionAction(juanjuan.character, -facingDirection),
+            new DialogueAction(new SingleDialogue[]
             {
-                new SingleDialogue("???", " * CRASH * "),
                 new SingleDialogue("???", " AAaaaAAahh!!! "),
                 new SingleDialogue("Joce", "Are you ok?? Do you need help?"),
                 new SingleDialogue("???", "JOCELYN! Yes! You came at just the right time!"),
                 new SingleDialogue("Joce", "How can I help?"),
-                new SingleDialogue("???", "I heard this vending machine has the best ice cream on this island!"),
-                new SingleDialogue("???", "But it looks like you have to get a certain score to win an ice cream cone, and I've been trying for so long..."),
+                new SingleDialogue("???", "I heard this arcade vending machine has the best ice cream on this island!"),
+                new SingleDialogue("???", $"But it looks like you have to get at least {CatchingGameSystem.Instance.winningScore} points to win an ice cream cone, and I've been trying for so long..."),
                 new SingleDialogue("Joce", "Oh? Let me see if I can help!"),
                 new SingleDialogue("???", "Thanks so much! You have to catch the yellow ducklings, and avoid catching the rotten ones - you'll have 3 lives!"),
-            }), facingDirection);
-
-        GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.CatchingGame, CheckpointState.StartedButNotComplete);
+            }),
+            new MoveAction(juanjuan.character, new Vector2(-1, 0)),
+            new FaceDirectionAction(juanjuan.character, Vector2.right),
+            new DialogueAction(new SingleDialogue[]
+            {
+                new SingleDialogue("???", "Give it a try!")
+            })
+        },
+        () => GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.CatchingGame, CheckpointState.StartedButNotComplete));
     }
 
     public void JuanJuanTryAgainDialogue(NPCController juanjuan, Vector2 facingDirection)
@@ -361,7 +370,8 @@ public class CutsceneManager : MonoBehaviour
         juanjuan.Talk(new Dialogue(
             new SingleDialogue[]
             {
-                new SingleDialogue("???", "Have you gotten the ice cream yet?"),                
+                new SingleDialogue("???", $"You have to get at least {CatchingGameSystem.Instance.winningScore} points!"),
+                new SingleDialogue("???", "Did you get the ice cream yet?"),                
             }), facingDirection);
     }
 
@@ -376,8 +386,16 @@ public class CutsceneManager : MonoBehaviour
                 new SingleDialogue("Joce", "Nevermind, I hope you enjoy your ice cream!"),
                 new SingleDialogue("JuanJuan", "I will, thanks to you! I'll see you later!"),
                 new SingleDialogue("Joce", "(Wait I will? Are you my heart's desire...?)"),
-            }), facingDirection);
-
+            }),
+            facingDirection,
+            () =>
+            {
+                if (GameCheckpoints.Instance.NotComplete(Checkpoint.CatchingGameMemoryRecorded))
+                {
+                    GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.CatchingGameMemoryRecorded, CheckpointState.Complete);
+                    MemoriesSystem.Instance.MarkMemoryFound();
+                }
+            });
     }
 
     public void JuanJuanGameEndDialogue(NPCController juanjuan, Vector2 facingDirection)
@@ -401,7 +419,21 @@ public class CutsceneManager : MonoBehaviour
             }), facingDirection,
             () => CatchingGameSystem.Instance.StartGame());
 
-        GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.CatchingGame, CheckpointState.StartedButNotComplete);
+        if (GameCheckpoints.Instance.NeverStarted(Checkpoint.CatchingGame))
+        {
+            GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.CatchingGame, CheckpointState.StartedButNotComplete);
+        }
+    }
+
+    public void BlockArcadeGame()
+    {
+        RunMultipleActions(new ICutsceneAction[]
+        {
+            new DialogueAction(new SingleDialogue[]
+            {
+                new SingleDialogue("Arcade Machine", "Someone is already playing at the moment..."),
+            })
+        });
     }
 
     public void RachelFirstDialogue(NPCController rachel, Vector2 facingDirection)

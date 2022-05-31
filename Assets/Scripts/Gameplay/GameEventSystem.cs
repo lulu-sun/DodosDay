@@ -132,8 +132,12 @@ public class GameEventSystem : MonoBehaviour
         AddNPCGameTrigger(NPCType.ArcadeMachine, new GameEvent[]
         {       
             new GameEvent(
-                () => true,
+                () => !GameCheckpoints.Instance.NeverStarted(Checkpoint.CatchingGame),
                 (n, f) => CutsceneManager.Instance.StartArcadeGame(n, f)),
+
+            new GameEvent(
+                () => GameCheckpoints.Instance.NeverStarted(Checkpoint.CatchingGame),
+                (n, f) => CutsceneManager.Instance.BlockArcadeGame())
         });
 
         // Dumpling
