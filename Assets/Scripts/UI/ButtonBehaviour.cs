@@ -22,5 +22,10 @@ public class ButtonBehaviour : MonoBehaviour
     {
         AudioManager.Instance.PlayPopSfx();
     }
+
+    public void OnMailboxButtonPress()
+    {
+
+    }
 }
 

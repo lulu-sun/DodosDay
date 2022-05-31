@@ -87,6 +87,7 @@ public enum Checkpoint
     ChickenWingsMemoryRecorded,
     NaomiChasingMemoryRecorded,
     CatchingGameMemoryRecorded,
+    PokemonBattleMemoryRecorded,
 
     // New Place
     EnteredAllison,

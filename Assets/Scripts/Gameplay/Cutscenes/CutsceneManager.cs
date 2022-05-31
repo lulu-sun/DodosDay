@@ -213,7 +213,7 @@ public class CutsceneManager : MonoBehaviour
         naomi.Talk(new Dialogue(
             new SingleDialogue[]
             {
-                new SingleDialogue("???", $"I caught you in only {ChasingGameSystem.Instance.FinishTime} seconds!"),
+                new SingleDialogue("???", "It was so easy to catch you!"),
                 new SingleDialogue("???", "You can do better than that!")
             }),
             facingDirection,
@@ -225,7 +225,7 @@ public class CutsceneManager : MonoBehaviour
         naomi.Talk(new Dialogue(
             new SingleDialogue[]
             {
-                new SingleDialogue("???", $"Wow! You evaded me for {ChasingGameSystem.Instance.FinishTime} seconds. Do you remember my name now?"),
+                new SingleDialogue("???", "Wow! You evaded me for FOREVER!!! Do you remember my name now?"),
                 new SingleDialogue("Joce", "Naomi! I can't believe I forgot about you!"),
                 new SingleDialogue("Naomi", "That’s okay, you remember me now!"),
                 new SingleDialogue("Naomi", "*HUGS*")
@@ -299,9 +299,16 @@ public class CutsceneManager : MonoBehaviour
                 new SingleDialogue("Jane", "It's okay, I still love you! Good luck on the rest of your journey!"),
                 new SingleDialogue("Joce", "Goodbye!!"),
 
-            }), facingDirection);
-
-        GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.PokemonBattle, CheckpointState.Complete);
+            }),
+            facingDirection,
+            () =>
+            {   
+                if (GameCheckpoints.Instance.NotComplete(Checkpoint.PokemonBattleMemoryRecorded))
+                {
+                    GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.PokemonBattleMemoryRecorded, CheckpointState.Complete);
+                    MemoriesSystem.Instance.MarkMemoryFound();
+                }
+            });
     }
 
     public void JaneGameEndDialogue(NPCController jane, Vector2 facingDirection)
@@ -614,13 +621,14 @@ public class CutsceneManager : MonoBehaviour
         shopKeeper.Talk(new Dialogue(
             new SingleDialogue[]
             {
-                new SingleDialogue("Counter server", "(LULU TODO: Fix this dialogue) Here's your chicken wings."),
+                new SingleDialogue("Counter server", "Order up! Here are your chicken wings."),
             }),
             facingDirection,
             () =>
             {
                 ChickenWingsSystem.Instance.SetActive(true);
                 GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.IceRinkGameAndChickenWings, CheckpointState.Complete);
+                AudioManager.Instance.PlayPopSfx();
             });
     }
 
@@ -629,7 +637,7 @@ public class CutsceneManager : MonoBehaviour
         shopKeeper.Talk(new Dialogue(
             new SingleDialogue[]
             {
-                new SingleDialogue("Counter server", "(LULU TODO: Fix this dialogue) Sorry, we're all out."),
+                new SingleDialogue("Counter server", "Sorry, we're all out."),
             }),
             facingDirection);
     }
@@ -652,7 +660,7 @@ public class CutsceneManager : MonoBehaviour
         {
             new DialogueAction(new SingleDialogue[]
             {
-                new SingleDialogue("Lulu", "(*LULU TODO*) Hey, you haven't gotten all your memories back yet!")
+                new SingleDialogue("Lulu", "Hey, you haven't gotten all your memories back yet!")
             })
         });
     }
