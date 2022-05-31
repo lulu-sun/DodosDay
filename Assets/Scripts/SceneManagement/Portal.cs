@@ -31,6 +31,11 @@ public class Portal : MonoBehaviour
             CutsceneManager.Instance.BlockFinalIsland();
             yield return null;
         }
+        else if (CheeseGameSystem.Instance.IsActive)
+        {
+            CutsceneManager.Instance.BlockPortalsForCheeseGame();
+            yield return null;
+        }
         else
         {
             DontDestroyOnLoad(gameObject);

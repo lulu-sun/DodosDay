@@ -163,6 +163,7 @@ public class CutsceneManager : MonoBehaviour
         GameObject npc = Instantiate(naomiPrefab, new Vector3(9.5f, 12.35f, 0f), Quaternion.identity);
         npc.GetComponent<NPCController>().npcType = NPCType.Naomi;
         Character npcChar = npc.GetComponent<Character>();
+        npcChar.moveSpeed = player.Character.moveSpeed * 1.05f;
 
         RunMultipleActions(new ICutsceneAction[]
         {
@@ -605,6 +606,17 @@ public class CutsceneManager : MonoBehaviour
             new DialogueAction(new SingleDialogue[]
             {
                 new SingleDialogue("Lulu", "(*LULU TODO*) Hey, you haven't gotten all your memories back yet!")
+            })
+        });
+    }
+
+    public void BlockPortalsForCheeseGame()
+    {
+        RunMultipleActions(new ICutsceneAction[]
+        {
+            new DialogueAction(new SingleDialogue[]
+            {
+                new SingleDialogue("???", "Hey what about my cheese?!")
             })
         });
     }
