@@ -57,7 +57,7 @@ public class GameEventSystem : MonoBehaviour
                 (n, f) => CutsceneManager.Instance.NaomiTryAgainDialogue(n, f)),
 
             new GameEvent(
-                () => GameCheckpoints.Instance.Complete(Checkpoint.GameCompleted),
+                () => GameCheckpoints.Instance.Complete(Checkpoint.AllMemoriesFound),
                 (n, f) => CutsceneManager.Instance.NaomiChaseAgainDialogue(n, f)),
 
 
@@ -77,7 +77,7 @@ public class GameEventSystem : MonoBehaviour
                 (n, f) => CutsceneManager.Instance.OllieBorkDialogue(n, f)),
 
             new GameEvent(
-                () => GameCheckpoints.Instance.Complete(Checkpoint.GameCompleted),
+                () => GameCheckpoints.Instance.Complete(Checkpoint.AllMemoriesFound),
                 (n, f) => CutsceneManager.Instance.OllieBorkDialogue(n, f)),
 
             new GameEvent(
@@ -99,7 +99,7 @@ public class GameEventSystem : MonoBehaviour
                 (n, f) => CutsceneManager.Instance.JaneBattleAgainDialogue(n, f)),
 
             new GameEvent(
-                () => GameCheckpoints.Instance.Complete(Checkpoint.GameCompleted),
+                () => GameCheckpoints.Instance.Complete(Checkpoint.AllMemoriesFound),
                 (n, f) => CutsceneManager.Instance.JaneGameEndDialogue(n, f)),
 
             new GameEvent(
@@ -120,7 +120,7 @@ public class GameEventSystem : MonoBehaviour
                 (n, f) => CutsceneManager.Instance.JuanJuanTryAgainDialogue(n, f)),
 
             new GameEvent(
-                () => GameCheckpoints.Instance.Complete(Checkpoint.GameCompleted),
+                () => GameCheckpoints.Instance.Complete(Checkpoint.AllMemoriesFound),
                 (n, f) => CutsceneManager.Instance.JuanJuanGameEndDialogue(n, f)),
 
             new GameEvent(
@@ -157,7 +157,7 @@ public class GameEventSystem : MonoBehaviour
                 (n, f) => CutsceneManager.Instance.RachelWaitingDialogue(n, f)),
 
             new GameEvent(
-                () => GameCheckpoints.Instance.Complete(Checkpoint.GameCompleted),
+                () => GameCheckpoints.Instance.Complete(Checkpoint.AllMemoriesFound),
                 (n, f) => CutsceneManager.Instance.RachelEndGameDialogue(n, f)),
 
             new GameEvent(
@@ -177,7 +177,7 @@ public class GameEventSystem : MonoBehaviour
                 (n, f) => CutsceneManager.Instance.NoelleWaitingDialogue(n, f)),
 
             new GameEvent(
-                () => GameCheckpoints.Instance.Complete(Checkpoint.GameCompleted),
+                () => GameCheckpoints.Instance.Complete(Checkpoint.AllMemoriesFound),
                 (n, f) => CutsceneManager.Instance.NoelleEndGameDialogue(n, f)),
 
             new GameEvent(
@@ -278,8 +278,8 @@ public class GameEventSystem : MonoBehaviour
         AddEnterSceneGameTrigger("Last_Island", new GameEvent[]
         {
             new GameEvent(
-                () => true,
-                (n, f) => CutsceneManager.Instance.FinalIslandCutscene(n, f))
+                () => GameCheckpoints.Instance.Complete(Checkpoint.AllMemoriesFound),
+                (n, f) => CutsceneManager.Instance.FinalIslandCutscene(n, f)),
         });
     }
 

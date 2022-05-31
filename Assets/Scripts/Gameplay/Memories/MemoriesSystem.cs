@@ -22,6 +22,11 @@ public class MemoriesSystem : MonoBehaviour
             memories[memoriesFound].sprite = filledMemory;
             ++memoriesFound;
         }
+
+        if (memoriesFound >= memories.Length)
+        {
+            GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.AllMemoriesFound, CheckpointState.Complete);
+        }
     }
 
     private void Awake()

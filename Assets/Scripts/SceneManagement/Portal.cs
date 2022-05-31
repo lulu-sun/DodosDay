@@ -26,22 +26,30 @@ public class Portal : MonoBehaviour
 
     IEnumerator SwitchScene()
     {
-        DontDestroyOnLoad(gameObject);
+        if (sceneToLoadName == "Last_Island" && GameCheckpoints.Instance.NotComplete(Checkpoint.AllMemoriesFound))
+        {
+            CutsceneManager.Instance.BlockFinalIsland();
+            yield return null;
+        }
+        else
+        {
+            DontDestroyOnLoad(gameObject);
 
-        GameController.Instance.Pause();
-        yield return fader.FadeIn(fadeTimeInSeconds);
+            GameController.Instance.Pause();
+            yield return fader.FadeIn(fadeTimeInSeconds);
 
-        yield return SceneManager.LoadSceneAsync(SceneMapper.Instance.GetBuildIndexBySceneName(sceneToLoadName));
+            yield return SceneManager.LoadSceneAsync(SceneMapper.Instance.GetBuildIndexBySceneName(sceneToLoadName));
 
-        var destinationSpawnPoint = FindObjectsOfType<SpawnPoint>().Single(sp => sp.portalId == portalId);
-        GameController.Instance.playerController.transform.position = destinationSpawnPoint.transform.position;
+            var destinationSpawnPoint = FindObjectsOfType<SpawnPoint>().Single(sp => sp.portalId == portalId);
+            GameController.Instance.playerController.transform.position = destinationSpawnPoint.transform.position;
 
-        yield return fader.FadeOut(fadeTimeInSeconds);
+            yield return fader.FadeOut(fadeTimeInSeconds);
 
-        GameController.Instance.Unpause();
-        GameEventSystem.Instance.TryTriggerEnterSceneGameEvent(sceneToLoadName);
+            GameController.Instance.Unpause();
+            GameEventSystem.Instance.TryTriggerEnterSceneGameEvent(sceneToLoadName);
 
-        Destroy(gameObject);
+            Destroy(gameObject);
+        }
     }
 }
 

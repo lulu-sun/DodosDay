@@ -597,13 +597,19 @@ public class CutsceneManager : MonoBehaviour
         GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.EnteredAllison, CheckpointState.Complete);
     }
 
-    public void FinalIslandCutscene(NPCController lulu, Vector2 facingDirection)
-        //THIS IS COPIED FROM NAOMI CUTSCENE!!!!
+    public void BlockFinalIsland()
     {
-        GameObject npc = Instantiate(naomiPrefab, new Vector3(9.5f, 12.35f, 0f), Quaternion.identity);
-        npc.GetComponent<NPCController>().npcType = NPCType.Naomi;
-        Character npcChar = npc.GetComponent<Character>();
+        RunMultipleActions(new ICutsceneAction[]
+        {
+            new DialogueAction(new SingleDialogue[]
+            {
+                new SingleDialogue("Lulu", "(*LULU TODO*) Hey, you haven't gotten all your memories back yet!")
+            })
+        });
+    }
 
+    public void FinalIslandCutscene(NPCController lulu, Vector2 facingDirection)
+    {
         RunMultipleActions(new ICutsceneAction[]
         {
             new DialogueAction(new SingleDialogue[]
@@ -611,32 +617,6 @@ public class CutsceneManager : MonoBehaviour
                 new SingleDialogue("???", "!! Wait!!!"),
                 new SingleDialogue("Joce", "!!")
             }),
-            //new FaceDirectionAction(player.Character, Vector2.right),
-            //new MoveAction(npcChar, new Vector2(-8.5f, 0f)),
-            //new DialogueAction(new SingleDialogue[]
-            //{
-            //    new SingleDialogue("???", "You're finally here! Now I can cuddle you FOREVER!!"),
-            //    new SingleDialogue("Joce", "W - what? I don't know who you are, I don't want to cuddle you!"),
-            //    new SingleDialogue("???", "What! You always wanted to cuddle me before!"),
-            //    new SingleDialogue("Joce", "Somehow, I don't think that's true..."),
-            //    new SingleDialogue("???", "Okay fine, I might be exaggerating."),
-            //    new SingleDialogue("???", "But you don't have a choice, because I'm going to hug you anyway!"),
-            //    new SingleDialogue("Joce", "What?? No!!"),
-            //}),
-            //new FaceDirectionAction(player.Character, Vector2.left),
-            //new MoveAction(player.Character, new Vector2(-0.7f, 0f)),
-            //new FaceDirectionAction(player.Character, Vector2.down),
-            //new MultipleSimultaneousCutsceneAction(new ISingleCutsceneAction[]
-            //{
-            //    new MoveAction(npcChar, new Vector2(-1.8f, 0f)),
-            //    new MoveAction(player.Character, new Vector2(0f, -1.8f)),
-            //}),
-            //new FaceDirectionAction(npcChar, Vector2.down),
-            //new MultipleSimultaneousCutsceneAction(new ISingleCutsceneAction[]
-            //{
-            //    new MoveAction(npcChar, new Vector2(0f, -8f)),
-            //    new MoveAction(player.Character, new Vector2(0f, -8f))
-            //}),
         });
     }
 

@@ -94,7 +94,7 @@ public enum Checkpoint
 
 
     // Game State
-    GameCompleted,
+    AllMemoriesFound,
 }
 
 public enum CheckpointState
