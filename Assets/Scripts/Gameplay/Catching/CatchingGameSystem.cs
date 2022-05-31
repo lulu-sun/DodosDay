@@ -52,6 +52,7 @@ public class CatchingGameSystem : MonoBehaviour
     {
         OnStartGame += () => 
         {
+            Debug.Log("StartGame");
             score = 0;
             lives = startingLivesCount;
             SetScoreText();
@@ -97,6 +98,7 @@ public class CatchingGameSystem : MonoBehaviour
 
     private void SetScoreText()
     {
+        Debug.Log($"scoreText: {scoreText}, score: {score}");
         scoreText.text = score.ToString();
     }
 

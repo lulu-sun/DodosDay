@@ -416,13 +416,16 @@ public class CutsceneManager : MonoBehaviour
             {
                 new SingleDialogue("Arcade", "Starting game . . ."),
 
-            }), facingDirection,
-            () => CatchingGameSystem.Instance.StartGame());
-
-        if (GameCheckpoints.Instance.NeverStarted(Checkpoint.CatchingGame))
-        {
-            GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.CatchingGame, CheckpointState.StartedButNotComplete);
-        }
+            }),
+            facingDirection,
+            () =>
+            {
+                CatchingGameSystem.Instance.StartGame();
+                if (GameCheckpoints.Instance.NeverStarted(Checkpoint.CatchingGame))
+                {
+                    GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.CatchingGame, CheckpointState.StartedButNotComplete);
+                }
+            });
     }
 
     public void BlockArcadeGame()
