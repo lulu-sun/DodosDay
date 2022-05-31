@@ -18,14 +18,14 @@ public class ButtonBehaviour : MonoBehaviour
         TitleScreen.Instance.LeaveTitleForAlbum();
     }
 
-    public void OnButtonHover()
+    public void PlayPopSfx()
     {
         AudioManager.Instance.PlayPopSfx();
     }
 
     public void OnMailboxButtonPress()
     {
-
+        Debug.Log("Mailbox Button pressed.");
     }
 }
 
