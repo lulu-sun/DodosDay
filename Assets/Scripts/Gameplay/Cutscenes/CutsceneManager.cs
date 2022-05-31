@@ -505,6 +505,18 @@ public class CutsceneManager : MonoBehaviour
             () => CheeseGameSystem.Instance.StartGame());
     }
 
+    public void EnterIceRinkThought()
+    {
+        RunMultipleActions(new ICutsceneAction[]
+        {
+            new DialogueAction(new SingleDialogue[]
+            {
+                new SingleDialogue("Joce", "The ice looks really slippery..."),
+            })
+        },
+        () => GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.EnteredIceRink, CheckpointState.Complete));
+    }
+
     public void NoelleFirstDialogue(NPCController noelle, Vector2 facingDirection)
     {
         noelle.Talk(new Dialogue(

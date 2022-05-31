@@ -88,8 +88,10 @@ public enum Checkpoint
     NaomiChasingMemoryRecorded,
     CatchingGameMemoryRecorded,
 
-    // Dialogues
+    // New Place
     EnteredAllison,
+    EnteredIceRink,
+
     //Interactions
     RadioPlayingMusic,
     MeetingOllie,

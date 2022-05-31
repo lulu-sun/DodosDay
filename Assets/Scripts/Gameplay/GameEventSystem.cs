@@ -255,6 +255,14 @@ public class GameEventSystem : MonoBehaviour
 
         });
 
+        AddEnterSceneGameTrigger("IceRink", new GameEvent[]
+        {
+            new GameEvent(
+                () => GameCheckpoints.Instance.NeverStarted(Checkpoint.EnteredIceRink),
+                (n, f) => CutsceneManager.Instance.EnterIceRinkThought()),
+
+        });
+
         AddEnterSceneGameTrigger("Island_R", new GameEvent[]
         {
             new GameEvent(
@@ -273,7 +281,6 @@ public class GameEventSystem : MonoBehaviour
                 () => GameCheckpoints.Instance.StartedButNotComplete(Checkpoint.MeetingOllie),
                 (n, f) =>
                 {
-                 
                     GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.MeetingOllie, CheckpointState.Complete);
                 })
         });
