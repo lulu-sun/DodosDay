@@ -46,6 +46,7 @@ public class BattleSystem : MonoBehaviour
     { 
         OnEndBattle?.Invoke();
         AudioManager.Instance.FadeMusic(0.5f, 0f);
+        AudioManager.Instance.PlayMainMusic();
         battleSystemCamera.gameObject.SetActive(false);
         worldCamera.gameObject.SetActive(true); 
     }
