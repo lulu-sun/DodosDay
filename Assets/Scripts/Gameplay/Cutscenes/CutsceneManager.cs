@@ -146,6 +146,16 @@ public class CutsceneManager : MonoBehaviour
             facingDirection);
     }
 
+    public void DumplingDialogue(NPCController dumpling, Vector2 facingDirection)
+    {
+        dumpling.Talk(new Dialogue(
+            new SingleDialogue[]
+            {
+                new SingleDialogue("Dumpling", "Meow"),
+            }),
+            facingDirection);
+    }
+
     public void OllieJaneIslandDialogue(NPCController ollie, Vector2 facingDirection)
     {
         ollie.Talk(new Dialogue(

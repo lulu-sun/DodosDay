@@ -13,6 +13,7 @@ public enum NPCType
     Rachel,
     Noelle,
     Ollie,
+    Dumpling,
     ArcadeMachine,
     Radio,
     SchoolSign,

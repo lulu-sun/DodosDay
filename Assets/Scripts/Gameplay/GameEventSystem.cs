@@ -136,6 +136,15 @@ public class GameEventSystem : MonoBehaviour
                 (n, f) => CutsceneManager.Instance.StartArcadeGame(n, f)),
         });
 
+        // Dumpling
+        AddNPCGameTrigger(NPCType.Dumpling, new GameEvent[]
+        {
+            new GameEvent(
+                () => true,
+                (n, f) => CutsceneManager.Instance.DumplingDialogue(n, f)),
+        });
+
+
         // Rachel
         AddNPCGameTrigger(NPCType.Rachel, new GameEvent[]
         {
