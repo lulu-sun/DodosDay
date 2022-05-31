@@ -19,6 +19,7 @@ public class MemoriesSystem : MonoBehaviour
     {
         if (memoriesFound < memories.Length)
         {
+            AudioManager.Instance.PlayGetMemorySfx();
             memories[memoriesFound].sprite = filledMemory;
             ++memoriesFound;
         }
