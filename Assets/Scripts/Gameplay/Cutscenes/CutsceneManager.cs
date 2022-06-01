@@ -730,7 +730,8 @@ public class CutsceneManager : MonoBehaviour
             // fade out bg music
 
             // lulu npc appears
-            new InstantiateAction(luluPrefab, new Vector2(-3.5f, -8.759971f)),
+            new CustomAction(() => player.transform.position = Vector3.zero),
+            new InstantiateAction(luluPrefab, new Vector2(2f, 0f)),
             new FaceDirectionAction(() => GameObject.Find("Lulu(Clone)").GetComponent<Character>(), Vector2.left),
             new FaceDirectionAction(player.Character, Vector2.right),
 
