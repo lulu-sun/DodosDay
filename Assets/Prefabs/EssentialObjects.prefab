@@ -1085,6 +1085,7 @@ MonoBehaviour:
   messageCanvas: {fileID: 1026089604706053769}
   luluMessage: {fileID: 1591091178648496443}
   juanjuanMessage: {fileID: 8279848439929979894}
+  inboxCloseButton: {fileID: 1136693178086839785}
 --- !u!114 &89918183191447168
 MonoBehaviour:
   m_ObjectHideFlags: 0

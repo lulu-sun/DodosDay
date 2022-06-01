@@ -1,3 +1,6 @@
+using System.Collections;
+using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +11,8 @@ public class MailboxSystem : MonoBehaviour
 
     [SerializeField] Text luluMessage;
     [SerializeField] Text juanjuanMessage;
+
+    [SerializeField] Button inboxCloseButton;
 
     public static MailboxSystem Instance { get; private set; }
 
@@ -25,6 +30,7 @@ public class MailboxSystem : MonoBehaviour
     public void OpenMailbox()
     {
         inboxCanvas.gameObject.SetActive(true);
+        inboxCloseButton.interactable = true;
     }
 
     public void CloseMailbox()
@@ -62,5 +68,19 @@ public class MailboxSystem : MonoBehaviour
         CloseMailbox();
         OpenMessageView();
         juanjuanMessage.gameObject.SetActive(true);
+    }
+
+    public void GoBackToTitleScreen(Action onFinished = null)
+    {
+        inboxCloseButton.interactable = false;
+        StartCoroutine(DelayedLeaveMailbox(1.5f, onFinished));
+    }
+
+    private IEnumerator DelayedLeaveMailbox(float delay, Action onFinished = null)
+    {
+        AudioManager.Instance.FadeMusic(delay, 0);
+        yield return new WaitForSeconds(delay);
+        CloseMailbox();
+        onFinished?.Invoke();
     }
 }

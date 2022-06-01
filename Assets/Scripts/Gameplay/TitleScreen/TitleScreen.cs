@@ -12,7 +12,6 @@ public class TitleScreen : MonoBehaviour
 
     [SerializeField] Button startButton;
     [SerializeField] Button memoriesButton;
-    
 
     public event Action OnShowTitle;
     public event Action OnLeaveTitle;

@@ -26,7 +26,11 @@ public class ButtonBehaviour : MonoBehaviour
     public void OnMailboxButtonPress()
     {
         Debug.Log("Mailbox Button pressed.");
-        TitleScreen.Instance.LeaveTitle(onFinished: () => MailboxSystem.Instance.OpenMailbox());
+        TitleScreen.Instance.LeaveTitle(onFinished: () =>
+        {
+            MailboxSystem.Instance.OpenMailbox();
+            AudioManager.Instance.PlayAlbumMusic();
+        });
     }
 
     public void OnOpenLuluMessageButtonPress()
@@ -46,8 +50,10 @@ public class ButtonBehaviour : MonoBehaviour
 
     public void OnCloseMailboxButtonPress()
     {
-        MailboxSystem.Instance.CloseMailbox();
-        TitleScreen.Instance.ShowTitle();
+        MailboxSystem.Instance.GoBackToTitleScreen(() =>
+        {
+            TitleScreen.Instance.ShowTitle();
+        });        
     }
 }
 
