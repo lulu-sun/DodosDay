@@ -7551,7 +7551,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentScene:
     m_Handle: 0
-  luluPrefab: {fileID: 301433940564939934, guid: 4a94d44d82d8d564c9db8f77023dead0, type: 3}
+  luluPrefab: {fileID: 6060767910075093478, guid: b4cb87f0f5bbe4a5bac3d97fad1aee8a, type: 3}
   naomiPrefab: {fileID: 5850386924913033319, guid: ce9226ad53434462686af6abd8afef0c, type: 3}
 --- !u!114 &1183542205737500581
 MonoBehaviour:
