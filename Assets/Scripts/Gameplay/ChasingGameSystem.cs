@@ -39,7 +39,7 @@ public class ChasingGameSystem : MonoBehaviour
 
     private float timeSinceLastChangePath = 0f;
 
-    public float minTimeBetweenChangePath = 1f;
+    public float minTimeBetweenChangePath;
 
     public float FinishTime { get; private set; }
 

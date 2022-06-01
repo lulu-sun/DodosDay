@@ -122,13 +122,17 @@ public class CatchingGameSystem : MonoBehaviour
 
         if (lives <= 0)
         {
-            AudioManager.Instance.PlayEndGameSfx();
-            EndGame();
-        }
-        else if (score >= winningScore)
-        {
-            GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.CatchingGame, CheckpointState.Complete);
-            AudioManager.Instance.PlaySuccessSfx();
+            if (score >= winningScore)
+            {
+                GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.CatchingGame, CheckpointState.Complete);
+                AudioManager.Instance.PlaySuccessSfx();
+                
+            }
+            else
+            {
+                AudioManager.Instance.PlayEndGameSfx();
+            }
+
             EndGame();
         }
     }

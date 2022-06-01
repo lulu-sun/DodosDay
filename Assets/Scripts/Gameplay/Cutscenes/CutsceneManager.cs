@@ -108,6 +108,10 @@ public class CutsceneManager : MonoBehaviour
             new FaceDirectionAction(player.Character, Vector2.down),
             new FadeOutAction(fader, 0.5f),
             new ChangeSceneAction(SceneMapper.Instance.GetBuildIndexBySceneName("House")),
+            new CustomAction(() =>
+            {
+                player.transform.position = FindObjectsOfType<SpawnPoint>().Single(sp => sp.portalId == PortalId.E).gameObject.transform.position;
+            }),
             new FadeInAction(fader, 0.5f)
         }, () => MemoriesSystem.Instance.SetActive(true));
     }

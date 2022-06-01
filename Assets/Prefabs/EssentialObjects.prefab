@@ -486,7 +486,7 @@ MonoBehaviour:
   chaser: {fileID: 1374227221499918547}
   chasingGameCamera: {fileID: 693240814832155794}
   winningTime: 20
-  minTimeBetweenChangePath: 1
+  minTimeBetweenChangePath: 0.5
   getFasterTimeInSeconds: 4
 --- !u!1 &664367357851127436
 GameObject:
