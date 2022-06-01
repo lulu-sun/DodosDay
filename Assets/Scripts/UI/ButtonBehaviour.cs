@@ -26,6 +26,28 @@ public class ButtonBehaviour : MonoBehaviour
     public void OnMailboxButtonPress()
     {
         Debug.Log("Mailbox Button pressed.");
+        TitleScreen.Instance.LeaveTitle(onFinished: () => MailboxSystem.Instance.OpenMailbox());
+    }
+
+    public void OnOpenLuluMessageButtonPress()
+    {
+        MailboxSystem.Instance.OpenLuluMessage();
+    }
+
+    public void OnOpenJuanJuanMessageButtonPress()
+    {
+        MailboxSystem.Instance.OpenJuanJuanMessage();
+    }
+
+    public void OnCloseMessageButtonPress()
+    {
+        MailboxSystem.Instance.GoBackToMailbox();
+    }
+
+    public void OnCloseMailboxButtonPress()
+    {
+        MailboxSystem.Instance.CloseMailbox();
+        TitleScreen.Instance.ShowTitle();
     }
 }
 

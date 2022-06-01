@@ -811,8 +811,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -11.13, y: 127.44}
-  m_SizeDelta: {x: 208.61, y: 52.51}
+  m_AnchoredPosition: {x: -10.51, y: 124.5}
+  m_SizeDelta: {x: 121.3197, y: 49.9551}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3129472733305718179
 CanvasRenderer:
@@ -1044,13 +1044,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9023580751109210946}
+  - component: {fileID: 8754145730375589522}
+  - component: {fileID: 89918183191447168}
   m_Layer: 0
   m_Name: Mailbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &9023580751109210946
 Transform:
   m_ObjectHideFlags: 0
@@ -1062,11 +1064,39 @@ Transform:
   m_LocalPosition: {x: -1600.2478, y: -573.1521, z: 70.32124}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4033630663311950097}
   - {fileID: 8898436917047249220}
+  - {fileID: 4033630663311950097}
   m_Father: {fileID: 8594043637749231424}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8754145730375589522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440118668099641357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efdd53134c17dcb44b0b5f828c16cc2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inboxCanvas: {fileID: 5776769937705889159}
+  messageCanvas: {fileID: 1026089604706053769}
+  luluMessage: {fileID: 1591091178648496443}
+  juanjuanMessage: {fileID: 8279848439929979894}
+--- !u!114 &89918183191447168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440118668099641357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ec09d19a847d5741a1ba994b67e11f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1588546294992027244
 GameObject:
   m_ObjectHideFlags: 0
@@ -2372,7 +2402,7 @@ RectTransform:
   - {fileID: 2612227855403848343}
   - {fileID: 3141563645875046478}
   m_Father: {fileID: 9023580751109210946}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2439,7 +2469,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
 --- !u!1 &2670532859323501197
 GameObject:
   m_ObjectHideFlags: 0
@@ -2899,7 +2929,7 @@ GameObject:
   - component: {fileID: 8941348585415020350}
   - component: {fileID: 7793410140752125267}
   - component: {fileID: 1785173306739505907}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CloseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3006,7 +3036,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7793410140752125267}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 89918183191447168}
+        m_TargetAssemblyTypeName: ButtonBehaviour, Assembly-CSharp
+        m_MethodName: OnCloseMessageButtonPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3098106896781147220
 GameObject:
   m_ObjectHideFlags: 0
@@ -3564,7 +3606,7 @@ GameObject:
   - component: {fileID: 854131186467382040}
   - component: {fileID: 8924340548835165447}
   - component: {fileID: 8337138728417819277}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3644,7 +3686,7 @@ GameObject:
   - component: {fileID: 6382927712533495451}
   - component: {fileID: 477847450402994958}
   - component: {fileID: 1136693178086839785}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CloseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3739,7 +3781,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 655199960634259404, guid: 64fe613acec8f4478b58f4f04eafac8b, type: 3}
-    m_SelectedSprite: {fileID: 655199960634259404, guid: 64fe613acec8f4478b58f4f04eafac8b, type: 3}
+    m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -3751,7 +3793,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 477847450402994958}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 89918183191447168}
+        m_TargetAssemblyTypeName: ButtonBehaviour, Assembly-CSharp
+        m_MethodName: OnCloseMailboxButtonPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3636387129597627841
 GameObject:
   m_ObjectHideFlags: 0
@@ -4837,7 +4891,7 @@ RectTransform:
   - {fileID: 992916657357188972}
   - {fileID: 8168238378118288327}
   m_Father: {fileID: 9023580751109210946}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4904,7 +4958,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
 --- !u!1 &4739873298129378028
 GameObject:
   m_ObjectHideFlags: 0
@@ -5243,8 +5297,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -10.51, y: 1.82}
-  m_SizeDelta: {x: 25.66, y: 51.88}
+  m_AnchoredPosition: {x: -12.3965, y: 55.7747}
+  m_SizeDelta: {x: 26.0933, y: 33.5893}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4898823630340390361
 CanvasRenderer:
@@ -5708,7 +5762,7 @@ GameObject:
   - component: {fileID: 6910767358896975487}
   - component: {fileID: 8644589430985214602}
   - component: {fileID: 3940068596008101887}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LuluButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5804,7 +5858,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 3713549098536957005, guid: 52bb411d2c54b5640af38e32770600ae, type: 3}
-    m_SelectedSprite: {fileID: 3713549098536957005, guid: 52bb411d2c54b5640af38e32770600ae, type: 3}
+    m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -5816,7 +5870,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8644589430985214602}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 89918183191447168}
+        m_TargetAssemblyTypeName: ButtonBehaviour, Assembly-CSharp
+        m_MethodName: OnOpenLuluMessageButtonPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 89918183191447168}
+        m_TargetAssemblyTypeName: ButtonBehaviour, Assembly-CSharp
+        m_MethodName: PlayPopSfx
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5528779552706488316
 GameObject:
   m_ObjectHideFlags: 0
@@ -11415,7 +11493,7 @@ GameObject:
   - component: {fileID: 185062993015313097}
   - component: {fileID: 2656688065745269973}
   - component: {fileID: 6670500253021542434}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: JuanJuanButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11511,7 +11589,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 3713549098536957005, guid: 52bb411d2c54b5640af38e32770600ae, type: 3}
-    m_SelectedSprite: {fileID: 3713549098536957005, guid: 52bb411d2c54b5640af38e32770600ae, type: 3}
+    m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -11523,7 +11601,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2656688065745269973}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 89918183191447168}
+        m_TargetAssemblyTypeName: ButtonBehaviour, Assembly-CSharp
+        m_MethodName: OnOpenJuanJuanMessageButtonPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 89918183191447168}
+        m_TargetAssemblyTypeName: ButtonBehaviour, Assembly-CSharp
+        m_MethodName: PlayPopSfx
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7506338473201382315
 GameObject:
   m_ObjectHideFlags: 0
@@ -12604,7 +12706,7 @@ GameObject:
   - component: {fileID: 4265154772206453996}
   - component: {fileID: 1294753684366182551}
   - component: {fileID: 663749032680993556}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}

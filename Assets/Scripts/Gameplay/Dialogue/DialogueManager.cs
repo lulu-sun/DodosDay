@@ -21,6 +21,11 @@ public class DialogueManager : MonoBehaviour
         Instance = this;
     }
 
+    private void Start()
+    {
+        dialogueBox.gameObject.SetActive(false);
+    }
+
     Dialogue dialogue;
     Action onDialogueFinished;
     int currentLine = 0;
