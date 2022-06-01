@@ -21,7 +21,10 @@ public class GameCheckpoints : MonoBehaviour
             gameCheckpointsState[checkpoint] = CheckpointState.NeverStarted;
         }
 
-        GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.AllMemoriesFound, CheckpointState.Complete); // testing
+        ///// TESTING FOR Final Cutscene!!! DONT FORGET TO REMOVE!!!!
+        GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.AllMemoriesFound, CheckpointState.Complete);
+        AudioManager.Instance.PlayMainMusic();
+        /////
     }
 
     public CheckpointState GetState(Checkpoint checkpoint)

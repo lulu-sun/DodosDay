@@ -41,14 +41,14 @@ public class Portal : MonoBehaviour
             DontDestroyOnLoad(gameObject);
 
             GameController.Instance.Pause();
-            yield return fader.FadeIn(fadeTimeInSeconds);
+            yield return fader.FadeOut(fadeTimeInSeconds);
 
             yield return SceneManager.LoadSceneAsync(SceneMapper.Instance.GetBuildIndexBySceneName(sceneToLoadName));
 
             var destinationSpawnPoint = FindObjectsOfType<SpawnPoint>().Single(sp => sp.portalId == portalId);
             GameController.Instance.playerController.transform.position = destinationSpawnPoint.transform.position;
 
-            yield return fader.FadeOut(fadeTimeInSeconds);
+            yield return fader.FadeIn(fadeTimeInSeconds);
 
             GameController.Instance.Unpause();
             GameEventSystem.Instance.TryTriggerEnterSceneGameEvent(sceneToLoadName);

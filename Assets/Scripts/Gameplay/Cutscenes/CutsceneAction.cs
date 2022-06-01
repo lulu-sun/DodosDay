@@ -156,6 +156,26 @@ public class ChangeSceneAction : ISingleCutsceneAction
     }
 }
 
+public class FadeOutAction : ISingleCutsceneAction
+{
+    private Fader fader;
+
+    private float fadeTimeInSeconds;
+
+    public FadeOutAction(Fader fader, float fadeTimeInSeconds)
+    {
+        this.fader = fader;
+        this.fadeTimeInSeconds = fadeTimeInSeconds;
+    }
+
+    public IEnumerator PerformAction(Action onFinished = null)
+    {
+        yield return fader.FadeOut(fadeTimeInSeconds);
+
+        onFinished?.Invoke();
+    }
+}
+
 public class FadeInAction : ISingleCutsceneAction
 {
     private Fader fader;
@@ -176,21 +196,36 @@ public class FadeInAction : ISingleCutsceneAction
     }
 }
 
-public class FadeOutAction : ISingleCutsceneAction
+public class MusicFadeOutAction : ISingleCutsceneAction
 {
-    private Fader fader;
-
     private float fadeTimeInSeconds;
 
-    public FadeOutAction(Fader fader, float fadeTimeInSeconds)
+    public MusicFadeOutAction(float fadeTimeInSeconds)
     {
-        this.fader = fader;
         this.fadeTimeInSeconds = fadeTimeInSeconds;
     }
 
     public IEnumerator PerformAction(Action onFinished = null)
     {
-        yield return fader.FadeOut(fadeTimeInSeconds);
+        yield return AudioManager.Instance.FadeMusicEnumerator(fadeTimeInSeconds, 0);
+
+        onFinished?.Invoke();
+    }
+}
+
+public class CustomAction : ISingleCutsceneAction
+{
+    private Action action;
+
+    public CustomAction(Action action)
+    {
+        this.action = action;
+    }
+
+    public IEnumerator PerformAction(Action onFinished = null)
+    {
+        this.action?.Invoke();
+        yield return null;
 
         onFinished?.Invoke();
     }

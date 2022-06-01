@@ -176,6 +176,11 @@ public class AudioManager : MonoBehaviour
         StartCoroutine(StartFade(musicPlayer, duration, musicPlayer.volume, targetVolume));
     }
 
+    public IEnumerator FadeMusicEnumerator(float duration, float targetVolume)
+    {
+        yield return StartFade(musicPlayer, duration, musicPlayer.volume, targetVolume);
+    }
+
     private static IEnumerator StartFade(AudioSource audioSource, float duration, float startVolume, float targetVolume)
     {
         float currentTime = 0;

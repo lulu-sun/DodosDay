@@ -74,7 +74,7 @@ public class CutsceneManager : MonoBehaviour
         Character npcChar = npc.GetComponent<Character>();
 
         RunMultipleActions(new ISingleCutsceneAction[] {
-            new FadeOutAction(fader, 0.5f),
+            new FadeInAction(fader, 0.5f),
             new DialogueAction(new SingleDialogue[]
             {
                 new SingleDialogue("Joce", "..."),
@@ -105,9 +105,9 @@ public class CutsceneManager : MonoBehaviour
             new SetActiveAction(npc, false),
             new WaitAction(1),
             new FaceDirectionAction(player.Character, Vector2.down),
-            new FadeInAction(fader, 0.5f),
+            new FadeOutAction(fader, 0.5f),
             new ChangeSceneAction(SceneMapper.Instance.GetBuildIndexBySceneName("House")),
-            new FadeOutAction(fader, 0.5f)
+            new FadeInAction(fader, 0.5f)
         }, () => MemoriesSystem.Instance.SetActive(true));
     }
 
@@ -705,12 +705,27 @@ public class CutsceneManager : MonoBehaviour
                 new SingleDialogue("Phillip", "Do you accept?"),
                 new SingleDialogue("Joce", "Yes!"),
             }),
+            new CustomAction(() =>
+            {
+                GameObject.Find("Phillip").GetComponent<Character>().moveSpeed = 2;
+                player.Character.moveSpeed = 2;
+            }),
+            new MoveAction(player.Character, new Vector2(1f, 0f)),
+            new FaceDirectionAction(player.Character, Vector2.down),
+            new MoveAction(GameObject.Find("Phillip").GetComponent<Character>(), new Vector2(0f, -1f)),
 
             // fade to black
-            new FadeInAction(fader, 0.5f),
+            new MultipleSimultaneousCutsceneAction(new ISingleCutsceneAction[]
+            {
+                new FadeOutAction(fader, 6f),
+                new MusicFadeOutAction(6f),
+                new MoveAction(player.Character, new Vector2(0f, -8f)),
+                new MoveAction(GameObject.Find("Phillip").GetComponent<Character>(), new Vector2(0f, -8f)),
+            }),
+            new CustomAction(() => MemoriesSystem.Instance.SetActive(false)),
             new ChangeSceneAction(SceneMapper.Instance.GetBuildIndexBySceneName("Intro")),
-            new FadeOutAction(fader, 0.5f),
-            new FaceDirectionAction(() => player.Character, Vector2.down),
+            new FaceDirectionAction(player.Character, Vector2.down),
+            new FadeInAction(fader, 3f),
             // fade out bg music
 
             // lulu npc appears
@@ -725,13 +740,14 @@ public class CutsceneManager : MonoBehaviour
                 new SingleDialogue("Lulu", "I will send you back to the title screen, where you can check out additional content!"),
                 new SingleDialogue("Lulu", "Be sure to check out the mailbox! There's some messages for you there!"),
                 new SingleDialogue("Lulu", "Goodbye!"),
-            })
+            }),
+
+            new FadeOutAction(fader, 0.5f),
 
             // back to title screen
         }, () =>
         {
-            TitleScreen.Instance.ShowTitle();
-            Destroy(GameObject.Find("Lulu(Clone)"));
+            Application.Quit();
         });
     }
 
