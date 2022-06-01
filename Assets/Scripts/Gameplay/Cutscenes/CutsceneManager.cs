@@ -736,6 +736,7 @@ public class CutsceneManager : MonoBehaviour
             // lulu npc talks
             new DialogueAction(new SingleDialogue[]
             {
+                new SingleDialogue("Lulu", "*(LULU TODO FIX)*"),
                 new SingleDialogue("Lulu", "You did it! You've regained all your memories and found your happily ever after."),
                 new SingleDialogue("Lulu", "I will send you back to the title screen, where you can check out additional content!"),
                 new SingleDialogue("Lulu", "Be sure to check out the mailbox! There's some messages for you there!"),
