@@ -7766,8 +7766,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3.9600983, y: -171}
-  m_SizeDelta: {x: 1028.8284, y: 91.1883}
+  m_AnchoredPosition: {x: 3.9600983, y: -196.26678}
+  m_SizeDelta: {x: 1028.8284, y: 117.6583}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1426991483
 MonoBehaviour:
@@ -7796,13 +7796,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 5
     m_MaxSize: 50
-    m_Alignment: 4
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 5/16/2022 text placeholder blah blah blah blah bla
+  m_Text: 5/16/2022 text placeholder blah blah blah blah blah blah blah
 --- !u!222 &1426991484
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8872,13 +8872,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 5
     m_MaxSize: 50
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: At Joy Yee,an important location for all friendships
+  m_Text: "At Joy Yee,an important location for all \nfriendships"
 --- !u!222 &1614823652
 CanvasRenderer:
   m_ObjectHideFlags: 0
