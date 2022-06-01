@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 7fcb4de11e20c43869b9e3832f411a8e
+guid: bd417c89367c24c5696e11cc429c7c34
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7727791788791704078
-    second: phillip_fix_0
+      213: -7071217749202279924
+    second: phillip_2_0
   - first:
-      213: -5733182941478807633
-    second: phillip_fix_1
+      213: 6724330831444583382
+    second: phillip_2_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -97,11 +97,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: phillip_fix_0
+      name: phillip_2_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 2
+        y: 24
         width: 16
         height: 20
       alignment: 9
@@ -111,18 +111,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e0a2c1530b1ae3b60800000000000000
-      internalID: 7727791788791704078
+      spriteID: c026c590cecfddd90800000000000000
+      internalID: -7071217749202279924
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: phillip_fix_1
+      name: phillip_2_1
       rect:
         serializedVersion: 2
         x: 16
-        y: 1
+        y: 24
         width: 16
         height: 20
       alignment: 9
@@ -132,8 +132,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa793dc8d74af60b0800000000000000
-      internalID: -5733182941478807633
+      spriteID: 6d32670a34f915d50800000000000000
+      internalID: 6724330831444583382
       vertices: []
       indices: 
       edges: []
