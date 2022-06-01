@@ -486,6 +486,7 @@ MonoBehaviour:
   chaser: {fileID: 1374227221499918547}
   chasingGameCamera: {fileID: 693240814832155794}
   winningTime: 20
+  minTimeBetweenChangePath: 1
   getFasterTimeInSeconds: 4
 --- !u!1 &664367357851127436
 GameObject:
@@ -4366,11 +4367,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 9dd7d105fc4c49146b79c0be547f57d0, type: 3}
-    m_FontSize: 38
+    m_FontSize: 50
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 40
+    m_MaxSize: 300
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -4998,8 +4999,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -476.93, y: -372}
-  m_SizeDelta: {x: 237.9398, y: 80.0624}
+  m_AnchoredPosition: {x: -505, y: -393}
+  m_SizeDelta: {x: 322.8019, y: 108.6169}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9179320317344862475
 CanvasRenderer:
@@ -7538,6 +7539,7 @@ MonoBehaviour:
   playerController: {fileID: 6485065461445137963}
   worldCamera: {fileID: 6485065462137576301}
   currentGameStateForUnityInspector: 0
+  startTitleScreen: 1
 --- !u!114 &985152831534608400
 MonoBehaviour:
   m_ObjectHideFlags: 0
