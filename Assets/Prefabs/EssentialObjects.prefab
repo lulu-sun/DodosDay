@@ -708,8 +708,8 @@ MonoBehaviour:
   albumMusic: {fileID: 8300000, guid: 5bd691c56bcde4898920f65a9f2d6098, type: 3}
   battleMusic: {fileID: 8300000, guid: ac6a2e3dcd3f949ffade4aebc7aa3413, type: 3}
   day6Music: {fileID: 8300000, guid: 347c435cba56f4636b7ca38b95a6cb92, type: 3}
-  popSfx: {fileID: 8300000, guid: 37086136561018e4b94110fce7116761, type: 3}
-  typingSfx: {fileID: 8300000, guid: aa76e120f72dbcc4d9775c066932b177, type: 3}
+  popSfx: {fileID: 8300000, guid: 14c317827c9a93e4b9352fa63eef688e, type: 3}
+  typingSfx: {fileID: 8300000, guid: 4a6efc81c6d8d3042bf39dca4124abe2, type: 3}
   losePointSfx: {fileID: 8300000, guid: 7a831b059d207430492d26298f0f9334, type: 3}
   endGameSfx: {fileID: 8300000, guid: f1f879179cd5c4d8faee1a3a58485d72, type: 3}
   successSfx: {fileID: 8300000, guid: 9e96f7d132d1047568d5db24887b4ad4, type: 3}
