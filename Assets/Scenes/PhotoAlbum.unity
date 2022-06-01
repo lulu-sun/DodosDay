@@ -5669,7 +5669,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 10/28/2017 - thank u for going to Detroit 4 day6 4 me
+  m_Text: 10/28/2017 - still the only person to go to Detroit for a concert with
+    me
 --- !u!222 &1029292662
 CanvasRenderer:
   m_ObjectHideFlags: 0
