@@ -189,8 +189,9 @@ public class AlbumManager : MonoBehaviour
         closeButton.interactable = false;
         StartCoroutine(DelayedLeaveAlbum(1.5f, () =>
         {
-            TitleScreen.Instance.ShowTitle();
+            GameController.Instance.startTitleScreen = true;
             SceneManager.LoadScene(SceneMapper.Instance.GetBuildIndexBySceneName("Intro"));
+            //TitleScreen.Instance.ShowTitle();
         }));
     }
 

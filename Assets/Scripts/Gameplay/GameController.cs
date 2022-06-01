@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum GameState { Play, Battle, Dialogue, Cutscene, Paused, CatchingGame, ChasingGame, TitleScreen }
 
@@ -23,6 +24,8 @@ public class GameController : MonoBehaviour
     // [SerializeField] GameState startingGameState = GameState.Play;
 
     public static GameController Instance { get; private set; }
+
+    public bool startTitleScreen = true;
 
     private void Awake()
     {
@@ -49,6 +52,7 @@ public class GameController : MonoBehaviour
     
     private void Start()
     {
+        startTitleScreen = true;
         
         DialogueManager.Instance.OnShowDialogue += () =>
         {
@@ -157,12 +161,6 @@ public class GameController : MonoBehaviour
 
         gameStateStack.Push(GameState.Play);
 
-        if (CutsceneManager.Instance.currentScene.name == "Intro")
-        {
-            TitleScreen.Instance.ShowTitle();
-            Debug.Log("Start Title");
-        }
-
         // Set the player's position to a spawnpoint manually when starting the game, if there is one.
         var spawnpoints = FindObjectsOfType<SpawnPoint>();        
         if (spawnpoints.Any())
@@ -198,6 +196,15 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(SceneManager.GetActiveScene().name);
+        Debug.Log(startTitleScreen);
+        if (startTitleScreen && SceneManager.GetActiveScene().name == "Intro")
+        {
+            TitleScreen.Instance.ShowTitle();
+            Debug.Log("Start Title");
+            startTitleScreen = false;
+        }
+
         currentGameStateForUnityInspector = gameStateStack.Peek();
 
         if (currentGameState == GameState.Play)

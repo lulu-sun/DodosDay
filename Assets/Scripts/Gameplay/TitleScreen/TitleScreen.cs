@@ -52,6 +52,7 @@ public class TitleScreen : MonoBehaviour
     {
         LeaveTitle("PhotoAlbum", () =>
         {
+            MemoriesSystem.Instance.SetActive(false);
             titleScreenCamera.gameObject.SetActive(false);
             AudioManager.Instance.PlayAlbumMusic();
         });
