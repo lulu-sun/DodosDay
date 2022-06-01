@@ -26,6 +26,9 @@ public class AlbumManager : MonoBehaviour
     private int pageIndex = 0;
     private int selectedPictureIndex;
 
+    private float timeSinceSelected = 0f;
+    [SerializeField] float requiredTimeToDeselect = 0.1f;
+
     private void GoToPage(int currentPageIndex, int targetPageIndex)
     {
         leftPageNum.text = (targetPageIndex * 2 + 1).ToString();
@@ -49,32 +52,18 @@ public class AlbumManager : MonoBehaviour
         albumDescription.text = Descriptions[selectedPhotoIndex].GetComponent<Text>().text.ToString();
     }
 
-    private void TurnPage()
+    private void TurnPageForward()
     {
-        if (selectedPictureIndex >= Photos.Count)
-        {
-            if (pageIndex < pages.Count - 1)
-            {
-                GoToPage(pageIndex, pageIndex + 1);
-                selectedPictureIndex = 0;
-            }
-            
-        }
-
-        if (selectedPictureIndex < 0)
-        {
-            if (pageIndex > 0)
-            {   
-                GoToPage(pageIndex, pageIndex - 1);
-            }
-            selectedPictureIndex = 11;
-        }
+        GoToPage(pageIndex, pageIndex + 1);
     }
 
-    private void ArrowKeyMovement()
+    private void TurnPageBackward()
     {
-        // Debug.Log(selectedPictureIndex);
+        GoToPage(pageIndex, pageIndex - 1);
+    }
 
+    private void HandleUpdate()
+    {
         int previousIndex = selectedPictureIndex;
 
         if (!photoPage.activeSelf)
@@ -82,37 +71,42 @@ public class AlbumManager : MonoBehaviour
 
             if (Controls.GetRightKeyDown())
             {
-                if (!(pageIndex == pages.Count - 1 && selectedPictureIndex == 11))
+                if (pageIndex < pages.Count - 1 && ((selectedPictureIndex + 1) % 4 == 0))
                 {
-                    ++ selectedPictureIndex;
-                    TurnPage();
+                    TurnPageForward();
+                }
+                else if (((selectedPictureIndex + 1) % 4 != 0) && selectedPictureIndex < selectors.Count - 1)
+                {
+                    ++selectedPictureIndex;
                 }
             }
 
             else if (Controls.GetLeftKeyDown())
             {
-                if (!(pageIndex == 0 && selectedPictureIndex == 0))
+                if (pageIndex > 0 && ((selectedPictureIndex % 4) == 0))
                 {
-                    -- selectedPictureIndex;
-                    TurnPage();
+                    TurnPageBackward();
                 }
-
+                else if (((selectedPictureIndex % 4) != 0) && selectedPictureIndex > 0)
+                {
+                    --selectedPictureIndex;
+                }                    
             }
 
             else if (Controls.GetDownKeyDown())
             {
 
-                if (selectedPictureIndex < Photos.Count - 2)
+                if (selectedPictureIndex < Photos.Count - 4)
                 {
-                    selectedPictureIndex += 2;
+                    selectedPictureIndex += 4;
                 }
             }
 
             else if (Controls.GetUpKeyDown())
             {
-                if (selectedPictureIndex > 1)
+                if (selectedPictureIndex >= 4)
                 {
-                    selectedPictureIndex -= 2;
+                    selectedPictureIndex -= 4;
                 }
             }
 
@@ -123,12 +117,13 @@ public class AlbumManager : MonoBehaviour
 
             if (Controls.GetSelectKeyDown())
             {
+                timeSinceSelected = 0f;
                 SetPageImage(selectedPictureIndex);
                 EnablePhotoPage(true);
             }
         }
 
-        if (Controls.GetDeselectKeyDown())
+        if (Controls.GetSelectKeyDown() && timeSinceSelected >= requiredTimeToDeselect)
         {
             EnablePhotoPage(false);
         }
@@ -155,9 +150,6 @@ public class AlbumManager : MonoBehaviour
                 Descriptions.Add(child.gameObject);
             }
         }
-
-        Debug.Log(Descriptions);
-
     }
 
     private void Awake()
@@ -174,7 +166,8 @@ public class AlbumManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ArrowKeyMovement();
+        HandleUpdate();
+        timeSinceSelected += Time.deltaTime;
     }
 
     public void LeaveAlbum()

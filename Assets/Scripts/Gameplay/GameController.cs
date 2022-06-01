@@ -163,11 +163,6 @@ public class GameController : MonoBehaviour
             Debug.Log("Start Title");
         }
 
-        //if (CutsceneManager.Instance.currentScene.name == "3_Island_n")
-        //{
-        //    gameStateStack.Push(GameState.Cutscene);
-        //}
-
         // Set the player's position to a spawnpoint manually when starting the game, if there is one.
         var spawnpoints = FindObjectsOfType<SpawnPoint>();        
         if (spawnpoints.Any())
