@@ -74,6 +74,7 @@ public class CutsceneManager : MonoBehaviour
         Character npcChar = npc.GetComponent<Character>();
 
         RunMultipleActions(new ISingleCutsceneAction[] {
+            new FaceDirectionAction(player.Character, Vector2.down),
             new FadeInAction(fader, 0.5f),
             new DialogueAction(new SingleDialogue[]
             {
@@ -90,7 +91,7 @@ public class CutsceneManager : MonoBehaviour
             {
                 new SingleDialogue("Joce", "... Where am I? Who are you?"),
                 new SingleDialogue("???", "Oh! How silly, I should introduce myself!"),
-            }),         
+            }),
             new SetActiveAction(npc, true),
             new FaceDirectionAction(npcChar, Vector2.left),
             new FaceDirectionAction(player.Character, Vector2.right),
