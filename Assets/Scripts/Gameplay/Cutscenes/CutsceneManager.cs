@@ -69,7 +69,7 @@ public class CutsceneManager : MonoBehaviour
         AudioManager.Instance.PlayMainMusic();
         MemoriesSystem.Instance.SetActive(false);
 
-        GameObject npc = Instantiate(luluPrefab, new Vector3(2, 0, 0), Quaternion.identity);
+        GameObject npc = Instantiate(luluPrefab, new Vector3(player.transform.position.x + 2, player.transform.position.y, 0), Quaternion.identity);
         npc.SetActive(false);
         Character npcChar = npc.GetComponent<Character>();
 
