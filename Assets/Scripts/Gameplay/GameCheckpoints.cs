@@ -22,8 +22,8 @@ public class GameCheckpoints : MonoBehaviour
         }
 
         ///// TESTING FOR Final Cutscene!!! DONT FORGET TO REMOVE!!!!
-        GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.AllMemoriesFound, CheckpointState.Complete);
-        AudioManager.Instance.PlayMainMusic();
+        //GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.AllMemoriesFound, CheckpointState.Complete);
+        //AudioManager.Instance.PlayMainMusic();
         /////
     }
 
