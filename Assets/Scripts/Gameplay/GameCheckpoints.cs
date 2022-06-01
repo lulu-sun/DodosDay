@@ -20,8 +20,8 @@ public class GameCheckpoints : MonoBehaviour
         {
             gameCheckpointsState[checkpoint] = CheckpointState.NeverStarted;
         }
-        GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.AllMemoriesFound, CheckpointState.Complete); // testing
 
+        GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.AllMemoriesFound, CheckpointState.Complete); // testing
     }
 
     public CheckpointState GetState(Checkpoint checkpoint)

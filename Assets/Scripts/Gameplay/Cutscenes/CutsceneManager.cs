@@ -671,20 +671,28 @@ public class CutsceneManager : MonoBehaviour
         {
             new DialogueAction(new SingleDialogue[]
             {
-                new SingleDialogue("???", "Hey what about my cheese?!")
+                new SingleDialogue("???", "Hey! What about my cheese?!")
             })
         });
     }
 
-    public void FinalIslandCutscene(NPCController lulu, Vector2 facingDirection)
+    public void RunFinalIslandCutscene()
+    {
+        StartCutscene();
+        FinalIslandCutscene();
+    }
+
+    private void FinalIslandCutscene()
     {
         // Walk up and talk to phillip
-       
         RunMultipleActions(new ICutsceneAction[]
         {
             new FaceDirectionAction(player.Character, Vector2.up),
+            new DialogueAction(new SingleDialogue[]
+            {
+                new SingleDialogue("Joce", "!!!!")
+            }),
             new MoveAction(player.Character, new Vector2(0f, 7.4f)),
-
             new DialogueAction(new SingleDialogue[]
             {
                 new SingleDialogue("???", "You finally made it!"),
@@ -692,31 +700,38 @@ public class CutsceneManager : MonoBehaviour
                 new SingleDialogue("???", "That's okay, you will soon. Do you wish to accept your final quest?"),
                 new SingleDialogue("Joce", "Yes."),
                 new SingleDialogue("???", "Then take my hand."),
-                new SingleDialogue("Phillip", "Your last quest. . ."),
+                new SingleDialogue("???", "Your last quest. . ."),
                 new SingleDialogue("Phillip", "Our last quest is to spend the rest of our lives together, loving each other."),
                 new SingleDialogue("Phillip", "Do you accept?"),
                 new SingleDialogue("Joce", "Yes!"),
             }),
 
             // fade to black
-            new FadeOutAction(fader, 0.5f),
+            new FadeInAction(fader, 0.5f),
             new ChangeSceneAction(SceneMapper.Instance.GetBuildIndexBySceneName("Intro")),
-
+            new FadeOutAction(fader, 0.5f),
+            new FaceDirectionAction(() => player.Character, Vector2.down),
             // fade out bg music
 
             // lulu npc appears
-            // lulu npc talks
+            new InstantiateAction(luluPrefab, new Vector2(-3.5f, -8.759971f)),
+            new FaceDirectionAction(() => GameObject.Find("Lulu(Clone)").GetComponent<Character>(), Vector2.left),
+            new FaceDirectionAction(player.Character, Vector2.right),
 
+            // lulu npc talks
             new DialogueAction(new SingleDialogue[]
             {
                 new SingleDialogue("Lulu", "You did it! You've regained all your memories and found your happily ever after."),
                 new SingleDialogue("Lulu", "I will send you back to the title screen, where you can check out additional content!"),
                 new SingleDialogue("Lulu", "Be sure to check out the mailbox! There's some messages for you there!"),
                 new SingleDialogue("Lulu", "Goodbye!"),
-            }),
+            })
 
             // back to title screen
-
+        }, () =>
+        {
+            TitleScreen.Instance.ShowTitle();
+            Destroy(GameObject.Find("Lulu(Clone)"));
         });
     }
 

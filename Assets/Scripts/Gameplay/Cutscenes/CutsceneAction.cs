@@ -40,21 +40,25 @@ public class DialogueAction : ISingleCutsceneAction
 
 public class FaceDirectionAction : ISingleCutsceneAction
 {
-    private Character character;
+    private Func<Character> getCharacter;
 
     private Vector2 direction;
 
-    public FaceDirectionAction(Character character, Vector2 direction)
+    public FaceDirectionAction(Func<Character> getCharacter, Vector2 direction)
     {
-        this.character = character;
+        this.getCharacter = getCharacter;
         this.direction = direction;
+    }
+
+    public FaceDirectionAction(Character character, Vector2 direction) : this(() => character, direction)
+    {
     }
 
     public IEnumerator PerformAction(Action onFinished = null)
     {
         yield return new WaitForEndOfFrame();
 
-        character.FaceDirection(direction);
+        getCharacter().FaceDirection(direction);
 
         onFinished?.Invoke();
     }

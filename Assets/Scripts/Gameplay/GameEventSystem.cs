@@ -289,7 +289,7 @@ public class GameEventSystem : MonoBehaviour
         {
             new GameEvent(
                 () => GameCheckpoints.Instance.Complete(Checkpoint.AllMemoriesFound),
-                (n, f) => CutsceneManager.Instance.FinalIslandCutscene(n, f)),
+                (n, f) => CutsceneManager.Instance.RunFinalIslandCutscene()),
         });
     }
 
