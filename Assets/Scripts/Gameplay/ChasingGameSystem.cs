@@ -37,6 +37,10 @@ public class ChasingGameSystem : MonoBehaviour
 
     private float timerInSeconds = 0f;
 
+    private float timeSinceLastChangePath = 0f;
+
+    public float minTimeBetweenChangePath = 1f;
+
     public float FinishTime { get; private set; }
 
     public float getFasterTimeInSeconds = 4f;
@@ -105,6 +109,7 @@ public class ChasingGameSystem : MonoBehaviour
         player.HandleUpdate();
         
         timerInSeconds += Time.deltaTime;
+        timeSinceLastChangePath += Time.deltaTime;
     }
 
     private void UpdateMoveSpeeds(float playerMultiplier, float chaserMultiplier)
@@ -148,7 +153,7 @@ public class ChasingGameSystem : MonoBehaviour
                 bool ySameAsPrev = Mathf.Clamp(differenceVec.y, -1f, 1f) == prevDiffVec.y;
 
                 // Can only change path if at least x or y is different.
-                bool changePath = (!xSameAsPrev || !ySameAsPrev) && UnityEngine.Random.Range(0f, 100f) < 0.3f;
+                bool changePath = (!xSameAsPrev || !ySameAsPrev) && timeSinceLastChangePath >= minTimeBetweenChangePath && UnityEngine.Random.Range(0f, 100f) < 0.5f;
 
                 // Keep the same path. Only possible if either x or y is the same.
                 if (!changePath)
@@ -174,6 +179,8 @@ public class ChasingGameSystem : MonoBehaviour
                 // Change path. 
                 else
                 {
+                    timeSinceLastChangePath = 0f;
+
                     // If at least one diff direction remained the same, pick the other one.
                     if (xSameAsPrev || ySameAsPrev)
                     {

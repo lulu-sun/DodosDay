@@ -36,6 +36,7 @@ public class TitleScreen : MonoBehaviour
         OnShowTitle?.Invoke();
         titleScreenCamera.gameObject.SetActive(true);
         AudioManager.Instance.PlayTitleMusic();
+        MemoriesSystem.Instance.SetActive(false);
     }
 
 

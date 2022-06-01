@@ -3313,7 +3313,7 @@ MonoBehaviour:
   dialogueBox: {fileID: 6485065461718890909}
   dialogueText: {fileID: 6485065461661654807}
   dialogueName: {fileID: 6485065462242015409}
-  lettersPerSecond: 50
+  lettersPerSecond: 60
 --- !u!1 &3236402930650584595
 GameObject:
   m_ObjectHideFlags: 0

@@ -86,7 +86,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayTurboModeSfx()
     {
-        PlaySfx(turboModeSfx, 0.3f);
+        PlaySfx(turboModeSfx, 0.4f);
     }
 
     public void PlayGetMemorySfx()
