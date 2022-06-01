@@ -598,7 +598,7 @@ public class CutsceneManager : MonoBehaviour
             {
                 new SingleDialogue("Joce", "Is this Northwestern??"),
                 new SingleDialogue("Lulu", "GO CATS"),
-                new SingleDialogue("Lulu", "Go U Northwestern, break right through that line, with your colors flying we will cheer you all the time U RAH RAH! Go U Northwestern fight for victory! Spread far the fame of our fair name"),
+                new SingleDialogue("Lulu", "Go U Northwestern, break right through that line, with your colors flying we will cheer you all the time U RAH RAH! Go U Northwestern fight for victory! Spread far the fame of our fair name,"),
                 new SingleDialogue("Lulu", "Go Northwestern win that game GO CATS!!"),
                 new SingleDialogue("Joce", "..."),
                 new SingleDialogue("Joce", "Oh."),
