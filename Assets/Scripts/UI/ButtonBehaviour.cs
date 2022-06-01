@@ -55,5 +55,10 @@ public class ButtonBehaviour : MonoBehaviour
             TitleScreen.Instance.ShowTitle();
         });        
     }
+
+    public void OnCloseAlbumButtonPress()
+    {
+        AlbumManager.Instance.LeaveAlbum();
+    }
 }
 

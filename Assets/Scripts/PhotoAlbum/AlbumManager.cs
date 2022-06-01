@@ -1,10 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class AlbumManager : MonoBehaviour
 {
+    public static AlbumManager Instance { get; private set; }
+
     // Start is called before the first frame update
     [SerializeField] List<GameObject> pages;
     [SerializeField] List<GameObject> selectors;
@@ -13,6 +17,8 @@ public class AlbumManager : MonoBehaviour
     [SerializeField] Text albumDescription;
     [SerializeField] Text leftPageNum;
     [SerializeField] Text rightPageNum;
+
+    [SerializeField] Button closeButton;
 
     public List<GameObject> Photos;
     public List<GameObject> Descriptions;
@@ -154,17 +160,37 @@ public class AlbumManager : MonoBehaviour
 
     }
 
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     void Start()
     {
         GetChildren();
-        AudioManager.Instance.PlayAlbumMusic();
-
-
+        closeButton.interactable = true;
     }
 
     // Update is called once per frame
     void Update()
     {
         ArrowKeyMovement();
+    }
+
+    public void LeaveAlbum()
+    {
+        closeButton.interactable = false;
+        StartCoroutine(DelayedLeaveAlbum(1.5f, () =>
+        {
+            TitleScreen.Instance.ShowTitle();
+            SceneManager.LoadScene(SceneMapper.Instance.GetBuildIndexBySceneName("Intro"));
+        }));
+    }
+
+    private IEnumerator DelayedLeaveAlbum(float delay, Action onFinished = null)
+    {
+        AudioManager.Instance.FadeMusic(delay, 0);
+        yield return new WaitForSeconds(delay);
+        onFinished?.Invoke();
     }
 }

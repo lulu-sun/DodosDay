@@ -52,6 +52,7 @@ public class TitleScreen : MonoBehaviour
         LeaveTitle("PhotoAlbum", () =>
         {
             titleScreenCamera.gameObject.SetActive(false);
+            AudioManager.Instance.PlayAlbumMusic();
         });
     }
 
@@ -63,14 +64,11 @@ public class TitleScreen : MonoBehaviour
         AudioManager.Instance.FadeMusic(1.5f, 0f);
         StartCoroutine(DelayedLeaveTitle(1.5f, () =>
         {
+            onFinished?.Invoke();
             if (nextScene != null)
             {
-                SceneManager.LoadSceneAsync(SceneMapper.Instance.GetBuildIndexBySceneName(nextScene));
+                SceneManager.LoadScene(SceneMapper.Instance.GetBuildIndexBySceneName(nextScene));
             }
-
-            onFinished?.Invoke();
         }));
     }
-
-
 }
