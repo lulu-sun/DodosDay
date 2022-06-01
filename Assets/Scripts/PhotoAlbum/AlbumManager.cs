@@ -38,6 +38,8 @@ public class AlbumManager : MonoBehaviour
         pages[targetPageIndex].SetActive(true);
 
         pageIndex = targetPageIndex;
+
+        SetPhotosAndDescriptions();
     }
     
     private void UpdateMoveSelection(int previouslySelectedIndex, int currentlySelectedIndex)
@@ -55,77 +57,85 @@ public class AlbumManager : MonoBehaviour
     private void TurnPageForward()
     {
         GoToPage(pageIndex, pageIndex + 1);
+        selectedPictureIndex -= 3;
+        SetPageImage(selectedPictureIndex);
     }
 
     private void TurnPageBackward()
     {
         GoToPage(pageIndex, pageIndex - 1);
+        selectedPictureIndex += 3;
+        SetPageImage(selectedPictureIndex);
     }
 
     private void HandleUpdate()
     {
         int previousIndex = selectedPictureIndex;
 
-        if (!photoPage.activeSelf)
+        if (Controls.GetRightKeyDown())
         {
-
-            if (Controls.GetRightKeyDown())
+            if (pageIndex < pages.Count - 1 && ((selectedPictureIndex + 1) % 4 == 0))
             {
-                if (pageIndex < pages.Count - 1 && ((selectedPictureIndex + 1) % 4 == 0))
-                {
-                    TurnPageForward();
-                }
-                else if (((selectedPictureIndex + 1) % 4 != 0) && selectedPictureIndex < selectors.Count - 1)
-                {
-                    ++selectedPictureIndex;
-                }
+                TurnPageForward();
             }
-
-            else if (Controls.GetLeftKeyDown())
+            else if (((selectedPictureIndex + 1) % 4 != 0) && selectedPictureIndex < selectors.Count - 1)
             {
-                if (pageIndex > 0 && ((selectedPictureIndex % 4) == 0))
-                {
-                    TurnPageBackward();
-                }
-                else if (((selectedPictureIndex % 4) != 0) && selectedPictureIndex > 0)
-                {
-                    --selectedPictureIndex;
-                }                    
+                ++selectedPictureIndex;
             }
+        }
 
-            else if (Controls.GetDownKeyDown())
+        else if (Controls.GetLeftKeyDown())
+        {
+            if (pageIndex > 0 && ((selectedPictureIndex % 4) == 0))
             {
-
-                if (selectedPictureIndex < Photos.Count - 4)
-                {
-                    selectedPictureIndex += 4;
-                }
+                TurnPageBackward();
             }
-
-            else if (Controls.GetUpKeyDown())
+            else if (((selectedPictureIndex % 4) != 0) && selectedPictureIndex > 0)
             {
-                if (selectedPictureIndex >= 4)
-                {
-                    selectedPictureIndex -= 4;
-                }
-            }
+                --selectedPictureIndex;
+            }                    
+        }
 
-            if (previousIndex != selectedPictureIndex)
+        else if (Controls.GetDownKeyDown())
+        {
+            if (selectedPictureIndex < Photos.Count - 4)
             {
-                UpdateMoveSelection(previousIndex, selectedPictureIndex);
+                selectedPictureIndex += 4;
             }
+        }
 
+        else if (Controls.GetUpKeyDown())
+        {
+            if (selectedPictureIndex >= 4)
+            {
+                selectedPictureIndex -= 4;
+            }
+        }
+
+        if (previousIndex != selectedPictureIndex)
+        {
+            UpdateMoveSelection(previousIndex, selectedPictureIndex);
+        }
+
+        if (photoPage.activeSelf)
+        {
+            if (Controls.GetSelectKeyDown() && timeSinceSelected >= requiredTimeToDeselect)
+            {
+                EnablePhotoPage(false);
+            }
+            else
+            {
+                SetPageImage(selectedPictureIndex);
+            }
+        }
+        else
+        {
             if (Controls.GetSelectKeyDown())
             {
                 timeSinceSelected = 0f;
                 SetPageImage(selectedPictureIndex);
                 EnablePhotoPage(true);
             }
-        }
-
-        if (Controls.GetSelectKeyDown() && timeSinceSelected >= requiredTimeToDeselect)
-        {
-            EnablePhotoPage(false);
         }
     }
 
@@ -136,8 +146,11 @@ public class AlbumManager : MonoBehaviour
     }
 
     
-    private void GetChildren()
+    private void SetPhotosAndDescriptions()
     {
+        Photos.Clear();
+        Descriptions.Clear();
+
         foreach (Transform child in pages[pageIndex].transform)
             {
                 Photos.Add(child.gameObject);
@@ -159,8 +172,9 @@ public class AlbumManager : MonoBehaviour
 
     void Start()
     {
-        GetChildren();
+        SetPhotosAndDescriptions();
         closeButton.interactable = true;
+        pages[0].SetActive(true);
     }
 
     // Update is called once per frame
