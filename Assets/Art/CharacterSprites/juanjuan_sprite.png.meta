@@ -1,58 +1,37 @@
 fileFormatVersion: 2
-guid: ae0daa935e77a4bb9bd0abd9c3a5ce22
+guid: be7f03edf28f04ba786f11177a4399a4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8789918702050715601
-    second: jane_sprite_0
+      213: 6153819785175847925
+    second: juanjuan_sprite_0
   - first:
-      213: -5329525867928162795
-    second: jane_sprite_1
+      213: -5782817952872098455
+    second: juanjuan_sprite_1
   - first:
-      213: -4300924131082953898
-    second: jane_sprite_2
+      213: -1184222162437498417
+    second: juanjuan_sprite_2
   - first:
-      213: -4139021793797489051
-    second: jane_sprite_3
+      213: -5159747041598336787
+    second: juanjuan_sprite_3
   - first:
-      213: 7679733211033226339
-    second: jane_sprite_4
+      213: 672500008788255783
+    second: juanjuan_sprite_8
   - first:
-      213: 7974564970592078973
-    second: jane_sprite_5
+      213: -3041485983815024649
+    second: juanjuan_sprite_9
   - first:
-      213: 5440859776641254446
-    second: jane_sprite_6
+      213: -2146897584139281588
+    second: juanjuan_sprite_10
   - first:
-      213: -607441487412700242
-    second: jane_sprite_7
+      213: -2734568662475769184
+    second: juanjuan_sprite_14
   - first:
-      213: -6560186087661814310
-    second: jane_sprite_8
+      213: 6908488001207937177
+    second: juanjuan_sprite_15
   - first:
-      213: -4501612582740133179
-    second: jane_sprite_9
-  - first:
-      213: 1510292213606856143
-    second: jane_sprite_10
-  - first:
-      213: -6281788228936502973
-    second: jane_sprite_11
-  - first:
-      213: 4175034764414037391
-    second: jane_sprite_12
-  - first:
-      213: -2876892067460977152
-    second: jane_sprite_13
-  - first:
-      213: 5355317088962044835
-    second: jane_sprite_14
-  - first:
-      213: -6581927888164735153
-    second: jane_sprite_15
-  - first:
-      213: 1185759965227348439
-    second: jane_sprite_16
+      213: 1783195381615139919
+    second: juanjuan_sprite_16
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -142,7 +121,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: jane_sprite_0
+      name: juanjuan_sprite_0
       rect:
         serializedVersion: 2
         x: 0
@@ -156,14 +135,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2854bfe28fe30680800000000000000
-      internalID: -8789918702050715601
+      spriteID: 5f35d238d72c66550800000000000000
+      internalID: 6153819785175847925
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jane_sprite_1
+      name: juanjuan_sprite_1
       rect:
         serializedVersion: 2
         x: 16
@@ -177,14 +156,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 51ee2ecc578b906b0800000000000000
-      internalID: -5329525867928162795
+      spriteID: 9659e46e5bd4fbfa0800000000000000
+      internalID: -5782817952872098455
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jane_sprite_2
+      name: juanjuan_sprite_2
       rect:
         serializedVersion: 2
         x: 32
@@ -198,14 +177,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 65b15e04a4c0054c0800000000000000
-      internalID: -4300924131082953898
+      spriteID: fc994c0b73cc09fe0800000000000000
+      internalID: -1184222162437498417
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jane_sprite_3
+      name: juanjuan_sprite_3
       rect:
         serializedVersion: 2
         x: 48
@@ -219,14 +198,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 56eb917ab9d3f86c0800000000000000
-      internalID: -4139021793797489051
+      spriteID: de098a63765e468b0800000000000000
+      internalID: -5159747041598336787
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jane_sprite_8
+      name: juanjuan_sprite_8
       rect:
         serializedVersion: 2
         x: 16
@@ -240,14 +219,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: add3578b28985f4a0800000000000000
-      internalID: -6560186087661814310
+      spriteID: 7246547e133355900800000000000000
+      internalID: 672500008788255783
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jane_sprite_9
+      name: juanjuan_sprite_9
       rect:
         serializedVersion: 2
         x: 32
@@ -261,14 +240,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ca7851e43f0781c0800000000000000
-      internalID: -4501612582740133179
+      spriteID: 7ff3069bc987ac5d0800000000000000
+      internalID: -3041485983815024649
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jane_sprite_10
+      name: juanjuan_sprite_10
       rect:
         serializedVersion: 2
         x: 48
@@ -282,17 +261,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc5331334c2a5f410800000000000000
-      internalID: 1510292213606856143
+      spriteID: c4bdb30a500b432e0800000000000000
+      internalID: -2146897584139281588
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jane_sprite_14
+      name: juanjuan_sprite_14
       rect:
         serializedVersion: 2
-        x: 16
+        x: 14
         y: 13
         width: 16
         height: 20
@@ -303,17 +282,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a3692bc488e15a40800000000000000
-      internalID: 5355317088962044835
+      spriteID: 0aa77333a4cdc0ad0800000000000000
+      internalID: -2734568662475769184
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jane_sprite_15
+      name: juanjuan_sprite_15
       rect:
         serializedVersion: 2
-        x: 32
+        x: 30
         y: 13
         width: 16
         height: 20
@@ -324,17 +303,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f4734b0557b48a4a0800000000000000
-      internalID: -6581927888164735153
+      spriteID: 9982c0ffb31efdf50800000000000000
+      internalID: 6908488001207937177
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jane_sprite_16
+      name: juanjuan_sprite_16
       rect:
         serializedVersion: 2
-        x: 48
+        x: 46
         y: 13
         width: 16
         height: 20
@@ -345,8 +324,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d1714ce76aa47010800000000000000
-      internalID: 1185759965227348439
+      spriteID: f4c994670ce2fb810800000000000000
+      internalID: 1783195381615139919
       vertices: []
       indices: 
       edges: []

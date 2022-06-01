@@ -1,58 +1,37 @@
 fileFormatVersion: 2
-guid: ae0daa935e77a4bb9bd0abd9c3a5ce22
+guid: 3e324316c05c84688b4ae45364d35569
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8789918702050715601
-    second: jane_sprite_0
+      213: 1592846479723629153
+    second: noelle_sprite_0
   - first:
-      213: -5329525867928162795
-    second: jane_sprite_1
+      213: -6430141914558047133
+    second: noelle_sprite_1
   - first:
-      213: -4300924131082953898
-    second: jane_sprite_2
+      213: 1089371768733971177
+    second: noelle_sprite_2
   - first:
-      213: -4139021793797489051
-    second: jane_sprite_3
+      213: -1578770659369008942
+    second: noelle_sprite_3
   - first:
-      213: 7679733211033226339
-    second: jane_sprite_4
+      213: -3323537904434059132
+    second: noelle_sprite_8
   - first:
-      213: 7974564970592078973
-    second: jane_sprite_5
+      213: -2526279671507239607
+    second: noelle_sprite_9
   - first:
-      213: 5440859776641254446
-    second: jane_sprite_6
+      213: 4508551596081405196
+    second: noelle_sprite_10
   - first:
-      213: -607441487412700242
-    second: jane_sprite_7
+      213: 8676883484999782894
+    second: noelle_sprite_14
   - first:
-      213: -6560186087661814310
-    second: jane_sprite_8
+      213: 774524759370173342
+    second: noelle_sprite_15
   - first:
-      213: -4501612582740133179
-    second: jane_sprite_9
-  - first:
-      213: 1510292213606856143
-    second: jane_sprite_10
-  - first:
-      213: -6281788228936502973
-    second: jane_sprite_11
-  - first:
-      213: 4175034764414037391
-    second: jane_sprite_12
-  - first:
-      213: -2876892067460977152
-    second: jane_sprite_13
-  - first:
-      213: 5355317088962044835
-    second: jane_sprite_14
-  - first:
-      213: -6581927888164735153
-    second: jane_sprite_15
-  - first:
-      213: 1185759965227348439
-    second: jane_sprite_16
+      213: 460212019687168264
+    second: noelle_sprite_16
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -95,8 +74,8 @@ TextureImporter:
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
+  alignment: 2
+  spritePivot: {x: 0.5, y: 1}
   spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -142,7 +121,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: jane_sprite_0
+      name: noelle_sprite_0
       rect:
         serializedVersion: 2
         x: 0
@@ -156,14 +135,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2854bfe28fe30680800000000000000
-      internalID: -8789918702050715601
+      spriteID: 16a88ad1f6dea1610800000000000000
+      internalID: 1592846479723629153
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jane_sprite_1
+      name: noelle_sprite_1
       rect:
         serializedVersion: 2
         x: 16
@@ -177,14 +156,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 51ee2ecc578b906b0800000000000000
-      internalID: -5329525867928162795
+      spriteID: 36cda6f3ffb83c6a0800000000000000
+      internalID: -6430141914558047133
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jane_sprite_2
+      name: noelle_sprite_2
       rect:
         serializedVersion: 2
         x: 32
@@ -198,14 +177,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 65b15e04a4c0054c0800000000000000
-      internalID: -4300924131082953898
+      spriteID: 9e23ab71ad93e1f00800000000000000
+      internalID: 1089371768733971177
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jane_sprite_3
+      name: noelle_sprite_3
       rect:
         serializedVersion: 2
         x: 48
@@ -219,14 +198,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 56eb917ab9d3f86c0800000000000000
-      internalID: -4139021793797489051
+      spriteID: 2d040823374171ae0800000000000000
+      internalID: -1578770659369008942
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jane_sprite_8
+      name: noelle_sprite_8
       rect:
         serializedVersion: 2
         x: 16
@@ -240,14 +219,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: add3578b28985f4a0800000000000000
-      internalID: -6560186087661814310
+      spriteID: 48869a082eb60e1d0800000000000000
+      internalID: -3323537904434059132
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jane_sprite_9
+      name: noelle_sprite_9
       rect:
         serializedVersion: 2
         x: 32
@@ -261,14 +240,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ca7851e43f0781c0800000000000000
-      internalID: -4501612582740133179
+      spriteID: 94d3588060ad0fcd0800000000000000
+      internalID: -2526279671507239607
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jane_sprite_10
+      name: noelle_sprite_10
       rect:
         serializedVersion: 2
         x: 48
@@ -282,17 +261,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc5331334c2a5f410800000000000000
-      internalID: 1510292213606856143
+      spriteID: c0dd3ff0ac7919e30800000000000000
+      internalID: 4508551596081405196
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jane_sprite_14
+      name: noelle_sprite_14
       rect:
         serializedVersion: 2
-        x: 16
+        x: 14
         y: 13
         width: 16
         height: 20
@@ -303,17 +282,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a3692bc488e15a40800000000000000
-      internalID: 5355317088962044835
+      spriteID: ee19dd8be8b7a6870800000000000000
+      internalID: 8676883484999782894
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jane_sprite_15
+      name: noelle_sprite_15
       rect:
         serializedVersion: 2
-        x: 32
+        x: 30
         y: 13
         width: 16
         height: 20
@@ -324,17 +303,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f4734b0557b48a4a0800000000000000
-      internalID: -6581927888164735153
+      spriteID: e9b01004a2aafba00800000000000000
+      internalID: 774524759370173342
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jane_sprite_16
+      name: noelle_sprite_16
       rect:
         serializedVersion: 2
-        x: 48
+        x: 46
         y: 13
         width: 16
         height: 20
@@ -345,8 +324,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d1714ce76aa47010800000000000000
-      internalID: 1185759965227348439
+      spriteID: 80991d2c460036600800000000000000
+      internalID: 460212019687168264
       vertices: []
       indices: 
       edges: []
