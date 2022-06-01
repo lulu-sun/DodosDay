@@ -678,13 +678,45 @@ public class CutsceneManager : MonoBehaviour
 
     public void FinalIslandCutscene(NPCController lulu, Vector2 facingDirection)
     {
+        // Walk up and talk to phillip
+       
         RunMultipleActions(new ICutsceneAction[]
         {
+            new FaceDirectionAction(player.Character, Vector2.up),
+            new MoveAction(player.Character, new Vector2(0f, 7.4f)),
+
             new DialogueAction(new SingleDialogue[]
             {
-                new SingleDialogue("???", "!! Wait!!!"),
-                new SingleDialogue("Joce", "!!")
+                new SingleDialogue("???", "You finally made it!"),
+                new SingleDialogue("Joce", "I'm sorry, I don't know who you are."),
+                new SingleDialogue("???", "That's okay, you will soon. Do you wish to accept your final quest?"),
+                new SingleDialogue("Joce", "Yes."),
+                new SingleDialogue("???", "Then take my hand."),
+                new SingleDialogue("Phillip", "Your last quest. . ."),
+                new SingleDialogue("Phillip", "Our last quest is to spend the rest of our lives together, loving each other."),
+                new SingleDialogue("Phillip", "Do you accept?"),
+                new SingleDialogue("Joce", "Yes!"),
             }),
+
+            // fade to black
+            new FadeOutAction(fader, 0.5f),
+            new ChangeSceneAction(SceneMapper.Instance.GetBuildIndexBySceneName("Intro")),
+
+            // fade out bg music
+
+            // lulu npc appears
+            // lulu npc talks
+
+            new DialogueAction(new SingleDialogue[]
+            {
+                new SingleDialogue("Lulu", "You did it! You've regained all your memories and found your happily ever after."),
+                new SingleDialogue("Lulu", "I will send you back to the title screen, where you can check out additional content!"),
+                new SingleDialogue("Lulu", "Be sure to check out the mailbox! There's some messages for you there!"),
+                new SingleDialogue("Lulu", "Goodbye!"),
+            }),
+
+            // back to title screen
+
         });
     }
 

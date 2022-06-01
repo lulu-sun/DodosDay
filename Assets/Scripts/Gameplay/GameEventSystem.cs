@@ -19,7 +19,6 @@ public class GameEventSystem : MonoBehaviour
     {
         npcGameTriggers = new Dictionary<NPCType, GameEventTrigger>();
         enterSceneGameTriggers = new Dictionary<string, GameEventTrigger>();
-
         InitializeGameEvents();
     }
 
