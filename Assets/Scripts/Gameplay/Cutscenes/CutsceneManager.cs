@@ -256,7 +256,7 @@ public class CutsceneManager : MonoBehaviour
                 new SingleDialogue(name, "DID YOU KNOW?????"),
                 new SingleDialogue(name, "I'M IN THE TOP 0.5% OF DAY6 LISTENERS WORLDWIDE!!!!"),
                 new SingleDialogue(name, "I've listened to them for almost 5000 minutes."),
-                new SingleDialogue(name, "That's 83 HOURS!"),
+                new SingleDialogue(name, "THAT'S 83 HOURS!!!"),
             }),
             facingDirection);
     }
