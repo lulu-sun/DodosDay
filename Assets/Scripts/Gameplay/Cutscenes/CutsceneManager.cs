@@ -251,7 +251,7 @@ public class CutsceneManager : MonoBehaviour
         naomi.Talk(new Dialogue(
             new SingleDialogue[]
             {
-                new SingleDialogue("Naomi", "<Naomi gives a lecture about day6/this song>")
+                new SingleDialogue("Naomi", "THIS IS MY JAM!!!!")
             }),
             facingDirection);
     }
