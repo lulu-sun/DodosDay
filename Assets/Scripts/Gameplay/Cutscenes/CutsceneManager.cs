@@ -248,10 +248,15 @@ public class CutsceneManager : MonoBehaviour
 
     public void NaomiDanceDialogue(NPCController naomi, Vector2 facingDirection)
     {
+        string name = GameCheckpoints.Instance.Complete(Checkpoint.NaomiChasingMemoryRecorded) ? "Naomi" : "???";
+
         naomi.Talk(new Dialogue(
             new SingleDialogue[]
             {
-                new SingleDialogue("Naomi", "THIS IS MY JAM!!!!")
+                new SingleDialogue(name, "DID YOU KNOW?????"),
+                new SingleDialogue(name, "I'M IN THE TOP 0.5% OF DAY6 LISTENERS WORLDWIDE!!!!"),
+                new SingleDialogue(name, "I've listened to them for almost 5000 minutes."),
+                new SingleDialogue(name, "That's 83 HOURS!"),
             }),
             facingDirection);
     }
