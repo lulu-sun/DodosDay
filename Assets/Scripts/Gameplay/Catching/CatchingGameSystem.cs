@@ -94,6 +94,11 @@ public class CatchingGameSystem : MonoBehaviour
     {
         score++;
         SetScoreText();
+
+        if (score == winningScore)
+        {
+            AudioManager.Instance.PlaySuccessSfx();
+        }
     }
 
     private void SetScoreText()

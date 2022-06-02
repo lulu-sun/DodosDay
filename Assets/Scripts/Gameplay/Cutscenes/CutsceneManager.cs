@@ -303,7 +303,7 @@ public class CutsceneManager : MonoBehaviour
         jane.Talk(new Dialogue(
             new SingleDialogue[]
             {
-                new SingleDialogue("Jane", "Here to battle me again? Let's do it!")
+                new SingleDialogue("???", "Here to battle me again? Let's do it!")
                
             }), facingDirection,
             () => BattleSystem.Instance.StartBattle());
