@@ -263,7 +263,7 @@ public class CutsceneManager : MonoBehaviour
         jane.Talk(new Dialogue(
             new SingleDialogue[]
             {
-                new SingleDialogue("???", "Halt! You don't remember me, do you?"),
+                new SingleDialogue("???", "Joce! You don't remember me, do you?"),
                 new SingleDialogue("Joce", "No...but your cat is cute!"),
                 new SingleDialogue("???", "Thank you! Her name is Dumpling, and I'm OBSESSED."),
                 new SingleDialogue("???", "But WAIT! Don't let me get off topic. You must battle me to regain our memories together!"),
