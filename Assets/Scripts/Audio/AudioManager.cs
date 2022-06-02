@@ -61,7 +61,7 @@ public class AudioManager : MonoBehaviour
     public void PlayDay6Music()
     {
         FadeMusic(0.3f, 0f);
-        PlayMusic(day6Music, 0.5f, 0f, 0.5f, false);
+        PlayMusic(day6Music, 0.5f, 0f, 0.5f, true);
     }
 
     public void PlayPopSfx()

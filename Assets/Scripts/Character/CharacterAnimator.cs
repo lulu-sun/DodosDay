@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -37,6 +36,16 @@ public class CharacterAnimator : MonoBehaviour
 
     // References
     SpriteRenderer spriteRenderer;
+
+    public void MakeNaomiDance()
+    {
+        idleDownSprites.AddRange(idleLeftSprites);
+        idleDownSprites.AddRange(idleUpSprites);
+        idleDownSprites.AddRange(idleRightSprites);
+
+        idleDownAnim = new SpriteAnimator(idleDownSprites, spriteRenderer);
+        currentIdleAnim = idleDownAnim;
+    }
 
     private void Awake()
     {

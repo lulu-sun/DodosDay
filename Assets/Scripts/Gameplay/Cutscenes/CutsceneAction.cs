@@ -75,7 +75,7 @@ public class WaitAction : ISingleCutsceneAction
 
     public IEnumerator PerformAction(Action onFinished = null)
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(seconds);
 
         onFinished?.Invoke();
     }

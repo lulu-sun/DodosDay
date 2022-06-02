@@ -52,6 +52,10 @@ public class GameEventSystem : MonoBehaviour
         AddNPCGameTrigger(NPCType.Naomi, new GameEvent[]
         {
             new GameEvent(
+                () => GameCheckpoints.Instance.Complete(Checkpoint.RadioPlayingMusic),
+                (n, f) => CutsceneManager.Instance.NaomiDanceDialogue(n, f)),
+
+            new GameEvent(
                 () => GameCheckpoints.Instance.NotComplete(Checkpoint.ChasingGame),
                 (n, f) => CutsceneManager.Instance.NaomiTryAgainDialogue(n, f)),
 
@@ -64,6 +68,7 @@ public class GameEventSystem : MonoBehaviour
                 () => GameCheckpoints.Instance.Complete(Checkpoint.ChasingGame),
                 (n, f) => CutsceneManager.Instance.NaomiCompletedDialogue(n, f))
         });
+
         // Ollie
         AddNPCGameTrigger(NPCType.Ollie, new GameEvent[]
         {
@@ -222,13 +227,11 @@ public class GameEventSystem : MonoBehaviour
         {
             new GameEvent(
                 () => GameCheckpoints.Instance.NotComplete(Checkpoint.RadioPlayingMusic),
-                (n, f) => CutsceneManager.Instance.RadioStartMusic(n, f)),
+                (n, f) => CutsceneManager.Instance.RadioStartMusic()),
 
             new GameEvent(
                 () => GameCheckpoints.Instance.Complete(Checkpoint.RadioPlayingMusic),
                 (n, f) => CutsceneManager.Instance.RadioAlreadyPlayingMusic(n, f)),
-
-
         });
 
         //// Enter Scene Game events

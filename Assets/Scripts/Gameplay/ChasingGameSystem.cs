@@ -91,7 +91,7 @@ public class ChasingGameSystem : MonoBehaviour
         };
 
         collisionSize = (player.GetComponent<BoxCollider2D>().size + chaser.GetComponent<BoxCollider2D>().size) / 2;
-        collisionSize += new Vector2(0.05f, 0.05f);
+        collisionSize += new Vector2(0.1f, 0.1f);
     }
 
     public void StartGame()

@@ -246,6 +246,16 @@ public class CutsceneManager : MonoBehaviour
             });
     }
 
+    public void NaomiDanceDialogue(NPCController naomi, Vector2 facingDirection)
+    {
+        naomi.Talk(new Dialogue(
+            new SingleDialogue[]
+            {
+                new SingleDialogue("Naomi", "<Naomi gives a lecture about day6/this song>")
+            }),
+            facingDirection);
+    }
+
     public void NaomiChaseAgainDialogue(NPCController naomi, Vector2 facingDirection)
     {
         naomi.Talk(new Dialogue(
@@ -326,14 +336,36 @@ public class CutsceneManager : MonoBehaviour
             () => BattleSystem.Instance.StartBattle());
     }
 
-    public void RadioStartMusic(NPCController radio, Vector2 facingDirection)
+    public void RadioStartMusic()
     {
-        radio.Talk(new Dialogue(
-            new SingleDialogue[]
+        StartCutscene();
+
+        GameObject naomi = GameObject.Find("Naomi(Clone)");
+        Character naomiChar = naomi.GetComponent<Character>();
+
+        RunMultipleActions(new ICutsceneAction[]
+        {
+            new CustomAction(() => AudioManager.Instance.PlayDay6Music()),
+            new DialogueAction(new SingleDialogue[]
             {
-                new SingleDialogue("Radio", "Playing: Love Me Or Leave Me by Day6"),
-            }), facingDirection,
-            () => AudioManager.Instance.PlayDay6Music());
+                new SingleDialogue("Radio", "Playing: Love Me Or Leave Me by Day6")
+            }),
+            new CustomAction(() =>
+            {
+                var radioPos = GameObject.Find("RadioNPC").transform.position;
+                naomi.transform.position = new Vector3(radioPos.x - 1.5f, radioPos.y + 6);
+                naomiChar.moveSpeed = 2.5f;
+            }),
+            new MoveAction(naomiChar, new Vector2(0, -3.5f)),
+            new DialogueAction(new SingleDialogue[]
+            {
+                new SingleDialogue(GameCheckpoints.Instance.Complete(Checkpoint.NaomiChasingMemoryRecorded) ? "Naomi" : "???", "THAT'S MY JAM!!!!")
+            }),
+            new CustomAction(() =>
+            {
+                naomi.GetComponent<CharacterAnimator>().MakeNaomiDance();
+            })
+        });
 
         GameCheckpoints.Instance.UpdateCheckpointState(Checkpoint.RadioPlayingMusic, CheckpointState.Complete);
     }
@@ -345,7 +377,7 @@ public class CutsceneManager : MonoBehaviour
             new SingleDialogue[]
             {
                 new SingleDialogue("Joce", "..."),
-                new SingleDialogue("Joce", "there's no way to turn it off"),
+                new SingleDialogue("Joce", "There's no way to turn it off."),
             }), facingDirection);
     }
 
